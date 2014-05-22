@@ -1,0 +1,490 @@
+@import "../../base/color.less";
+
+/* Table theme building instructions
+ *
+ * Vaadin scroll table is very complex widget with dozens of features. These
+ * features set some limitations for theme builder. To keep things working, it
+ * is safest to try to just override values used in default theme and comfort to
+ * these instructions.
+ *
+ * Borders in table header and in table body need to be same width
+ * - specify vertical borders on .v-table-header-wrap and .v-table-body
+ *
+ * Table cells in body:
+ *  - padding/border for cells is to be defined for td elements (class name: .v-table-cell-content)
+ *  - in default theme there are no borders, but they should work. Just set border-right or border-bottom
+ *  - no padding or border is allowed for div inside cells (class name: .v-table-cell-wrapper) element
+ *  - background is allowed for both elements
+ *
+ * Table headers:
+ *  - table cells in header contain .v-table-resizer and
+ *	  .v-table-caption-container div elements, which are both floated to right
+ *  - to align header caption to body content resizer width + .v-table-caption-container
+ *    padding right should be equal to content cells padding-right and border-right.
+ *  - Possible cell border in header must be themed into column resizer.
+ *
+ */
+.v-table {
+	overflow: hidden;
+	text-align: left; /* Force default alignment */
+}
+
+.v-ie7 .v-table {
+	overflow: visible;
+}
+
+.v-table-header-wrap {
+	overflow: hidden;
+	border: 1px solid #aaa;
+	border-bottom: none;
+	background: #efefef;
+}
+
+.v-table-header table,.v-table-table {
+	border-spacing: 0;
+	border-collapse: separate;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.v-table-header td {
+	padding: 0;
+}
+
+.v-table-header-cell,.v-table-header-cell-asc,.v-table-header-cell-desc	{
+	cursor: pointer;
+}
+
+.v-table-footer-wrap {
+	overflow: hidden;
+	border: 1px solid #aaa;
+	border-top: none;
+	background: #efefef;
+}
+
+.v-table-footer table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.v-table-footer td {
+	padding: 0;
+	border-right: 1px solid #aaa;
+}
+
+.v-table-footer-cell {
+	cursor: pointer;
+}
+
+.v-table-footer-container {
+	float: right;
+	padding-right: 6px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.v-table-resizer {
+	display: block;
+	height: 1.2em;
+	float: right;
+	background: #aaa;
+	cursor: e-resize;
+	/* Opera does not support col-resize, so use e-resize instead */
+	cursor: col-resize;
+	width: 1px;
+	overflow: hidden;
+}
+
+.v-table-caption-container {
+	float: right;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-right: 6px;
+}
+
+.v-table-header-cell-asc .v-table-caption-container {
+	background: transparent url(../../base/common/img/sprites.png) no-repeat
+		right 6px;
+}
+
+.v-table-header-cell-desc .v-table-caption-container {
+	background: transparent url(../../base/common/img/sprites.png) no-repeat
+		right -10px;
+}
+
+.v-table-header-cell-asc .v-table-caption-container-align-right {
+	background: transparent url(../../base/common/img/sprites.png) no-repeat
+		-8px 6px;
+}
+
+.v-table-header-cell-desc .v-table-caption-container-align-right {
+	background: transparent url(../../base/common/img/sprites.png) no-repeat
+		-8px -10px;
+}
+
+.v-table-caption-container .v-icon,.v-table-header-drag .v-icon {
+	vertical-align: middle;
+}
+
+.v-table-body {
+	border: 1px solid #aaa;
+}
+
+.v-table-row-spacer {
+	height: 10px;
+	overflow: hidden; /* IE hack to allow < one line height divs */
+}
+
+.v-table-row,.v-table-row-odd {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}
+
+.v-table-body-noselection .v-table-row,.v-table-body-noselection .v-table-row-odd
+	{
+	cursor: default;
+}
+
+.v-table .v-selected {
+	background: @color_gray_dark;
+	color: white;
+}
+
+.v-table-cell-content {
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 0 6px;
+	border-right: 1px solid #aaa;
+}
+
+.v-table-cell-wrapper {
+	/* Do not specify any margins, paddings or borders here */
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.v-table-column-selector {
+	float: right;
+	background: transparent url(../../base/common/img/sprites.png) no-repeat
+		4px -37px;
+	margin: -1.2em 0 0 0;
+	height: 1.2em;
+	width: 14px;
+	position: relative; /* hide this from IE, it works without it */
+	cursor: pointer;
+}
+
+.v-table-focus-slot-left {
+	border-left: 2px solid @color_gray_dark;
+	margin-right: -2px;
+}
+
+.v-table-focus-slot-right {
+	border-right: 2px solid @color_gray_dark;
+	margin-left: -2px;
+}
+
+.v-table-header-drag {
+	position: absolute;
+	background: #efefef;
+	border: 1px solid #eee;
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+	margin-top: 20px;
+	z-index: 30000;
+}
+
+.v-table-header-drag .v-icon {
+	vertical-align: middle;
+}
+
+.v-table-scrollposition {
+	width: 160px;
+	background: #eee;
+	border: 1px solid #aaa;
+}
+
+.v-table-scrollposition span {
+	display: block;
+	text-align: center;
+}
+
+.v-table-body:focus,.v-table-body-wrapper:focus {
+	outline: none;
+}
+
+.v-table-body.focused {
+	border-color: #388ddd;
+}
+
+.v-table-focus .v-table-cell-content {
+	border-top: 1px dotted #0066bd;
+	border-bottom: 1px dotted #0066bd;
+}
+/* row in column selector */
+.v-on {
+
+}
+
+.v-off {
+	color: #ddd;
+}
+
+
+/*************************************
+ * Drag'n'drop styles
+ *************************************/
+.v-table-drag .v-table-body {
+	border-color: @color_orange;
+}
+
+.v-table-row-drag-middle .v-table-cell-content {
+	background-color: @color_orange_light;
+}
+
+.v-table-row-drag-top .v-table-cell-content {
+	border-top: 2px solid @color_orange;
+}
+
+.v-table-row-drag-top .v-table-cell-wrapper {
+	margin-top: -2px; /* compensate the space consumed by border hint */
+}
+
+.v-table-row-drag-bottom .v-table-cell-content {
+	border-bottom: 2px solid @color_orange;
+}
+
+.v-table-row-drag-bottom .v-table-cell-wrapper {
+	margin-bottom: -2px; /* compensate the space consumed by border hint */
+}
+
+.v-table-row-drag-top .v-table-cell-content:first-child:before,.v-table-row-drag-bottom .v-table-cell-content:first-child:after	{
+	display: block;
+	content: "";
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	margin-top: -4px;
+	margin-left: -6px;
+	background: transparent url(../../base/common/img/drag-slot-dot.png);
+}
+
+.v-ff .v-table-row-drag-bottom .v-table-cell-content:first-child:after,.v-ie .v-table-row-drag-bottom .v-table-cell-content:first-child:after {
+	margin-top: -2px;
+}
+
+
+.v-table-header-wrap {
+	height: 36px;
+	border: 1px solid #b6bbbc;
+	border-bottom: none;
+	background: #e7e9ea url(img/header-bg.png) repeat-x;
+}
+
+.v-table-header {
+	height: 36px;
+}
+
+.v-table-footer-wrap {
+	border-color: #b6bbbc;
+	background: #e7e9ea url(img/header-bg.png) repeat-x;
+}
+
+.v-table-footer td {
+	border-right-color: #e8eaec;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.v-table-resizer {
+	height: 36px;
+	width: 4px;
+	background: transparent url(img/resizer-bg.png) repeat-y 100% 50%;
+}
+
+.v-table-caption-container {
+	color: #393a3c;
+	font-size: 15px;
+	padding: 9px 2px 9px 0;
+	text-shadow: white 0 1px 0;
+}
+
+.v-table-header-cell-asc .v-table-caption-container {
+	background: transparent url(img/sort-asc.png) no-repeat right 50%;
+}
+
+.v-table-header-cell-desc .v-table-caption-container {
+	background: transparent url(img/sort-desc.png) no-repeat right 50%;
+}
+
+.v-table-header-cell-asc .v-table-caption-container-align-right {
+	background: transparent url(img/sort-asc.png) no-repeat left 50%;
+}
+
+.v-table-header-cell-desc .v-table-caption-container-align-right {
+	background: transparent url(img/sort-desc.png) no-repeat left 50%;
+}
+
+.v-table-header-cell:hover,.v-table-header-cell-asc:hover,.v-table-header-cell-desc:hover
+	{
+	background: transparent url(img/header-bg-over.png) repeat-x;
+}
+
+.v-table-body {
+	background: white;
+	border: 1px solid #b6bbbc;
+}
+
+tr.v-table-row:hover,tr.v-table-row-odd:hover {
+	background-color: #edeeee;
+}
+
+.v-table-row,.v-table-body-noselection .v-table-row:hover {
+	background-color: white;
+}
+
+.v-table-row-odd,.v-table-body-noselection .v-table-row-odd:hover {
+	background-color: #f6f7f7;
+}
+
+.v-table tr.v-selected {
+	background: #57a7ed;
+	color: white;
+}
+
+.v-table-cell-content {
+	padding: 0 6px 0 4px;
+	border-right: none;
+}
+
+.v-table-cell-wrapper {
+	white-space: nowrap;
+	overflow: hidden;
+	line-height: 23px;
+	/* Do not specify horizontal padding here */
+	padding: 3px 0 0 0;
+}
+
+.v-table-focus .v-table-cell-wrapper {
+	line-height: 21px;
+}
+/* Fix textfield size to correspond label size inside table */
+.v-table-cell-content .v-textfield,.v-table-cell-content .v-button {
+	margin: -3px 0 0 0;
+}
+
+.v-table-cell-content .v-textfield,.v-table-cell-content .v-datefield {
+	width: 97%; /* approximate */
+}
+/* ...but not for datefield textarea */
+.v-table-cell-content .v-datefield .v-textfield {
+	width: auto;
+}
+/* datefield button is too high for table cell */
+.v-table-cell-content .v-datefield-button {
+	height: 25px;
+	margin: -3px 0 0 0;
+}
+
+.v-table-column-selector {
+	background: transparent url(img/colsel.png) no-repeat;
+	margin: -36px 0 0 0;
+	height: 36px;
+	width: 15px;
+}
+
+.v-table-focus-slot-left {
+	border-color: #b6bbbc;
+}
+
+.v-table-focus-slot-right {
+	border-color: #b6bbbc;
+}
+
+.v-table-header-drag {
+	background: #e7edf3 url(img/header-bg.png) repeat-x;
+	border: 1px solid #b6bbbc;
+	padding: 4px;
+	color: @color_gray_darkest;
+	font-size: 15px;
+	margin-top: 20px;
+}
+
+.v-table-scrollposition {
+	width: 160px;
+	height: 39px;
+	background: transparent url(img/scroll-position-bg.png);
+	border: none;
+}
+
+.v-table-scrollposition span {
+	display: block;
+	margin-top: 8px;
+	text-align: center;
+	color: @color_gray_darkest;
+	font-size: 15px;
+	text-shadow: white 2px 2px 0;
+}
+/* row in column selector */
+.v-on div {
+	background: transparent url(img/check.gif) no-repeat 2px 50%;
+	text-indent: 6px;
+}
+
+.v-off div {
+	text-indent: 6px;
+}
+
+.v-table .v-link {
+	display: inline;
+}
+
+/* Borderless style */
+.v-table-borderless .v-table-header-wrap,.v-table-borderless .v-table-body
+	{
+	border: none;
+}
+
+.v-table-borderless .v-table-header-wrap {
+	border-bottom: 1px solid #b6bbbc;
+}
+
+.v-table-borderless .v-table-body {
+	background: transparent;
+}
+
+.v-table-borderless .v-table-row,.v-table-borderless .v-table-row-odd,.v-table-borderless .v-table-body-noselection .v-table-row:hover,.v-table-borderless .v-table-body-noselection .v-table-row-odd:hover
+	{
+	background-color: transparent;
+}
+
+/* Small style */
+.v-table-small .v-table-header-wrap,.v-table-small .v-table-header {
+	height: 22px;
+}
+
+.v-table-small .v-table-caption-container {
+	font-size: 13px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.v-table-small .v-table-column-selector {
+	margin-top: -21px;
+	height: 21px;
+}
+
+.v-table-small .v-table-body {
+	font-size: 12px;
+}
+
+.v-table-small .v-table-cell-wrapper {
+	line-height: 18px;
+	padding: 2px 0;
+}

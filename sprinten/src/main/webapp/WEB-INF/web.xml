@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<display-name>Sprinten Web Application</display-name>
+
+	<context-param>
+		<param-name>productionMode</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>less-servlet</servlet-name>
+		<servlet-class>org.avm.css.less.LessServlet</servlet-class>
+		<init-param>
+			<param-name>compress</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<filter>
+		<filter-name>less-filter</filter-name>
+		<filter-class>org.avm.css.less.LessFilter</filter-class>
+
+		<init-param>
+			<param-name>servletName</param-name>
+			<param-value>less-servlet</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>less-filter</filter-name>
+		<url-pattern>*.less</url-pattern>
+	</filter-mapping>
+
+	<!-- <filter-mapping> <filter-name>less-filter</filter-name> <servlet-name>less-servlet</servlet-name>
+		<dispatcher>FORWARD</dispatcher> </filter-mapping> -->
+
+	<servlet>
+		<servlet-name>vaadin-servlet</servlet-name>
+
+		<servlet-class>org.vaadin.navigator7.NavigableApplicationServlet</servlet-class>
+
+		<init-param>
+			<param-name>application</param-name>
+			<param-value>org.avm.sprinten.ui.main.MainApplication</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>webApplication</param-name>
+			<param-value>org.avm.sprinten.ui.main.MainWebApplication</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>widgetset</param-name>
+			<param-value>org.avm.sprinten.ui.gwt.SprintenWidgetSet</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>vaadin-servlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+</web-app>

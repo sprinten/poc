@@ -1,0 +1,9 @@
+Background Light > 227,222,209  (greish) (#e3ded1) -> light orange: #FFF4E8 (255,244,232)
+Accent > 240,127,9  (orange)   (#f07f09): other: #f14c1a; #1d9dff
+Accent > 159,41,54  (redish)   (#9f2936)
+Accent > 27,88,124  (blueish)  (#1b587c)
+Accent > 78,133,66  (greenish) (#4e8542) (#6b9b25)
+Accent > 96,72,120  (purple)   (#604878)
+Accent > 193,152,89 (brownish) (#c19859)
+Link > 107,159,37	(greenish) (#6b9b25):  other: #464f52
+Link > 178,107,2    (brownish) (#b26b02):

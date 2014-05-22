@@ -1,0 +1,112 @@
+@import "../../base/color.less";
+
+.v-Notification {
+	background: lighten(@color_blue, 20%);
+	color: white;
+	cursor: pointer;
+	overflow: hidden;
+	padding: 1em;
+	max-width: 85%;
+}
+
+.v-Notification h1,.v-Notification p,.v-Notification-error h1,.v-Notification-error p,.v-Notification-warning h1,.v-Notification-warning p
+	{
+	display: inline;
+	margin: 0 0.5em 0 0;
+}
+
+.v-Notification-warning {
+	background: @color_orange_light;
+}
+
+.v-Notification-error {
+	background: @color_red_light;
+}
+
+.v-Notification-tray h1 {
+	display: block;
+}
+
+.v-Notification-tray p {
+	display: block;
+}
+
+.v-Notification-system {
+	background-color: @color_red_light;
+	opacity: .7;
+	filter: alpha(opacity=70);
+}
+
+.v-Notification-system h1 {
+	display: block;
+	margin: 0;
+}
+
+.v-Notification {
+	background-color: @color_blue_light;
+	color: white;
+	padding: 20px 45px;
+	cursor: pointer;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	overflow: hidden;
+	font-size: 1.2em;
+	-webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 3px 10px rgba(0, 0, 0, .3);
+	margin: 10px;
+}
+
+.v-Notification h1,.v-Notification p,.v-Notification-error h1,.v-Notification-error p,.v-Notification-warning h1,.v-Notification-warning p
+	{
+	display: inline;
+	font-weight: normal;
+	line-height: normal;
+	margin: 0 10px 0 0;
+}
+
+.v-Notification-warning {
+	background: @color_orange_light;
+	color: white;
+	opacity: 1;
+}
+
+.v-Notification-error {
+	background: @color_red_light url(img/close-error.png) no-repeat right 5px;
+	padding-right: 50px;
+}
+
+.v-Notification-tray {
+	background: @color_blue_light;
+	padding: 3px;
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .5);
+	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, .5);
+	max-width: 17em;
+}
+
+.v-Notification-tray h1 {
+	display: block;
+	font-weight: bold;
+	font-size: 0.9em;
+	line-height: 1;
+	background: @color_green_light;
+	padding: 2px 10px;
+	margin: 0;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.v-Notification-tray p {
+	display: block;
+	font-size: 0.8em;
+	line-height: 1.2;
+	margin: 4px 10px 5px 10px;
+	color: white;
+}
+
+.v-Notification-system {
+	background-color: @color_red_light;
+	font-size: .9em;
+	padding: 14px 32px;
+}

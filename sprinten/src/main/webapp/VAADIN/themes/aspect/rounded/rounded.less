@@ -1,0 +1,158 @@
+@import "../../base/color.less";
+
+/* -------------------------- */
+/* Rounded Layout Color Styles */
+
+/* ---------------- */
+/* Default */
+
+.v-customlayout-rounded {
+	display: block;
+}
+
+.v-customlayout-rounded * {
+	display: block;
+	height: 1px;
+	overflow: hidden;
+	font-size: .01em;
+	background: transparent;
+}
+
+.v-customlayout-rounded-b1 {
+	margin-left: 3px;
+	margin-right: 3px;
+	padding-left: 1px;
+	padding-right: 1px;
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+	background: transparent;
+}
+
+.v-customlayout-rounded-b2 {
+	margin-left: 1px;
+	margin-right: 1px;
+	padding-right: 1px;
+	padding-left: 1px;
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+	background: transparent;
+}
+
+.v-customlayout-rounded-b3 {
+	margin-left: 1px;
+	margin-right: 1px;
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+}
+
+.v-customlayout-rounded-b4 {
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+}
+
+.v-customlayout-rounded-b5 {
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+}
+
+.v-customlayout-rounded-content {
+	background: transparent;
+}
+
+/* Color Functions/Mixins */
+
+.colorb1 (@base_color) {
+	border-left: 1px solid (@base_color + 145) - (@base_color * 146.0 / 256.0);
+	border-right: 1px solid (@base_color + 145) - (@base_color * 146.0 / 256.0);
+	background: (@base_color + 63) - (@base_color * 64.0 / 256.0);
+}
+
+.colorb2 (@base_color) {
+	border-left: 1px solid (@base_color + 229) - (@base_color * 230.0 / 256.0);
+	border-right: 1px solid (@base_color + 229) - (@base_color * 230.0 / 256.0);
+	background: (@base_color + 47) - (@base_color * 48.0 / 256.0);
+}
+
+.colorb3 (@base_color) {
+	border-left: 1px solid (@base_color + 47) - (@base_color * 48.0 / 256.0);
+	border-right: 1px solid (@base_color + 47) - (@base_color * 48.0 / 256.0);
+}
+
+.colorb4 (@base_color) {
+	border-left: 1px solid (@base_color + 145) - (@base_color * 146.0 / 256.0);
+	border-right: 1px solid (@base_color + 145) - (@base_color * 146.0 / 256.0);
+}
+
+.colorb5 (@base_color) {
+	border-left: 1px solid (@base_color + 63) - (@base_color * 64.0 / 256.0);
+	border-right: 1px solid (@base_color + 63) - (@base_color * 64.0 / 256.0);
+}
+
+
+.v-customlayout-rounded-colored (@base_color) {
+ 	.v-customlayout-rounded * {
+		background: @base_color;
+	}
+
+	.v-customlayout-rounded-b1 {
+		.colorb1(@base_color);
+	}
+
+	.v-customlayout-rounded-b2 {
+		.colorb2(@base_color);
+	}
+
+	.v-customlayout-rounded-b3 {
+		.colorb3(@base_color);
+	}
+
+	.v-customlayout-rounded-b4 {
+		.colorb4(@base_color);
+	}
+
+	.v-customlayout-rounded-b5 {
+		.colorb5(@base_color);
+	}
+
+	.v-customlayout-rounded-content {
+		background: @base_color;
+	}
+}
+
+/* Colors */
+
+.v-customlayout-rounded-black {
+	.v-customlayout-rounded-colored(@color_black);
+}
+
+.v-customlayout-rounded-blue {
+	.v-customlayout-rounded-colored(@color_blue);
+}
+
+.v-customlayout-rounded-brown {
+	.v-customlayout-rounded-colored(@color_brown);
+}
+
+.v-customlayout-rounded-gray {
+	.v-customlayout-rounded-colored(@color_gray);
+}
+
+.v-customlayout-rounded-green {
+	.v-customlayout-rounded-colored(@color_green);
+}
+
+.v-customlayout-rounded-magenta {
+	.v-customlayout-rounded-colored(@color_magenta);
+}
+
+.v-customlayout-rounded-purple {
+	.v-customlayout-rounded-colored(@color_purple);
+}
+
+.v-customlayout-rounded-orange {
+	.v-customlayout-rounded-colored(@color_orange);
+}
+
+.v-customlayout-rounded-red {
+	.v-customlayout-rounded-colored(@color_red);
+}

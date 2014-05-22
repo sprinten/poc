@@ -1,0 +1,207 @@
+@import "../../base/color.less";
+
+
+/* ---- Awesome Links ---- */
+
+/* ---- Default ---- */
+.v-link-awesome (@base_color) {
+	a {
+		span {
+			background: @base_color repeat-x;
+			font-size: 14px;
+			font-weight: bold;
+			display: inline-block;
+			padding: 5px 10px 5px;
+			color: white;
+			text-decoration: none;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+			-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+			text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+			border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+			position: relative;
+			cursor: pointer;
+			vertical-align: middle;
+		}
+
+		 &:active {
+		 	span {
+		 		top: 1px;
+		 	}
+		 }
+
+		 &:visited {
+		 	span {
+				background: @base_color + 20;
+				color: white;
+				text-decoration: none;
+		 	}
+		 }
+
+		 &:hover {
+		 	span {
+				background: @base_color - 20;
+				color: white;
+		 	}
+		 }
+	}
+}
+
+/* ---- Small ---- */
+.v-link-small a span {
+	font-size: 12px;
+	padding: ;
+}
+
+/* ---- Medium ---- */
+.v-link-medium a span {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 1;
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+}
+
+/* ---- Large ---- */
+.v-link-large a span  {
+	font-size: 20px;
+	padding: 8px 14px 9px;
+}
+
+.v-link-awesome-black {
+	.v-link-awesome(@color_black);
+}
+
+.v-link-awesome-blue {
+	.v-link-awesome(@color_blue);
+}
+
+.v-link-awesome-bluelight {
+	.v-link-awesome(@color_blue_light);
+}
+
+.v-link-awesome-bluedark {
+	.v-link-awesome(@color_blue_dark);
+}
+
+.v-link-awesome-brown {
+	.v-link-awesome(@color_brown);
+}
+
+.v-link-awesome-gray {
+	.v-link-awesome(@color_gray);
+}
+
+.v-link-awesome-green {
+	.v-link-awesome(@color_green);
+}
+
+.v-link-awesome-greendark {
+	.v-link-awesome(@color_green_dark);
+}
+
+.v-link-awesome-magenta {
+	.v-link-awesome(@color_magenta);
+}
+
+.v-link-awesome-purple {
+	.v-link-awesome(@color_purple);
+}
+
+.v-link-awesome-orange {
+	.v-link-awesome(@color_orange);
+}
+
+.v-link-awesome-red {
+	.v-link-awesome(@color_red);
+}
+
+/* End Awesome */
+
+.v-link-footer {
+	color: white;
+	font-size: 24px;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+.v-link-footer a, .v-link-footer span {
+	color: white;
+	text-decoration: none;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.v-link-footer a:visited {
+	color: white;
+	text-decoration: none;
+}
+
+.v-link-strong {
+	color: @color_blue_darker;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.v-link-strong a {
+	color: @color_blue_darker;
+}
+
+.v-link-strong a:visited {
+	color: @color_blue_darker;
+}
+
+.v-link-h1,.v-link h1 {
+	color: @color_blue_dark;
+	font-size: 48px;
+	letter-spacing: -0.03em;
+	font-weight: bold;
+	text-shadow: 0 1px 1px white;
+	text-decoration: none;
+}
+
+.v-link-h1 a {
+	color: @color_blue_dark;
+	text-decoration: none;
+}
+
+.v-link-h1 a:visited {
+	color: @color_blue_dark;
+	text-decoration: none;
+}
+
+.v-link-h2,.v-link h2 {
+	color: @color_orange;
+	font-size: 24px;
+	font-weight: bold;
+	text-shadow: 0 1px 1px white;
+	text-decoration: none;
+}
+
+.v-link-h2 a {
+	color: @color_orange;
+	text-decoration: none;
+}
+
+.v-link-h2 a:visited {
+	color: @color_orange;
+	text-decoration: none;
+}
+
+.v-link-h3,.v-link h3 {
+	color: @color_blue_darker;
+	font-size: 18px;
+	font-weight: normal;
+	text-shadow: 0 1px 1px white;
+	text-decoration: none;
+}
+
+.v-link-h3 a {
+	color: @color_blue_darker;
+	text-decoration: none;
+}
+
+.v-link-h3 a:visited {
+	color: @color_blue_darker;
+	text-decoration: none;
+}

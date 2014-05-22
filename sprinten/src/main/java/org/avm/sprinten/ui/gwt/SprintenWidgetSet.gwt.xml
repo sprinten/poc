@@ -1,0 +1,12 @@
+<module>
+	<inherits name="com.vaadin.terminal.gwt.DefaultWidgetSet" />
+    <inherits name="com.vaadin.incubator.dashlayout.DashLayoutWidgetSet" />
+
+    <inherits name="org.vaadin.hene.expandingtextarea.widgetset.ExpandingtextareaWidgetset" />
+
+    <inherits name="com.vaadin.incubator.dragdroplayouts.DragDropLayoutsWidgetSet" />
+
+    <inherits name="org.vaadin.tokenfield.TokenfieldWidgetset" />
+
+    <inherits name="org.vaadin.hene.popupbutton.widgetset.PopupbuttonWidgetset" />
+</module>

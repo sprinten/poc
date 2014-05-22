@@ -1,0 +1,333 @@
+/* Color Black */
+
+@color_black: #222222;
+@color_black_light: lighten(@color_black, 10%);
+
+/* Color Blue */
+
+@color_blue: #2195dd; /*1577b0; */
+
+@color_blue_dark: darken(@color_blue, 10%);
+@color_blue_darker: darken(@color_blue, 20%);
+@color_blue_darkest: darken(@color_blue, 30%);
+
+@color_blue_light: lighten(@color_blue, 10%);
+@color_blue_lighter: lighten(@color_blue, 25%);
+@color_blue_lightest: lighten(@color_blue, 45%);
+
+
+/* Color Brown */
+
+@color_brown: #a64e00;
+
+@color_brown_light: lighten(@color_brown, 5%);
+@color_brown_lighter: lighten(@color_brown, 10%);
+@color_brown_lightest: lighten(@color_brown, 15%);
+
+@color_brown_dark: darken(@color_brown, 5%);
+@color_brown_darker: darken(@color_brown, 10%);
+@color_brown_darkest: darken(@color_brown, 15%);
+
+/* Color Gray */
+
+@color_gray: #7f7f7f; /* b8bbbe;*/
+
+@color_gray_light: lighten(@color_gray, 10%);
+@color_gray_lighter: lighten(@color_gray, 25%);
+@color_gray_lightest: lighten(@color_gray, 40%);
+
+@color_gray_dark: darken(@color_gray, 10%);
+@color_gray_darker: darken(@color_gray, 20%);
+@color_gray_darkest: darken(@color_gray, 30%);
+
+
+/* Color Green */
+
+@color_green: #118844;
+
+@color_green_light: lighten(@color_green, 10%);
+@color_green_lighter: lighten(@color_green, 20%);
+@color_green_lightest: lighten(@color_green, 30%);
+
+@color_green_dark: darken(@color_green, 5%);
+@color_green_darker: darken(@color_green, 10%);
+@color_green_darkest: darken(@color_green, 15%);
+
+/* Color Magenta */
+
+@color_magenta: #f700ff;
+
+@color_magenta_light: lighten(@color_magenta, 10%);
+@color_magenta_lighter: lighten(@color_magenta, 20%);
+@color_magenta_lightest: lighten(@color_magenta, 30%);
+
+@color_magenta_dark: darken(@color_magenta, 10%);
+@color_magenta_darker: darken(@color_magenta, 20%);
+@color_magenta_darkest: darken(@color_magenta, 30%);
+
+/* Color Orange */
+
+@color_orange: #FF7800; /* #fa850a; */
+
+@color_orange_light: lighten(@color_orange, 10%);
+@color_orange_lighter: lighten(@color_orange, 20%);
+@color_orange_lightest: lighten(@color_orange, 30%);
+
+@color_orange_dark: darken(@color_orange, 4%);
+@color_orange_darker: darken(@color_orange, 8%);
+@color_orange_darkest: darken(@color_orange, 12%);
+
+/* Color Purple */
+
+@color_purple: #441188;
+
+@color_purple_light: lighten(@color_purple, 10%);
+@color_purple_lighter: lighten(@color_purple, 20%);
+@color_purple_lightest: lighten(@color_purple, 25%);
+
+@color_purple_dark: darken(@color_purple, 5%);
+@color_purple_darker: darken(@color_purple, 10%);
+@color_purple_darkest: darken(@color_purple, 15%);
+
+/* Color Red */
+@color_red: #B51717;
+
+@color_red_light: lighten(@color_red, 10%);
+@color_red_lighter: lighten(@color_red, 35%);
+@color_red_lightest: lighten(@color_red, 55%);
+
+@color_red_dark: darken(@color_red, 5%);
+@color_red_darker: darken(@color_red, 10%);
+@color_red_darkest: darken(@color_red, 15%);
+
+
+.color (@base_color) {
+   background-color: @base_color;
+}
+
+.color-blue {
+ 	.color(@color_blue);
+}
+
+.color-blue-light {
+	.color(@color_blue_light);
+}
+
+.color-blue-lighter {
+	.color(@color_blue_lighter);
+}
+
+.color-blue-lightest {
+	.color(@color_blue_lightest);
+}
+
+.color-blue-dark {
+	.color(@color_blue_dark);
+}
+
+.color-blue-darker {
+	.color(@color_blue_darker);
+}
+
+.color-blue-darkest {
+	.color(@color_blue_darkest);
+}
+
+.color-brown {
+ 	.color(@color_brown);
+}
+
+.color-brown-light {
+	.color(@color_brown_light);
+}
+
+.color-brown-lighter {
+	.color(@color_brown_lighter);
+}
+
+.color-brown-lightest {
+	.color(@color_brown_lightest);
+}
+
+.color-brown-dark {
+	.color(@color_brown_dark);
+}
+
+.color-brown-darker {
+	.color(@color_brown_darker);
+}
+
+.color-brown-darkest {
+	.color(@color_brown_darkest);
+}
+
+.color-gray {
+ 	.color(@color_gray);
+}
+
+.color-gray-light {
+	.color(@color_gray_light);
+}
+
+.color-gray-lighter {
+	.color(@color_gray_lighter);
+}
+
+.color-gray-lightest {
+	.color(@color_gray_lightest);
+}
+
+.color-gray-dark {
+	.color(@color_gray_dark);
+}
+
+.color-gray-darker {
+	.color(@color_gray_darker);
+}
+
+.color-gray-darkest {
+	.color(@color_gray_darkest);
+}
+
+
+.color-green {
+ 	.color(@color_green);
+}
+
+.color-green-light {
+	.color(@color_green_light);
+}
+
+.color-green-lighter {
+	.color(@color_green_lighter);
+}
+
+.color-green-lightest {
+	.color(@color_green_lightest);
+}
+
+.color-green-dark {
+	.color(@color_green_dark);
+}
+
+.color-green-darker {
+	.color(@color_green_darker);
+}
+
+.color-green-darkest {
+	.color(@color_green_darkest);
+}
+
+.color-magenta {
+ 	.color(@color_magenta);
+}
+
+.color-magenta-light {
+	.color(@color_magenta_light);
+}
+
+.color-magenta-lighter {
+	.color(@color_magenta_lighter);
+}
+
+.color-magenta-lightest {
+	.color(@color_magenta_lightest);
+}
+
+.color-magenta-dark {
+	.color(@color_magenta_dark);
+}
+
+.color-magenta-darker {
+	.color(@color_magenta_darker);
+}
+
+.color-magenta-darkest {
+	.color(@color_magenta_darkest);
+}
+
+.color-orange {
+ 	.color(@color_orange);
+}
+
+.color-orange-light {
+	.color(@color_orange_light);
+}
+
+.color-orange-lighter {
+	.color(@color_orange_lighter);
+}
+
+.color-orange-lightest {
+	.color(@color_orange_lightest);
+}
+
+.color-orange-dark {
+	.color(@color_orange_dark);
+}
+
+.color-orange-darker {
+	.color(@color_orange_darker);
+}
+
+.color-orange-darkest {
+	.color(@color_orange_darkest);
+}
+
+
+.color-purple {
+ 	.color(@color_purple);
+}
+
+.color-purple-light {
+	.color(@color_purple_light);
+}
+
+.color-purple-lighter {
+	.color(@color_purple_lighter);
+}
+
+.color-purple-lightest {
+	.color(@color_purple_lightest);
+}
+
+.color-purple-dark {
+	.color(@color_purple_dark);
+}
+
+.color-purple-darker {
+	.color(@color_purple_darker);
+}
+
+.color-purple-darkest {
+	.color(@color_purple_darkest);
+}
+
+
+.color-red {
+ 	.color(@color_red);
+}
+
+.color-red-light {
+	.color(@color_red_light);
+}
+
+.color-red-lighter {
+	.color(@color_red_lighter);
+}
+
+.color-red-lightest {
+	.color(@color_red_lightest);
+}
+
+.color_red_dark {
+	.color(@color_red_dark);
+}
+
+.color-red-darker {
+	.color(@color_red_darker);
+}
+
+.color-red-darkest {
+	.color(@color_red_darkest);
+}

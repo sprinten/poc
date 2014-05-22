@@ -1,0 +1,484 @@
+@import "../../base/color.less";
+
+/* Default */
+
+/*
+ * Default button (more customizable)
+ * -------------------------------------- */
+.v-button {
+	display: inline-block;
+	zoom: 1;
+	text-align: center;
+	text-decoration: none;
+	border: 2px outset #ddd;
+	background: #eee;
+	cursor: pointer;
+	white-space: nowrap;
+	margin: 0;
+	padding: .2em 1em;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ie-user-select: none;
+	user-select: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.v-button.v-disabled {
+	cursor: default;
+}
+
+.v-ie7 .v-button {
+	display: inline;
+}
+
+.v-button-wrap,.v-button-caption {
+	vertical-align: middle;
+	white-space: nowrap;
+	font: inherit;
+	color: inherit;
+	line-height: normal;
+}
+
+.v-button .v-icon,.v-nativebutton .v-icon {
+	vertical-align: middle;
+	margin-right: 3px;
+	border: none;
+}
+
+.v-button .v-errorindicator,.v-nativebutton .v-errorindicator {
+	display: inline-block;
+	zoom: 1;
+	vertical-align: middle;
+	float: none;
+}
+
+/* Link style (we really should deprecate this) */
+.v-button-link,.v-nativebutton-link {
+	border: none;
+	text-align: left;
+	background: transparent;
+	padding: 0;
+	color: inherit;
+}
+
+/* Inset Safari focus outline a bit */
+.v-sa .v-button-link:focus {
+	outline-offset: -3px;
+}
+
+.v-button-link .v-button-caption,.v-nativebutton-link .v-nativebutton-caption {
+	text-decoration: underline;
+	color: inherit;
+	text-align: left;
+}
+
+/*
+ * NativeButton styles (html button element)
+ * -------------------------------------- */
+.v-nativebutton {
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+	margin: 0;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+}
+
+.v-nativebutton .v-nativebutton-caption {
+	vertical-align: middle;
+	white-space: nowrap;
+	font: inherit;
+	color: inherit;
+}
+
+.v-nativebutton .v-icon {
+	vertical-align: middle;
+	margin-right: 3px;
+}
+
+.v-nativebutton .v-errorindicator {
+	display: inline-block;
+	zoom: 1;
+	float: none;
+}
+
+.v-ie .v-nativebutton {
+	overflow: visible;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.v-ie .v-nativebutton-link {
+	padding: 0;
+}
+
+.v-button {
+	padding: 1px;
+	border: none;
+	background: transparent;
+}
+
+.v-button:focus {
+	outline: none;
+}
+
+.v-button:focus .v-button-wrap {
+	border-color: @color_blue;
+	border-top-color: #60aef1;
+	border-bottom-color: #4c9adf;
+	-webkit-box-shadow: 0 0 2px @color_blue;
+	-moz-box-shadow: 0 0 2px @color_blue;
+}
+
+.v-button:active .v-button-wrap,.v-button.v-pressed .v-button-wrap {
+	background-position: 0 -79px;
+	background-color: @color_gray_lightest;
+	border-color: @color_gray_light;
+	border-top-color: #9da1a2;
+	border-bottom-color: #babfc0;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .4) inset;
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .4) inset;
+	text-shadow: none;
+}
+
+.v-button .v-button-wrap,.v-disabled.v-button .v-button-wrap {
+	display: block;
+	font-size: 12px;
+	border: 1px solid #bdc1c2;
+	border-top-color: #cbcfd0;
+	border-bottom-color: #b6bbbb;
+	border-color: rgba(146, 151, 152, .8);
+	border-top-color: rgba(146, 151, 152, .6);
+	background: @color_gray_lightest url(button/img/bg.png) repeat-x;
+	-webkit-background-origin: padding;
+	-moz-background-origin: padding;
+	padding: 3px 15px;
+	-webkit-border-radius: 11px;
+	-moz-border-radius: 11px;
+	border-radius: 11px;
+	line-height: 14px;
+	min-height: 14px;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .15);
+	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .15);
+	text-shadow: 0 1px 0 white;
+	color: @color_gray_darkest;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.v-ie7 .v-button .v-button-wrap {
+	overflow: visible;
+}
+
+/* Small style */
+.v-button-small .v-button-wrap,.v-disabled.v-button-small .v-button-wrap {
+	font-size: 11px;
+	line-height: 13px;
+	padding: 1px 12px;
+	min-height: 13px;
+}
+
+/* Big style */
+.v-button-big .v-button-wrap,.v-disabled.v-button-big .v-button-wrap {
+	font-size: 15px;
+	line-height: 18px;
+	padding: 4px 18px;
+	min-height: 18px;
+	-webkit-border-radius: 14px;
+	-moz-border-radius: 14px;
+	border-radius: 14px;
+}
+
+/* Default style */
+.v-button-default:focus .v-button-wrap {
+	background-color: #60839a;
+	background-position: 0 -158px;
+	text-shadow: 0 -1px 0 #657883;
+}
+
+.v-button-default:active .v-button-wrap,.v-button-default.v-pressed .v-button-wrap {
+	background-position: 0 -79px;
+	background-color: #8f9898;
+	border-color: #737e81;
+	border-top-color: #576063;
+	border-bottom-color: #747f82;
+	color: #f0f2f2;
+	text-shadow: 0 -1px 0 #5d6969;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .4) inset;
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .4) inset;
+}
+
+.v-button-default .v-button-wrap,.v-disabled.v-button-default .v-button-wrap {
+	border-color: #899395;
+	border-top-color: #a4abae;
+	border-bottom-color: #727b7d;
+	background: #869090 url(button/img/bg-default.png) repeat-x;
+	text-shadow: 0 -1px 0 #797e7e;
+	color: white;
+	font-weight: bold;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .22);
+	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .22);
+}
+
+/* Link style */
+.v-button-link,.v-disabled.v-button-link {
+	padding: 0;
+}
+
+.v-button-link .v-button-wrap,.v-disabled.v-button-link .v-button-wrap,.v-button-link:active .v-button-wrap,.v-disabled.v-button-pressedv-button-link .v-button-wrap
+	{
+	border: none;
+	background: transparent;
+	padding: 0;
+	font-size: 13px;
+	-webkit-box-shadow: none;
+	-mox-box-shadow: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	text-shadow: none;
+}
+
+.v-button-link:focus {
+	outline: 1px dotted @color_orange;
+}
+
+.v-button-link:focus .v-button-wrap {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+
+/* ---- Small ---- */
+.v-nativebutton-small .v-nativebutton-caption {
+	font-size: 12px;
+	padding: ;
+}
+
+/* ---- Medium ---- */
+.v-nativebutton-medium .v-nativebutton-caption {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 1;
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+}
+
+/* ---- Large ---- */
+.v-nativebutton-large .v-nativebutton-caption {
+	font-size: 20px;
+	padding: 8px 14px 9px;
+}
+
+/* ---- Colored Buttons ---- */
+.v-nativebutton-colored  (@base_color ) {
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	display: inline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	border: solid 1px darken(@base_color, 5%);
+	border-radius: .5em;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	background: @base_color;
+	background: -webkit-gradient(linear, left top, left bottom, from(@base_color), to(@base_color +   40) );
+	background: -moz-linear-gradient(top, @base_color, @base_color +   40);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+
+	.v-nativebutton-caption {
+		color : white;
+		letter-spacing: -0.03em;
+		text-align: center;
+		vertical-align: middle;
+		text-decoration: none;
+		font-size: 14px;
+		font-weight: bold;
+		text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	}
+
+	&:active {
+		text-decoration: none;
+		background: @base_color +   40;
+		background: -webkit-gradient(linear, left top, left bottom, from(@base_color +   20), to(@base_color +   60) );
+		background: -moz-linear-gradient(top, @base_color +   20, @base_color +   60);
+	}
+
+	&:hover {
+		position: relative;
+		top: 1px;
+		background: @base_color - 20;
+		background: -webkit-gradient(linear, left top, left bottom, from(@base_color - 40), to(@base_color) );
+		background: -moz-linear-gradient(top, @base_color - 40, @base_color);
+	}
+}
+
+.v-nativebutton-black {
+	.v-nativebutton-colored(@color_black);
+}
+
+.v-nativebutton-blue {
+	.v-nativebutton-colored(@color_blue);
+}
+
+.v-nativebutton-brown {
+	.v-nativebutton-colored(@color_brown);
+}
+
+.v-nativebutton-gray {
+	.v-nativebutton-colored(@color_gray);
+}
+
+.v-nativebutton-green {
+	.v-nativebutton-colored(@color_green);
+}
+
+.v-nativebutton-magenta {
+	.v-nativebutton-colored(@color_magenta);
+}
+
+.v-nativebutton-purple {
+	.v-nativebutton-colored (@color_purple);
+}
+
+.v-nativebutton-orange {
+	.v-nativebutton-colored(@color_orange);
+}
+
+.v-nativebutton-red {
+	.v-nativebutton-colored(@color_red);
+}
+
+/* ---- Awesome Buttons ---- */
+
+/* ---- Default ---- */
+.v-nativebutton-awesome  (@base_color ) {
+	background: @base_color repeat-x;
+	display: inline-block;
+	padding: 5px 10px 6px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	border-color: none;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	position: relative;
+	cursor: pointer;
+
+	.v-nativebutton-caption {
+		font-size : 14px;
+		font-weight: bold;
+		color: white;
+		text-decoration: none;
+		text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+		vertical-align: middle;
+	}
+
+	&:active {
+		top: 1px;
+	}
+
+	&:hover {
+	background: @base_color - 20;
+	color: white;
+	}
+}
+
+.v-nativebutton-awesome-black {
+	.v-nativebutton-awesome (@color_black);
+}
+
+.v-nativebutton-awesome-blue {
+	.v-nativebutton-awesome (@color_blue);
+}
+
+.v-nativebutton-awesome-brown {
+	.v-nativebutton-awesome (@color_brown);
+}
+
+.v-nativebutton-awesome-gray {
+	.v-nativebutton-awesome (@color_gray);
+}
+
+.v-nativebutton-awesome-green {
+	.v-nativebutton-awesome (@color_green);
+}
+
+.v-nativebutton-awesome-magenta {
+	.v-nativebutton-awesome (@color_magenta);
+}
+
+.v-nativebutton-awesome-purple {
+	.v-nativebutton-awesome (@color_purple);
+}
+
+.v-nativebutton-awesome-orange {
+	.v-nativebutton-awesome (@color_orange);
+}
+
+.v-nativebutton-awesome-red {
+	.v-nativebutton-awesome (@color_red);
+}
+
+
+
+/* Icon Button */
+.v-button .v-icon {
+	vertical-align: middle;
+	margin-right: 3px;
+	border: none;
+}
+
+.v-button-link-icon,.v-disabled.v-button-link-icon {
+	padding: 0;
+}
+
+.v-button-link-icon .v-button-wrap,.v-disabled.v-button-link-icon .v-button-wrap,.v-button-link-icon:active .v-button-wrap,.v-disabled.v-button-pressedv-button-link-icon .v-button-wrap {
+	border: none;
+	background: transparent;
+	padding: 0;
+	font-size: 13px;
+	text-shadow: none;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+}
+
+.v-button-link-icon:focus {
+	outline: 1px dotted #4897dc;
+}
+
+.v-button-link-icon:focus .v-button-wrap {
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+}
+
+.v-button-link-icon {
+	border: none;
+	text-align: left;
+	background: transparent;
+	padding: 0;
+	color: inherit;
+}
+
+.v-sa .v-button-link-icon:focus {
+	outline-offset: -3px;
+}

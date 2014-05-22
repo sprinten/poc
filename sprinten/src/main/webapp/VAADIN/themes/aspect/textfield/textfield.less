@@ -1,0 +1,244 @@
+@import "../../base/color.less";
+
+.v-textfield {
+	text-align: left; /* Force default alignment */
+}
+
+.v-textarea {
+}
+
+.v-textfield-focus,.v-textarea-focus {
+}
+
+input.v-textfield-prompt,textarea.v-textarea-prompt {
+	color: @color_gray_dark;
+	font-style: italic;
+}
+
+input.v-textfield-readonly,textarea.v-textarea-readonly {
+	background: transparent;
+	border: none;
+	resize: none;
+}
+
+input.v-disabled, textarea.v-disabled {
+	resize: none;
+}
+
+input.v-textfield-readonly:focus, textarea.v-textarea-readonly:focus {
+	outline: none;
+}
+
+/* Safari focus glow fix */
+.v-sa input:focus,.v-sa textarea:focus {
+	outline-width: medium;
+}
+
+.v-richtextarea {
+	border: 1px solid #aaa;
+	overflow: hidden;
+}
+
+.v-richtextarea .gwt-RichTextArea {
+	background: white;
+	border: none;
+}
+
+.v-richtextarea .gwt-RichTextToolbar {
+	white-space: nowrap;
+	background: #959595 url(img/richtext-toolbar-bg.png) repeat-x 0 -42px;
+	border-bottom: 1px solid #7d7d7d;
+	padding: 2px;
+	overflow: hidden;
+}
+
+.v-richtextarea .gwt-RichTextToolbar-top {
+	padding-bottom: 1px;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.v-richtextarea .gwt-RichTextToolbar-bottom {
+	clear: left;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.v-richtextarea .gwt-RichTextToolbar .gwt-ToggleButton,.v-richtextarea .gwt-RichTextToolbar .gwt-PushButton {
+	float: left;
+	display: inline;
+	width: 22px;
+	height: 21px;
+	overflow: hidden;
+	background: transparent url(img/richtext-toolbar-bg.png) repeat-x;
+	cursor: pointer;
+	margin-right: 2px;
+	text-align: center;
+}
+
+.v-richtextarea .gwt-RichTextToolbar .gwt-ToggleButton-down,.v-richtextarea .gwt-RichTextToolbar .gwt-PushButton-down,.v-richtextarea .gwt-RichTextToolbar .gwt-ToggleButton-down-hovering,.v-richtextarea .gwt-RichTextToolbar .gwt-PushButton-down-hovering {
+	background-position: 0 -21px;
+}
+
+.v-richtextarea .gwt-RichTextToolbar .gwt-ToggleButton img,.v-richtextarea .gwt-RichTextToolbar .gwt-PushButton img {
+}
+
+.v-richtextarea .gwt-RichTextToolbar .gwt-ListBox {
+	width: 24.5%;
+	margin-right: 2px;
+}
+
+.v-richtextarea-readonly {
+	border: none;
+}
+
+.v-textfield,.v-textarea {
+	background: white url(img/bg.png) repeat-x;
+	border: 1px solid #b6b6b6;
+	border-top-color: #9d9d9d;
+	border-bottom-color: #d6d6d6;
+	border-right-color: #d6d6d6;
+	margin: 0;
+	line-height: 14px;
+}
+
+input.v-textfield,input[type=text].v-textfield,textarea.v-textarea {
+	font-size: 12px;
+	height: 16px;
+	padding: 4px 2px 0;
+
+	border: solid 1px @color_gray_lightest;
+	outline: 0;
+
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF) );
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+}
+
+textarea.v-textarea {
+	height: auto;
+	padding-bottom: 2px;
+}
+
+.v-textfield-focus,.v-textarea-focus {
+	border-color: @color_orange;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+}
+
+input.v-textfield:hover,input.v-textfield:focus {
+	border-color: @color_orange;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+}
+
+textarea.v-textarea:hover,textarea.v-textarea:focus {
+	border-color: @color_orange;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
+}
+
+input.v-textfield-prompt,textarea.v-textarea-prompt {
+	color: @color_gray_dark;
+	font-style: normal;
+}
+
+.v-richtextarea {
+	border: 1px solid #b6b6b6;
+}
+
+.v-richtextarea .gwt-RichTextArea {
+	background: white url(img/bg.png) repeat-x;
+}
+
+/* Small style */
+input.v-textfield-small,input[type=text].v-textfield-small,textarea.v-textarea-small {
+	font-size: 11px;
+	height: 14px;
+	line-height: 12px;
+	padding: 1px 2px;
+}
+
+/* tokens */
+.tokenfield .v-button-link {
+	background-color: @color_orange;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	height: 23px;
+	padding: 4px 7px;
+}
+
+.tokenfield .v-button-link:focus {
+	background-color: @color_orange;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	height: 23px;
+	padding: 4px 7px;
+}
+
+.tokenfield .v-button-emphasize,.tokenfield .v-button-emphasize:focus {
+	background-color: @color_magenta;
+}
+
+.tokenfield .v-button-link .v-button-caption {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* input */
+.tokentextfield .v-filterselect {
+	margin-bottom: 1px;
+	background: #ddd none;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+
+.tokentextfield  .v-filterselect .v-filterselect-input {
+	background: transparent none;
+}
+
+.tokentextfield  .v-filterselect .v-filterselect-button {
+	display: none;
+}
+
+/* CssLayout special treatment */
+.tokenfield .v-csslayout div {
+	float: left;
+}
+
+.tokenfield .v-csslayout .v-button-link {
+	margin: 0 1px 1px 0;
+}
+
+.tokenfield .v-csslayout .v-button-link {
+	height: 24px;
+}
+
+/* textfield lookalike disabled */
+/*
+.tokentextfield .v-filterselect-button,
+.tokentextfield .v-filterselect-button:hover {
+	background: transparent url(input-right.png) no-repeat right top;
+}
+.black .tokentextfield .v-filterselect-button,
+.black .tokentextfield .v-filterselect-button:hover {
+	background: transparent url(black-input-right.png) no-repeat right top;
+}
+.tokentextfield .v-filterselect-focus .v-filterselect-button,
+.tokentextfield .v-filterselect-focus .v-filterselect-button:hover {
+	background: transparent url(input-right.png) no-repeat right -24px;
+}
+.black .tokentextfield .v-filterselect-focus .v-filterselect-button,
+.black .tokentextfield .v-filterselect-focus .v-filterselect-button:hover {
+	background: transparent url(black-input-right.png) no-repeat right -24px;
+}
+*/
