@@ -1,0 +1,748 @@
+{
+  "type": "object",
+  "required": false,
+  "title": "root",
+  "description": "",
+  "name": "",
+  "properties": {
+    "schemas": {
+      "type": "array",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minItems": 0,
+      "uniqueItems": false,
+      "items": {
+        "type": "string",
+        "required": false,
+        "title": "",
+        "description": "",
+        "name": "",
+        "minLength": 0
+      }
+    },
+    "id": {
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "externalId": {
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "userName": {
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "name": {
+      "id": "#name",
+      "type": "object",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "properties": {
+        "formatted": {
+          "id": "#formatted",
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        },
+        "familyName": {
+          "id": "#familyName",
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        },
+        "givenName": {
+          "id": "#givenName",
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        },
+        "middleName": {
+          "id": "#middleName",
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        },
+        "honorificPrefix": {
+          "id": "#honorificPrefix",
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        },
+        "honorificSuffix": {
+          "id": "#honorificSuffix",
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        }
+      }
+    },
+    "displayName": {
+      "id": "#displayName",
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "nickName": {
+      "id": "#nickName",
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "profileUrl": {
+      "id": "#profileUrl",
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "emails": {
+      "id": "#emails",
+      "type": "array",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minItems": 0,
+      "uniqueItems": false,
+      "items": [
+        {
+          "id": "#0",
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "value": {
+              "id": "#value",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "type": {
+              "id": "#type",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "primary": {
+              "id": "#primary",
+              "type": "boolean",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": ""
+            }
+          }
+        },
+        {
+          "id": "#1",
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "value": {
+              "id": "#value",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "type": {
+              "id": "#type",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            }
+          }
+        }
+      ]
+    },
+    "addresses": {
+      "id": "#addresses",
+      "type": "array",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minItems": 0,
+      "uniqueItems": false,
+      "items": [
+        {
+          "id": "#0",
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "type": {
+              "id": "#type",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "streetAddress": {
+              "id": "#streetAddress",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "locality": {
+              "id": "#locality",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "region": {
+              "id": "#region",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "postalCode": {
+              "id": "#postalCode",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "country": {
+              "id": "#country",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "formatted": {
+              "id": "#formatted",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "primary": {
+              "id": "#primary",
+              "type": "boolean",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": ""
+            }
+          }
+        },
+        {
+          "id": "#1",
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "type": {
+              "id": "#type",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "streetAddress": {
+              "id": "#streetAddress",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "locality": {
+              "id": "#locality",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "region": {
+              "id": "#region",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "postalCode": {
+              "id": "#postalCode",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "country": {
+              "id": "#country",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "formatted": {
+              "id": "#formatted",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            }
+          }
+        }
+      ]
+    },
+    "phoneNumbers": {
+      "id": "#phoneNumbers",
+      "type": "array",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minItems": 0,
+      "uniqueItems": false,
+      "items": [
+        {
+          "id": "#0",
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "value": {
+              "id": "#value",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "type": {
+              "id": "#type",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            }
+          }
+        },
+        {
+          "id": "#1",
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "value": {
+              "id": "#value",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "type": {
+              "id": "#type",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            }
+          }
+        }
+      ]
+    },
+    "ims": {
+      "id": "#ims",
+      "type": "array",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minItems": 0,
+      "uniqueItems": false,
+      "items": {
+        "id": "#0",
+        "type": "object",
+        "required": false,
+        "title": "",
+        "description": "",
+        "name": "",
+        "properties": {
+          "value": {
+            "id": "#value",
+            "type": "string",
+            "required": false,
+            "title": "",
+            "description": "",
+            "name": "",
+            "minLength": 0
+          },
+          "type": {
+            "id": "#type",
+            "type": "string",
+            "required": false,
+            "title": "",
+            "description": "",
+            "name": "",
+            "minLength": 0
+          }
+        }
+      }
+    },
+    "photos": {
+      "id": "#photos",
+      "type": "array",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minItems": 0,
+      "uniqueItems": false,
+      "items": [
+        {
+          "id": "#0",
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "value": {
+              "id": "#value",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "type": {
+              "id": "#type",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            }
+          }
+        },
+        {
+          "id": "#1",
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "value": {
+              "id": "#value",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "type": {
+              "id": "#type",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            }
+          }
+        }
+      ]
+    },
+    "userType": {
+      "id": "#userType",
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "title": {
+      "id": "#title",
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "preferredLanguage": {
+      "id": "#preferredLanguage",
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "locale": {
+      "id": "#locale",
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "timezone": {
+      "id": "#timezone",
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "active": {
+      "id": "#active",
+      "type": "boolean",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": ""
+    },
+    "password": {
+      "id": "#password",
+      "type": "string",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minLength": 0
+    },
+    "groups": {
+      "type": "array",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "minItems": 0,
+      "uniqueItems": false,
+      "items": [
+        {
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "display": {
+              "id": "#display",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "value": {
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "display": {
+              "id": "#display",
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "value": {
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "properties": {
+            "display": {
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            },
+            "value": {
+              "type": "string",
+              "required": false,
+              "title": "",
+              "description": "",
+              "name": "",
+              "minLength": 0
+            }
+          }
+        }
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "required": false,
+      "title": "",
+      "description": "",
+      "name": "",
+      "properties": {
+        "created": {
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        },
+        "lastModified": {
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        },
+        "version": {
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        },
+        "location": {
+          "type": "string",
+          "required": false,
+          "title": "",
+          "description": "",
+          "name": "",
+          "minLength": 0
+        }
+      }
+    }
+  }
+}

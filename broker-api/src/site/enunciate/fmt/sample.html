@@ -1,0 +1,657 @@
+  
+	<h2>Examples</h2>
+	   
+<h3>Data Formats</h3>
+
+<p>
+                    Consumers MUST specify the format in which the data is submitted via the
+                    <a href='http://tools.ietf.org/html/rfc2616#section-14.17 '>HTTP header content-type</a> and
+                    MAY specify the desired response data format via an HTTP Accept Header; e.g.,"Accept:
+                    application/json" or via URI suffix; e.g.,
+
+                    </p>
+<code class="prettyprint">
+
+GET /Users/2819c223-7f76-453a-919d-413861904646.json
+Host: example.com
+</code><p>
+
+
+                
+</p>
+<p>
+                    Service Providers MUST support the Accept Headers "Accept:
+                    application/json" for <a href='http://json.org'>JSON</a>
+                    and, if supported, "Accept: application/xml" for
+                    <a href='http://www.w3.org/XML/'>XML</a>. The format defaults to
+                    JSON if no format is specified. The data structure returned is
+                    equivalent in both formats; the only difference is in the encoding of
+                    the data.
+                
+</p>
+<p>
+                    Singular attributes are encoded as string name-value-pairs in JSON;
+                    e.g.,
+                
+</p><code class="prettyprint">
+"attribute": "value"
+</code>
+
+<p>
+                    Multi-valued attributes in JSON are encoded as arrays; e.g.,
+                
+</p><code class="prettyprint">
+"attributes": [ "value1", "value2" ]
+</code>
+
+<p>Elements with nested elements are represented as objects in JSON; e.g,
+                
+</p><code class="prettyprint">
+"attribute": { "subattribute1": "value1", "subattribute2": "value2" }
+</code>
+
+	<h3>Creating Resources</h3>
+	
+<p>To create new Resources, clients send POST requests to the Resource
+                    endpoint; i.e., /Users or /Groups.
+                
+</p>
+<p>Successful Resource creation is indicated with a 201 ("Created")
+                    response code. Upon successful creation, the response body MUST
+                    contain the newly created Resource. Since the server is free to alter
+                    and/or ignore POSTed content, returning the full representation can be
+                    useful to the client, enabling it to correlate the client and server
+                    views of the new Resource.
+
+                    When a Resource is created, its URI must be returned in the response
+                    Location header.
+                
+</p>
+<p>
+                    If the Service Provider determines creation of the requested Resource
+                    conflicts with existing resources; e.g., a User Resource with a duplicate
+                    userName, the Service Provider MUST return a 409 error and SHOULD indicate
+                    the conflicting attribute(s) in the body of the response.
+                
+</p>
+<p>Below, the client sends a POST request containing a User
+</p>
+<code class="prettyprint">
+POST /Users  HTTP/1.1
+Host: example.com
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer h480djs93hd8
+Content-Length: ...
+
+{
+  "schemas":["urn:scim:schemas:core:1.0"],
+  "userName":"bjensen",
+  "externalId":"bjensen",
+  "name":{
+    "formatted":"Ms. Barbara J Jensen III",
+    "familyName":"Jensen",
+    "givenName":"Barbara"
+  }
+}
+
+</code>
+<p>The server signals a successful creation with a status code of 201.
+                    The response includes a Location header indicating the User URI, and a
+                    representation of that User in the body of the response.
+                
+</p>
+<code class="prettyprint">
+HTTP/1.1 201 Created
+Content-Type: application/json
+Location: https://example.com/v1/Users/2819c223-7f76-453a-919d-413861904646
+ETag: W/"e180ee84f0671b1"
+
+{
+  "schemas":["urn:scim:schemas:core:1.0"],
+  "id":"2819c223-7f76-453a-919d-413861904646",
+  "externalId":"bjensen",
+  "meta":{
+    "created":"2011-08-01T21:32:44.882Z",
+    "lastModified":"2011-08-01T21:32:44.882Z",
+    "location":"https://example.com/v1/Users/2819c223-7f76-453a-919d-413861904646",
+    "version":"W\/\"e180ee84f0671b1\""
+  },
+  "name":{
+    "formatted":"Ms. Barbara J Jensen III",
+    "familyName":"Jensen",
+    "givenName":"Barbara"
+  },
+  "userName":"bjensen"
+}
+
+</code>
+
+<h3>Retrieving a known Resource</h3>
+
+<p>To retrieve a known Resource, clients send GET requests to the
+                        Resource endpoint; e.g., /Users/{id} or /Groups/{id}.
+                    
+</p>
+<p>If the Resource exists the server responds with a status code of
+                        200 and includes the result in the body of the response.
+                    
+</p>
+<p>The below example retrieves a single User via the /Users endpoint.
+                    
+</p>
+<code  class="prettyprint">
+GET /Users/2819c223-7f76-453a-919d-413861904646
+Host: example.com
+Accept: application/json
+Authorization: Bearer h480djs93hd8
+
+</code>
+<p>The server responds with:
+                    
+</p>
+
+<code class="prettyprint">
+HTTP/1.1 200 OK
+Content-Type: application/json
+Location: https://example.com/v1/Users/2819c223-7f76-453a-919d-413861904646
+ETag: W/"f250dd84f0671c3"
+
+{
+  "schemas":["urn:scim:schemas:core:1.0"],
+  "id":"2819c223-7f76-453a-919d-413861904646,
+  "externalId":"bjensen",
+  "meta":{
+    "created":"2011-08-01T18:29:49.793Z",
+    "lastModified":"2011-08-01T18:29:49.793Z",
+    "location":"https://example.com/v1/Users/2819c223-7f76-453a-919d-413861904646",
+    "version":"W\/\"f250dd84f0671c3\""
+  },
+  "name":{
+    "formatted":"Ms. Barbara J Jensen III",
+    "familyName":"Jensen",
+    "givenName":"Barbara"
+  },
+  "userName":"bjensen",
+  "phoneNumbers":[
+    {
+      "value":"555-555-8377",
+      "type":"work"
+    }
+  ],
+  "emails":[
+    {
+      "value":"bjensen@example.com",
+      "type":"work"
+    }
+  ]
+}
+
+</code>
+
+<h3>Additional Query Parameters</h3>
+
+<code  class="prettyprint">
+GET /Users/2819c223-7f76-453a-919d-413861904646?attributes=userName
+Host: example.com
+Accept: application/json
+Authorization: Bearer h480djs93hd8
+
+</code>
+<p>Giving the response</p>
+
+<code class="prettyprint">
+HTTP/1.1 200 OK
+Content-Type: application/json
+Location: https://example.com/v1/Users/2819c223-7f76-453a-919d-413861904646
+ETag: W/"a330bc54f0671c9"
+
+{
+  "schemas":["urn:scim:schemas:core:1.0"],
+  "id":"2819c223-7f76-453a-919d-413861904646",
+  "userName":"bjensen",
+  "meta":{
+    "created":"2011-08-01T18:29:49.793Z",
+    "lastModified":"2011-08-01T18:29:49.793Z",
+    "location":"https://example.com/v1/Users/2819c223-7f76-453a-919d-413861904646",
+    "version":"W\/\"a330bc54f0671c9\""
+  }
+}
+
+
+</code>
+
+<h3>Filtering</h3>
+
+<code class="prettyprint">
+filter=userName eq "bjensen"
+
+filter=name.familyName co "O'Malley"
+
+filter=userName sw "J"
+
+filter=title pr
+
+filter=meta.lastModified gt "2011-05-13T04:42:34Z"
+
+filter=meta.lastModified ge "2011-05-13T04:42:34Z"
+
+filter=meta.lastModified lt "2011-05-13T04:42:34Z"
+
+filter=meta.lastModified le "2011-05-13T04:42:34Z"
+
+filter=title pr and userType eq "Employee"
+
+filter=title pr or userType eq "Intern"
+
+filter=userType eq "Employee" and (emails co "example.com" or emails co "example.org")
+
+</code>
+
+<h3>Pagination</h3>
+
+<p>To retrieve the first 10 Users set the startIndex to 1 and the count to 10.</p>
+
+<code class="prettyprint">
+GET /Users?startIndex=1&count=10
+Host: example.com
+Accept: application/json
+Authorization: Bearer h480djs93hd8
+
+</code>
+
+<br/>
+
+<code class="prettyprint">
+{
+  "totalResults":100,
+  "itemsPerPage":10,
+  "startIndex":1,
+  "schemas":["urn:scim:schemas:core:1.0"],
+  "Resources":[{
+    ...
+  }]
+}
+
+</code>
+
+<h3>Full Update</h3>
+
+<p>PUT performs a full update. Example: </p>
+
+<code class="prettyprint">
+PUT /Users/2819c223-7f76-453a-919d-413861904646
+Host: example.com
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer h480djs93hd8
+If-Match: W/"a330bc54f0671c9"
+
+{
+  "schemas":["urn:scim:schemas:core:1.0"],
+  "id":"2819c223-7f76-453a-919d-413861904646",
+  "userName":"bjensen",
+  "externalId":"bjensen",
+  "name":{
+    "formatted":"Ms. Barbara J Jensen III",
+    "familyName":"Jensen",
+    "givenName":"Barbara",
+    "middleName":"Jane"
+  },
+  "emails":[
+    {
+        "value":"bjensen@example.com"
+    },
+    {
+        "value":"babs@jensen.org"
+    }
+  ]
+}
+
+</code>
+
+<p>The service responds with the entire, updated User</p>
+
+<code class="prettyprint">
+HTTP/1.1 200 OK
+Content-Type: application/json
+ETag: W/"b431af54f0671a2"
+Location:"https://example.com/v1/Users/2819c223-7f76-453a-919d-413861904646"
+{
+  "schemas":["urn:scim:schemas:core:1.0"],
+  "id":"2819c223-7f76-453a-919d-413861904646",
+  "userName":"bjensen",
+  "externalId":"bjensen",
+  "name":{
+    "formatted":"Ms. Barbara J Jensen III",
+    "familyName":"Jensen",
+    "givenName":"Barbara",
+    "middleName":"Jane"
+  },
+  "emails":[
+    {
+        "value":"bjensen@example.com"
+    },
+    {
+        "value":"babs@jensen.org"
+    }
+  ],
+  "meta": {
+    "created":"2011-08-08T04:56:22Z",
+    "lastModified":"2011-08-08T08:00:12Z",
+    "location":"https://example.com/v1/Users/2819c223-7f76-453a-919d-413861904646",
+    "version":"W\/\"b431af54f0671a2\""
+  }
+}
+
+</code>
+
+
+<h3>Bulk Operations</h3>
+
+<p>
+                    The following example shows how to add, update, and remove a user. The failOnErrors
+                    attribute is set to '1' indicating the Service Provider should return
+                    on the first error. The POST operation's bulkId value is set to 'qwerty' enabling the Consumer to match
+                    the new User with the returned Resource id '92b725cd-9465-4e7d-8c16-01f8e146b87a'.
+                
+</p><code class="prettyprint">
+POST /v1/Bulk
+Host: example.com
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer h480djs93hd8
+Content-Length: ...
+
+{
+  "schemas":[
+    "urn:scim:schemas:core:1.0"
+  ],
+  "failOnErrors":1,
+  "Operations":[
+    {
+      "method":"POST",
+      "path":"/Users",
+      "bulkId":"qwerty",
+      "data":{
+        "schemas":[
+          "urn:scim:schemas:core:1.0"
+        ],
+        "userName":"Alice"
+      }
+    },
+    {
+      "method":"PUT",
+      "path":"/Users/b7c14771-226c-4d05-8860-134711653041",
+      "version":"W\/\"3694e05e9dff591\"",
+      "data":{
+        "schemas":[
+          "urn:scim:schemas:core:1.0"
+        ],
+        "id":"b7c14771-226c-4d05-8860-134711653041",
+        "userName":"Bob"
+      }
+    },
+    {
+      "method":"PATCH",
+      "path":"/Users/5d8d29d3-342c-4b5f-8683-a3cb6763ffcc",
+      "version":"W\/\"edac3253e2c0ef2\"",
+      "data":{
+        "schemas":[
+          "urn:scim:schemas:core:1.0"
+        ],
+        "id":"5d8d29d3-342c-4b5f-8683-a3cb6763ffcc",
+        "userName":"Dave",
+        "meta":{
+          "attributes":[
+            "nickName"
+          ]
+        }
+      }
+    },
+    {
+      "method":"DELETE",
+      "path":"/Users/e9025315-6bea-44e1-899c-1e07454e468b",
+      "version":"W\/\"0ee8add0a938e1a\""
+    }
+  ]
+}</code>
+<p>
+                    The Service Provider returns the following response.
+                
+</p><code class="prettyprint">
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "schemas": [
+        "urn:scim:schemas:core:1.0"
+    ],
+    "Operations": [
+        {
+            "location": "https://example.com/v1/Users/92b725cd-9465-4e7d-8c16-01f8e146b87a",
+            "method": "POST",
+            "bulkId": "qwerty",
+            "version": "W\/\"oY4m4wn58tkVjJxK\"",
+            "status": {
+                "code": "201"
+            }
+        },
+        {
+            "location": "https://example.com/v1/Users/b7c14771-226c-4d05-8860-134711653041",
+            "method": "PUT",
+            "version": "W\/\"huJj29dMNgu3WXPD\"",
+            "status": {
+                "code": "200"
+            }
+        },
+        {
+            "location": "https://example.com/v1/Users/5d8d29d3-342c-4b5f-8683-a3cb6763ffcc",
+            "method": "PATCH",
+            "version": "W\/\"huJj29dMNgu3WXPD\"",
+            "status": {
+                "code": "200"
+            }
+        },
+        {
+            "location": "https://example.com/v1/Users/e9025315-6bea-44e1-899c-1e07454e468b",
+            "method": "DELETE",
+            "status": {
+                "code": "200"
+            }
+        }
+    ]
+}</code>
+<p>
+                    The following response is returned if an error occurred when attempting to create the User 'Alice'. The
+                    Service Provider stops processing the bulk operation and immediately returns a response to the Consumer.
+                    The response contains the error and any successful results prior to the error.
+                
+</p><code class="prettyprint">
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "schemas": [
+    "urn:scim:schemas:core:1.0"
+  ],
+  "Operations": [
+    {
+      "method": "POST",
+      "bulkId": "qwerty",
+      "status": {
+        "code": "400",
+        "description": "Request is unparseable, syntactically incorrect, or violates schema."
+      }
+    }
+  ]
+}</code>
+<p>
+                    If the failOnErrors attribute is not specified or the Service Provider has
+                    not reached the error limit defined by the Consumer the Service Provider
+                    will continue to process all operations. The following is an example
+                    in which all operations failed.
+                
+</p><code class="prettyprint">
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "schemas": [
+    "urn:scim:schemas:core:1.0"
+  ],
+  "Operations": [
+    {
+      "method": "POST",
+      "bulkId": "qwerty",
+      "status": {
+        "code": "400",
+        "description": "Request is unparseable, syntactically incorrect, or violates schema."
+      }
+    },
+    {
+      "location": "https://example.com/v1/Users/b7c14771-226c-4d05-8860-134711653041",
+      "method": "PUT",
+      "status": {
+        "code": "412",
+        "description": "Failed to update as user changed on the server since you last retrieved it."
+      }
+    },
+    {
+      "location": "https://example.com/v1/Users/5d8d29d3-342c-4b5f-8683-a3cb6763ffcc",
+      "method": "PATCH",
+      "status": {
+        "code": "412",
+        "description": "Failed to update as user changed on the server since you last retrieved it."
+      }
+    },
+    {
+      "location": "https://example.com/v1/Users/e9025315-6bea-44e1-899c-1e07454e468b",
+      "method": "DELETE",
+      "status": {
+        "code": "404",
+        "description": "Specified resource; e.g., User, does not exist."
+      }
+    }
+  ]
+}</code>
+<p>
+                    The Consumer can, within one bulk operation, create a new User, a new Group and add the newly created User to
+                    the newly created Group.  In order to add the new User to the Group
+                    the Consumer must use the surrogate id attribute, bulkId, to reference the User. The bulkId attribute value
+                    must be pre-pended with the literal "bulkId:"; e.g., if the bulkId is 'qwerty' the value is  "bulkId:qwerty".
+                    The Service Provider MUST replace the string "bulkId:qwerty" with the permanent Resource id once created.
+                
+</p>
+<p>
+                    The following example creates a User with the userName 'Alice' and a Group
+                    with the displayName 'Tour Guides' with Alice as a member.
+                
+</p><code class="prettyprint">
+POST /v1/Bulk
+Host: example.com
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer h480djs93hd8
+Content-Length: ...
+
+{
+  "schemas": [
+    "urn:scim:schemas:core:1.0"
+  ],
+  "Operations": [
+    {
+      "method": "POST",
+      "path": "/Users",
+      "bulkId": "qwerty",
+      "data": {
+        "schemas": [
+          "urn:scim:schemas:core:1.0"
+        ],
+        "userName": "Alice"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/Groups",
+      "bulkId": "ytrewq",
+      "data": {
+        "schemas": [
+          "urn:scim:schemas:core:1.0"
+        ],
+        "displayName": "Tour Guides",
+        "members": [
+          {
+            "type": "user",
+            "value": "bulkId:qwerty"
+          }
+        ]
+      }
+    }
+  ]
+}</code>
+<p>
+                    The Service Provider returns the following response.
+                
+</p><code class="prettyprint">
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "schemas": [
+    "urn:scim:schemas:core:1.0"
+  ],
+  "Operations": [
+    {
+      "location": "https://example.com/v1/Users/92b725cd-9465-4e7d-8c16-01f8e146b87a",
+      "method": "POST",
+      "bulkId": "qwerty",
+      "version": "W\/\"4weymrEsh5O6cAEK\"",
+      "status": {
+        "code": "201"
+      }
+    },
+    {
+      "location": "https://example.com/v1/Groups/e9e30dba-f08f-4109-8486-d5c6a331660a",
+      "method": "POST",
+      "bulkId": "ytrewq",
+      "version": "W\/\"lha5bbazU3fNvfe5\"",
+      "status": {
+        "code": "201"
+      }
+    }
+  ]
+}</code>
+<p>
+                    A subsequent request for the 'Tour Guides' Group ('e9e30dba-f08f-4109-8486-d5c6a331660a') returns the following:
+                
+</p><code class="prettyprint">
+GET /v1/Groups/e9e30dba-f08f-4109-8486-d5c6a331660a
+Host: example.com
+Accept: application/json
+Authorization: Bearer h480djs93hd8
+</code>
+<br/>
+<code class="prettyprint">
+HTTP/1.1 200 OK
+Content-Type: application/json
+Location: https://example.com/v1/Groups/e9e30dba-f08f-4109-8486-d5c6a331660a
+ETag: W/"lha5bbazU3fNvfe5"
+
+{
+  "schemas":["urn:scim:schemas:core:1.0"],
+  "id": "e9e30dba-f08f-4109-8486-d5c6a331660a",
+  "displayName": "Tour Guides",
+  "meta": {
+    "created":"2011-08-01T18:29:49.793Z",
+    "lastModified":"2011-08-01T20:31:02.315Z",
+    "location": "https://example.com/v1/Groups/e9e30dba-f08f-4109-8486-d5c6a331660a",
+    "version": "W\/\"lha5bbazU3fNvfe5\""
+  },
+  "members": [
+    {
+      "value": "92b725cd-9465-4e7d-8c16-01f8e146b87a",
+      "type": "user"
+    }
+  ]
+}</code>

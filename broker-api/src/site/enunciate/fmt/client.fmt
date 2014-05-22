@@ -1,0 +1,15 @@
+[#ftl]
+
+<h1>Java Clients</h1>
+
+[#list downloadsxml.download as download]
+	[#if download.@name?string?starts_with("Java")]
+		
+			<h3>${download.@name}</h3>
+			<div class="headersmall">		
+				[#list download.description as description]
+			  		<p>${description}</p>
+				[/#list]
+			</div>		
+	[/#if]
+[/#list]

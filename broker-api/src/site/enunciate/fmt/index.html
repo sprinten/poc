@@ -1,0 +1,108 @@
+<h2>Cross-Domain Identity Management:</h2>
+
+<h3>Abstract</h3>
+
+<p>The System for Cross-Domain Identity Management (SCIM) specification is designed to make managing user identity in cloud based applications and services
+	easier. The specification suite seeks to build upon experience with existing schemas and deployments, placing specific emphasis on simplicity of development
+	and integration, while applying existing authentication, authorization, and privacy models. It's intent is to reduce the cost and complexity of user management
+	operations by providing a common user schema and extension model, as well as binding documents to provide patterns for exchanging this schema using standard
+	protocols. In essence, make it fast, cheap, and easy to move users in to, out of, and around the cloud.</p>
+
+
+<h3>Overview</h3>
+
+<p>The SCIM Protocol is an application-level, REST protocol for provisioning and managing identity data on the web. The protocol supports creation,
+	modification, retrieval, and discovery of core identity Resources; i.e., Users and Groups, as well as custom Resource extensions.</p>
+
+<h3>Conventions</h3>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to
+	be interpreted as described in [RFC2119]. These keywords are capitalized when used to unambiguously specify requirements of the protocol or application
+	features and behavior that affect the interoperability and security of implementations. When these words are not capitalized, they are meant in their
+	natural-language sense.</p>
+
+<p>For purposes of readability examples are not URL encoded. Implementers MUST percent encode URLs as described in RFC3896 2.1.</p>
+
+
+<h4>Attribute Notation</h4>
+<p>All operations share a common scheme for referencing simple and complex attributes. In general, attributes are identified by prefixing the attribute name
+	with its schema URN separated by a ':' character; e.g., the core User Resource attribute 'userName' is identified as 'urn:scim:schemas:core:1.0:userName'.
+	Consumers MAY omit core schema attribute URN prefixes though MUST fully qualify extended attributes with the associated Resource URN; e.g., the attribute 'age'
+	defined in 'urn:hr:schemas:user' is fully encoded as 'urn:hr:schemas:user:age'. A Complex attributes' Sub-Attributes are referenced via nested, dot ('.')
+	notation; i.e., {urn}:{Attribute name}.{Sub-Attribute name}. For example, the fully qualified path for a User's givenName is
+	urn:scim:schemas:core:1.0:name.givenName All facets (URN, attribute and Sub-Attribute name) of the fully encoded Attribute name are case insensitive.</p>
+
+<h3>Authentication and Authorization</h3>
+
+<p>The SCIM protocol does not define a scheme for authentication and authorization therefore implementers are free to choose mechanisms appropriate to their
+	use cases. The choice of authentication mechanism will impact interoperability. It is RECOMMENDED that clients be implemented in such a way that new
+	authentication schemes can be deployed. Implementers SHOULD support existing authentication/authorization schemes. In particular, OAuth2 Bearer Token is
+	RECOMMENDED. Appropriate security considerations of the selected authentication and authorization schemes SHOULD be taken. Because this protocol uses HTTP
+	response status codes as the primary means of reporting the result of a request, servers are advised to respond to unauthorized or unauthenticated requests
+	using the 401 response code in accordance with section 10.4.2 of RFC2616.</p>
+<p>All examples assume OAuth2 bearer token; e.g.,</p>
+
+<code class="prettyprint"> 
+GET /Users/2819c223-7f76-453a-919d-413861904646 HTTP/1.1 
+Host: example.com 
+Authorization: Bearer h480djs93hd8
+</code>
+
+<p>The context of the request (i.e. the user for whom data is being requested) MUST be inferred by Service Providers.</p>
+
+<h3>API Versioning</h3>
+
+<b>TBD</b>
+
+<h3>Versioning Resources</h3>
+
+<p>The API supports resource versioning via standard,HTTP ETags. Service providers MAY support weak ETags as the preferred mechanism for performing
+	conditional retrievals and ensuring Consumers do not inadvertently overwrite each others changes, respectively. When supported SCIM ETags MUST be specified as
+	an HTTP header and SHOULD be specified within the 'version' attribute contained in the Resource's 'meta' attribute.</p>
+
+
+
+<h2>Usage</h2>
+
+<h3>Tutorial</h3>
+
+<p>
+	<a href="tutorial.html">Link</a> to the tutorial page.
+</p>
+
+<h3>Error Handling</h3>
+
+<p>
+	<a href="error.html">Link</a> to the error handling page.
+</p>
+
+<h3>Examples</h3>
+
+<p>
+	<a href="sample.html">Link</a> to the Examples page.
+</p>
+
+
+<h2>Resources</h2>
+<p>
+	<a href="rest.html">Link</a> to the resources page.
+</p>
+
+<h2>Data Model</h2>
+
+<p>
+	<a href="model.html">Link</a> to the resources page.
+</p>
+
+<h2>Libraries</h2>
+
+<h3>Clients</h3>
+
+<p>
+	<a href="client.html">Link</a> to the clients page.
+</p>
+
+<h3>Downloads</h3>
+
+<p>
+	<a href="download.html">Link</a> to the downloads page.
+</p>

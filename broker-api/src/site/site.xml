@@ -1,0 +1,61 @@
+<project name="Maven" xmlns="http://maven.apache.org/DECORATION/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+         
+	<poweredBy>
+		<logo name="Ymens CSB" href="http://www.ymens.com" img="images/logo.png"/>
+	</poweredBy>
+    
+	<version position="none"/>
+	<publishDate position="none"/>
+
+    <skin>
+	    <groupId>lt.velykis.maven.skins</groupId>
+	    <artifactId>reflow-maven-skin</artifactId>
+	    <version>1.0.0</version>
+  	</skin>
+    
+	<custom>
+    	<reflowSkin>
+      		<theme>bootswatch-cerulean</theme>
+      		<bootstrapCSS>true</bootstrapCSS>
+      		<bootstrapIcons>true</bootstrapIcons>
+      		<markPageHeader>false</markPageHeader>
+      		<skinAttribution>false</skinAttribution>
+      		<highlightJs>true</highlightJs>
+      		<brand>
+        		<name>Ymens CSB Documentation</name>
+        		<href>index.html</href>
+      		</brand>
+      		<toc>sidebar</toc>
+      		<topNav>Overview|Reports|Documentation</topNav>
+      		<bottomNav maxSpan="8">
+  				<column>Overview</column>
+  				<column>Reports</column>
+  				<column>Documentation</column>
+			</bottomNav>
+			<bottomDescription quote="false"><img src="images/logo.png"/></bottomDescription>
+    	</reflowSkin>
+	</custom>
+  
+    <body>
+        <menu name="Overview">
+        	<item name="Introduction" href="index.html"/>
+			<item name="Team Members" href="team-list.html" />
+      		<item name="Project Info" href="project-info.html" />
+		</menu>
+        <menu name="Reports">
+      		<item name="Project Summary" href="project-summary.html" />
+      		<item name="Source Repository" href="source-repository.html" />
+      		<item name="Issue Tracking" href="issue-tracking.html" />
+        </menu>
+        <menu name="Documentation">
+        	<item name="RESTFul API" href="api/index.html"/>
+        	<item name="API with Maven Swagger" href="strapdown/index.html"/>
+        	<item name="Swagger Doc" href="swaggerdoc/index.html"/>
+            <item name="Java Doc" href="javadoc/index.html"/>
+      		<item name="Java Cross Reference" href="xref/index.html"/>
+		</menu>
+    </body>
+    
+</project>

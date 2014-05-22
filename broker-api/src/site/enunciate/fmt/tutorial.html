@@ -1,0 +1,95 @@
+
+<h2>Tutorial</h2>
+
+<h3>Abbreviations</h3>
+
+<dl>
+	<dt>COI</dt>
+	<dd>
+		<p>Community Of Interest
+	</dd>
+	<dt>CRM</dt>
+	<dd>
+		<p>Customer Relationship Management
+	</dd>
+	<dt>CRUD</dt>
+	<dd>
+		<p>Create Read Update Delete
+	</dd>
+	<dt>CSP</dt>
+	<dd>
+		<p>Cloud Service Provider
+	</dd>
+	<dt>CSU</dt>
+	<dd>
+		<p>Cloud Service User
+	</dd>
+	<dt>ECS</dt>
+	<dd>
+		<p>Enterprise Cloud Subscriber
+	</dd>
+
+
+
+	<dt>IaaS</dt>
+	<dd>
+		<p>Infrastructure as a Service
+	</dd>
+
+	<dt>JIT</dt>
+	<dd>
+		<p>Just In Time
+	</dd>
+
+
+	<dt>PaaS</dt>
+	<dd>
+		<p>Platform as a Service
+	</dd>
+
+	<dt>SaaS</dt>
+	<dd>
+		<p>Software as a Service
+	</dd>
+
+	<dt>SAML</dt>
+	<dd>
+		<p>Security Assertion Markup Language
+	</dd>
+
+	<dt>SCIM</dt>
+	<dd>
+		<p>System for Cross-domain Identity Management
+	</dd>
+
+
+	<dt>SSO</dt>
+	<dd>
+		<p>Single-Sign On
+	</dd>
+
+</dl>
+
+<h3>Actors</h3>
+
+<p>Actors are the operating parties that take part in both sides of a SCIM protocol exchange, and help identify the source of a given Trigger. So far, we
+	have identified the following SCIM Actors:</p>
+
+<ul>
+	<li>Cloud Service Provider (CSP): A CSP is the entity operating a given cloud service. In a SaaS scenario this is simply the application provider. In an
+		IaaS or PaaS scenario, the CSP may be the underlying IaaS/PaaS infrastructure provider or the owner of the application running on that platform. In all cases,
+		the CSP is the thing that holds the identity information being operated upon. Put another way, the CSP really is the service that the end-end user interacts
+		with.</li>
+	<li>Enterprise Cloud Subscriber (ECS): An ECS represents a middle-tier of aggregation for related identity records. In one of our sample enterprise SaaS
+		scenarios, the ECS is "FooBar.Inc" that subscribes to a cloud based CRM service service "SaaS-CRM.Inc" (the CSP) for all of its sales staff. The actual Cloud
+		Service Users (CSUs) are the FooBar.Inc. sales staff. The ECS actor is identified to help capture use cases in which a single entitle is given administrative
+		responsibility for other identity accounts. SCIM may not address the configuration and setup of an ECS within the CSP, but it does address use cases in which
+		SCIM identity resources are grouped together and administers as part of some broader agreement or operational exchange.</li>
+
+	<li>Cloud Service User (CSU): A CSU represents the real cloud service end-end user - the "person logging into and using the cloud service". As described
+		above, and ECS will typically own or manage multiple CSU identities where as the CSU represents the FooBar.Inc. employee using the cloud service to manage
+		their CRM process.</li>
+
+
+</ul>
+

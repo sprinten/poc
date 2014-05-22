@@ -1,0 +1,184 @@
+/* You can override this file with your own styles */
+/*
+.section h2 {
+	color: white;
+	font-size: 4px;
+}
+*/
+#box-container {
+	width: 65%;
+	height: 56%;
+	position: absolute;
+	background: white;
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	border: 0px;
+	top: 7%;
+	left: 0%;
+}
+
+.inline {
+	font: Arial;
+	font-family: Arial;
+	background: #0B4EA2;
+	border: 3px solid #063776;
+	color: white;
+	width: 80%;
+	margin: 8%;
+	position: relative;
+	background: #4290F2;
+}
+
+.inline2 {
+	font: Arial;
+	font-family: Arial;
+	background: #0B4EA2;
+	border: 3px solid #063776;
+	color: white;
+	width: 80%;
+	margin: 10%;
+	height: 7%;
+	position: relative;
+	background: #063776;
+}
+
+#col1 {
+	font: Arial;
+	font-family: Arial;
+	background: #0B4EA2;
+	border: 3px solid #063776;
+	color: white;
+	width: 18%;
+	top: 4%;
+	left: 2%;
+	height: 80%;
+	position: absolute;
+}
+
+#col1 a {
+    color: white;
+}
+
+#col2 a {
+    color: white;
+}
+
+#col3 a {
+    color: white;
+}
+
+#col4 a {
+    color: white;
+}
+
+#footer1 a {
+    color: white;
+}
+
+#footer2 a {
+    color: white;
+}
+
+#col2 {
+	font: Arial;
+	font-family: Arial;
+	background: #0B4EA2;
+	border: 3px solid #063776;
+	color: white;
+	width: 36%;
+	height: 80%;
+	top: 4%;
+	left: 22%;
+	position: absolute;
+}
+
+#col3 {
+	font: Arial;
+	font-family: Arial;
+	background: #0B4EA2;
+	border: 3px solid #063776;
+	color: white;
+	width: 18%;
+	height: 80%;
+	top: 4%;
+	left: 60%;
+	position: absolute;
+}
+
+#col4 {
+	font: Arial;
+	font-family: Arial;
+	background: #0B4EA2;
+	border: 3px solid #063776;
+	color: white;
+	width: 18%;
+	height: 80%;
+	top: 4%;
+	left: 80%;
+	position: absolute;
+}
+
+#col21 {
+	font: Arial;
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: bold;
+	border: 3px solid #063776;
+	color: white;
+	float: left;
+	width: 40%;
+	height: 85%;
+	margin-top: 2%;
+	margin-left: 5%;
+	position: absolute;
+	background: #4290F2;
+}
+
+#col22 {
+	font: Arial;
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: bold;
+	border: 3px solid #063776;
+	color: white;
+	float: right;
+	width: 40%;
+	height: 85%;
+	margin-top: 2%;
+	margin-left: 5%;
+	left: 48%;
+	position: absolute;
+	background: #4290F2;
+	left: 48%;
+}
+
+#footer1 {
+	font: Arial;
+	font-family: Arial;
+	background: #0B4EA2;
+	border: 3px solid #063776;
+	color: white;
+	width: 96%;
+	top: 86%;
+	left: 2%;
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	position: absolute;
+}
+
+#footer2 {
+	font: Arial;
+	font-family: Arial;
+	background: #0B4EA2;
+	border: 3px solid #063776;
+	color: white;
+	width: 96%;
+	top: 95%;
+	left: 2%;
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+	position: absolute;
+}

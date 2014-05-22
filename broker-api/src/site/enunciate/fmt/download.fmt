@@ -1,0 +1,27 @@
+[#ftl]
+<h2>Downloads</h2>
+
+<p>The following files and libraries are available for download:</p>
+  
+<table border="0" class="bodyTable table table-striped table-bordered table-hover">
+	  <thead> 
+	   <tr> 
+	      <th>Library</th>
+	      <th>Name</th>
+	      <th>Size</th>
+	      <th>Description</th>
+	   </tr> 
+	  </thead> 
+  	<tbody> 
+		[#list downloadsxml.download as download]
+	        [#list download.files.file as file]
+		    <tr>
+		      <td>${download.@name}</td>
+		      <td><a href="${file.@name}">${file.@name}</a></td>
+		      <td>${file.@size}</td>
+		      <td>[#if file_index > 0 || file_has_next]${file}[#else]${download.description}[/#if]</td>
+		    </tr>
+	        [/#list]
+		[/#list]
+	</tbody> 
+</table>  

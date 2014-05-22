@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration threshold="debug" debug="true"
+	xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}] [%t] %-5p %c (%C.%M:%L)- %m%n" />
+		</layout>
+	</appender>
+
+    <appender name="ROLLING_FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="log/model-api.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{HH:mm:ss,SSS}] [%t] %-5p %c (%C.%M:%L)- %m%n" />
+        </layout>
+    </appender>
+
+	<logger name="com.ymens.broker">
+		<level value="DEBUG" />
+	</logger>
+	
+	<logger name="org.springframework">
+		<level value="INFO" />
+	</logger>
+
+	<logger name="org.apache.cxf">
+		<level value="INFO" />
+	</logger>
+
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="STDOUT" />
+        <appender-ref ref="ROLLING_FILE" />
+	</root>
+
+</log4j:configuration> 

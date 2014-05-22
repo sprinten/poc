@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<!-- To allow public access by default and to set authentication mode to basic login/password -->
+	<security:http>
+		<security:anonymous enabled="true" />
+		<security:http-basic />
+	</security:http>
+
+	<!-- To delegate authorization to method calls rather than to urls -->
+	<security:global-method-security pre-post-annotations="enabled" />
+
+	<!-- To create user/password with roles -->
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user authorities="ROLE_DUMMY" name="demo" password="demo" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

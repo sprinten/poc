@@ -1,0 +1,43 @@
+<document>
+	<body>
+		<section name="Introduction">
+		<p>The CSB REST API provides support for interacting with various
+			components and services allowing  Management, 
+			Provisioning, Ordering Persistence and Provider Operations.
+		</p>
+		</section>
+		<section name="Capabilities">
+
+		<p>Capabilities Overview:</p>
+		<ul>
+			<li>Technical Management</li>
+			<li>Technical Provisioning</li>
+			<li>Persistence</li>
+			<li>Operations</li>
+			<li>Service Groups</li>
+			<li>Gate</li>
+		</ul>
+		</section>
+
+		<section name="Examples">
+		
+		<ul>
+			<li>
+				See the
+				<a href="./api/tutorial.html">Tutorial</a>
+				page for how to use the API(s)
+			</li>
+			<li>
+				Refer to the
+				<a href="./api/element_model-generic.html">Product Element</a>
+				page for an example JSON output
+			</li>
+			<li>
+				Go to the
+				<a href="./api/sample.html">Examples</a>
+				to see the Java Client Code
+			</li>
+		</ul>
+		</section>
+	</body>
+</document>

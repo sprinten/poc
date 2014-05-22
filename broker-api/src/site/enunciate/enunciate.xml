@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<enunciate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://enunciate.codehaus.org/schemas/enunciate-1.28.xsd">
+
+	<facets>
+	</facets>
+	<deployment host="www.broker.ymens.com" context="rest"/>
+
+	
+
+	<namespaces>
+		<namespace id="Generic-Endpoint" uri="http://api.ymens.com/endpoint/generic"/>
+
+		<namespace id="SCIM-Endpoint" uri="http://api.ymens.com/endpoint/scim"/>
+
+		<namespace id="Generic-Model" uri="http://api.ymens.com/model/generic"></namespace>
+
+		<namespace id="SCIM-Model" uri="http://api.ymens.com/model/scim"></namespace>
+		
+		<namespace id="Contact-Model" uri="http://api.ymens.com/model/contact"></namespace>
+	</namespaces>
+
+	<services>
+		<rest defaultRestSubcontext="/"/>
+	</services>
+
+	<modules>
+
+		<disable-rule id="csharp.warnings"/>
+		<disable-rule id="c.warnings"/>
+		<disable-rule id="obj-c.warnings"/>
+
+		<c disabled="true"/>
+		<csharp disabled="true"/>
+		<obj-c disabled="true"/>
+		<spring-app disabled="true"/>
+		<jaxws-ri disabled="true"/>
+		<jaxws-support disabled="true"/>
+		<ruby disabled="true"/>
+		<php disabled="true"/>
+
+		<swagger disabled="true" applyBaseUriFilter="true" base="static" dir="rest"/>
+
+		<jersey disabled="true"/>
+		<xml disabled="false" />
+
+		<java-client disabled="true" forceEnable="true" generateJsonJar="true" bundleSourcesWithClasses="false" jarName="yconnect-java-client.jar"
+			jsonJarName="yconnect-json-client.jar" label="csb-rest-api" disableCompile="true"/>
+
+		<docs groupRestResources="custom" disableRestMountpoint="true" forceExampleJson="true" docsDir="site" docsSubdir="api" indexPageName="index.html" splashPackage="com.ymens.broker"
+			title="yConnect REST API" copyright="Ymens" applyWsdlFilter="false" includeExampleXml="false" includeExampleJson="true" freemarkerXMLProcessingTemplate="fmt/docs.fmt"
+			base="static" includeDefaultDownloads="true">
+
+			<download name="Web Application Description" file="../../../target/enunciate/generate/xml/application.wadl" description="WADL document describing the REST API"/>
+
+			<download name="Generic Schema" file="../../../target/enunciate/generate/xml/Generic-Model.xsd" description="Schema file for Generic Model"/>
+
+			<download name="SCIM Schema" file="../../../target/enunciate/generate/xml/SCIM-Model.xsd" description="Schema file for Cross Domain Identity Management"/>
+
+		</docs>
+
+
+
+	</modules>
+
+</enunciate>

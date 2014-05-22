@@ -1,0 +1,908 @@
+[#ftl]
+
+[#function scrubFacetToFilename facetPath]
+		[#return "resource_" + facetPath?string?replace("/", "_")?replace(":","_")?replace("{", "_")?replace("}", "_") + ".html"/]
+[/#function]
+
+[#function scrubFacetToId facetPath]
+		[#return facetPath?string?replace("\\", "")?replace("/", "")?replace(":","")?replace("{", "")?replace("}", "") /]
+[/#function]
+
+[#function tocNeeded(nodelist)]
+  [#return nodelist?size > 1/]
+[/#function]
+
+[#function facetApplicable element facetName]
+  [#list element.facets.facet as facet]
+    [#if facet.name = facetName]
+      [#return true/]
+    [/#if]
+  [/#list]
+  [#return false/]
+[/#function]
+
+[#function attributeExists(node)]
+  [#if node?size??]
+    [#--if there is a 'size' property, then it's not an attribute--]
+    [#return node?size > 0/]
+  [#else]
+    [#return node?node_type = "attribute"/]
+  [/#if]
+[/#function]
+
+[#--set up the subnavigation menus--]
+
+[#assign mainnav = [{ "title" : "Documentation", "href": "index.html"}, { "title" : "Usage", "href": "tutorial.html"}, { "title" : "Libraries", "href": "client.html"}]]
+
+[#assign nav_resource_facets = {}/]
+[#if groupRestResources??]
+	[#list docsxml.rest.facets.facet?sort_by("value") as facet]
+		[#if facet.name = groupRestResources]
+	  		[#assign nav_resource_facets = nav_resource_facets + {facet.value : scrubFacetToFilename(facet.value)}/]
+	  	[/#if]
+	[/#list]
+[/#if]
+  
+[#assign nav_schemas = {}/]
+[#assign nav_typedefs_by_ns = {}/]
+[#assign nav_elements_by_ns = {}/]
+
+[#list docsxml.data.schema as schema]
+  [#assign nav_schemas = nav_schemas + {schema.@namespaceId?string : schema.@namespaceId?string + ".html"}/]
+  [#assign nav_elements_by_ns = nav_elements_by_ns + {schema.@namespaceId?string : {}}/]
+  [#list schema.elements.element?sort_by("@name") as element]
+    [#assign tmp = nav_elements_by_ns[schema.@namespaceId?string] + { element.@name?string + " Element" : "element_" + schema.@namespaceId?string + "_" + element.@name?string + ".html"}/]
+    [#assign nav_elements_by_ns = nav_elements_by_ns + {schema.@namespaceId?string : tmp}/]
+  [/#list]
+  [#assign nav_typedefs_by_ns = nav_typedefs_by_ns + {schema.@namespaceId?string : {}}/]
+  [#list schema.types.type?sort_by("@name") as type]
+    [#assign tmp = nav_typedefs_by_ns[schema.@namespaceId?string] + {type.@name?string?cap_first : "type_" + schema.@namespaceId?string + "_" + type.@name?string + ".html"}/]
+    [#assign nav_typedefs_by_ns = nav_typedefs_by_ns + {schema.@namespaceId?string : tmp}/]
+  [/#list]
+[/#list]
+
+[#macro boilerplate title=docsxml.@title subnav=[{"title" : "Introduction", "href" : indexPageName}] codeblocks=false]
+
+<!DOCTYPE html>
+
+<html  xml:lang="en" lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>${docsxml.@title}</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="" />
+		<meta http-equiv="content-language" content="en" />
+
+		<link href="http://netdna.bootstrapcdn.com/bootswatch/2.2.2/cerulean/bootstrap.min.css" rel="stylesheet" />
+		<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-responsive.min.css" rel="stylesheet" />
+		<link href="./css/bootswatch.css" rel="stylesheet" />
+		<link href="./css/reflow-skin.css" rel="stylesheet" />
+		
+		<link href="http://yandex.st/highlightjs/7.3/styles/default.min.css" rel="stylesheet" />
+		
+		<link href="./css/lightbox.css" rel="stylesheet" />
+		
+		<link href="./css/site.css" rel="stylesheet" />
+		<link href="./css/print.css" rel="stylesheet" media="print" />
+</head>
+
+<body class="home">
+	<header>
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					
+					<a class="brand" href="../index.html">CSB RESTful API</a>
+					
+					<div class="nav-collapse">
+						<ul class="nav pull-right">
+						
+				            <li class="dropdown active">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Overview<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li class="active"><a href="../index.html" title="${docsxml.@title}">Home</a></li>
+									<li><a href="../project-summary.html" title="Project Summary">Project Summary</a></li>
+									<li><a href="../javadoc/index.html" title="Team Members">Javadoc</a></li>
+								</ul>
+				            </li>
+				            
+				            <li class="dropdown">
+				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="index.html" title="Introduction">Introduction</a></li>
+									<li><a href="rest.html" title="Resources">Resources</a></li>
+									<li><a href="model.html" title="Data Model">Data Model</a></li>
+								</ul>
+				            </li>
+				            
+			            	<li class="dropdown">
+				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Usage<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="sample.html" title="Samples">Examples</a></li>
+									<li><a href="tutorial.html">Tutorial</a></li>
+									<li><a href="error.html">Error Handling</a></li>
+								</ul>
+				            </li>				            
+				            
+				            [#if downloadsxml??]
+				            <li class="dropdown">
+				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Libraries<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="download.html" title="Downloads">Downloads</a></li>
+									<li><a href="client.html" title="Clients">Clients</a></li>
+								</ul>
+				            </li>
+				            [/#if]
+				            
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+  <div class="container">
+  
+	<div class="main-body">
+		<div class="row">
+			<div class="span8">
+				<div class="body-content">
+	 				[#nested/]
+				</div>
+			</div>
+			
+			<div class="span4">
+				<div id="toc-sidebar">
+					<div class="well">
+						<ul class="nav nav-list">
+							<li class="nav-header">Table of Contents</li>
+				        
+				          [#list mainnav as main]
+				            <li class="dropdown">
+							  [#if main.href??]
+				              	<a href="${main.href}">${main.title} <b class="caret"></b></a>
+				              	[#if subnav[0].title = main.title]
+				              		<ul class="nav nav-list">
+				              		[#list subnav as first]
+				              			[#list first.subnav as second]
+				              				<li>
+				              					<a href="${second.href}">${second.title}</a>
+				              					
+				              													              	
+				              					[#if second.nav_resource_facets??]
+												
+								              		<ul class="nav nav-list">
+								              		[#list second.nav_resource_facets?keys?sort as label]
+							              				<li>
+							              					<a href="${second.nav_resource_facets[label]}">${label}</a>
+							              				</li>
+								              		[/#list]	
+								              		</ul>
+								              	
+								              	[/#if]					
+
+					              				[#if second.subsubnav??]
+					              					[#assign third = second.subsubnav /]
+													[#if third.nav_schemas??]
+												
+									              		<ul class="nav nav-list">
+									              		[#list third.nav_schemas?keys?sort as label]
+								              				<li>
+								              					<a href="${third.nav_schemas[label]}">${label}</a>
+																[#if third.subsubsubnav??  &&  third.title?string?? && third.title?string = label?string]
+																
+												              		<ul class="nav nav-list">
+												              		[#list third.subsubsubnav as forth]
+											              				<li>
+											              					<a href="${forth.href}">${forth.title}</a>
+											              					
+											              					[#if forth.nav_elements_by_ns??]
+																				[#assign id = forth.namespace_id]
+															              		<ul class="nav nav-list">
+															              		[#list forth.nav_elements_by_ns[id]?keys?sort as label]
+														              				<li>
+														              					<a href="${forth.nav_elements_by_ns[id][label]}">${label}</a>
+														              				</li>
+															              		[/#list]	
+															              		</ul>
+															              	
+															              	[/#if]											              					
+	
+											              					[#if forth.nav_typedefs_by_ns??]
+																				[#assign id = forth.namespace_id]
+															              		<ul class="nav nav-list">
+															              		[#list forth.nav_typedefs_by_ns[id]?keys?sort as label]
+														              				<li>
+														              					<a href="${forth.nav_typedefs_by_ns[id][label]}">${label}</a>
+														              				</li>
+															              		[/#list]	
+															              		</ul>
+															              	
+															              	[/#if]	
+											              					
+											              				</li>
+												              		[/#list]	
+												              		</ul>
+												              	
+												              	[/#if]								              					
+								              				</li>
+									              		[/#list]	
+									              		</ul>
+									              		
+									              	[/#if]								          
+								              	[/#if]	
+								              	
+				              				</li>
+				              			[/#list]
+				              		[/#list]	
+				              		</ul>
+				              	[/#if]
+				              [/#if]
+				            </li>
+				          [/#list]								
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>    
+  </div> <!--! end of #container -->
+      
+	<footer class="well">
+		<div class="container">
+			<div class="row">
+				<div class="span2 bottom-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Overview</li>
+						<li class="active"><a href="../index.html" title="Home">Home </a></li>
+						<li><a href="../project-summary.html" title="Project Summary">Project Summary </a></li>
+						<li><a href="../javadoc/index.html" title="Team Members">Javadoc </a></li>
+					</ul>
+				</div>
+				<div class="span2 bottom-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Documentation</li>
+						<li><a href="index.html" title="Introduction">Introduction </a></li>
+						<li><a href="rest.html" title="Resources">Resources</a></li>
+						<li><a href="model.html" title="Data Model">Data Model</a></li>
+					</ul>
+				</div>
+				<div class="span2 bottom-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Usage</li>
+						<li><a href="sample.html" title="Samples">Examples</a></li>
+						<li><a href="tutorial.html">Tutorial</a></li>
+					</ul>
+				</div>
+				[#if downloadsxml??]
+				<div class="span2 bottom-nav">
+					<ul class="nav nav-list">
+						<li class="nav-header">Libraries</li>
+						<li><a href="download.html" title="Downloads">Downloads</a></li>
+						<li><a href="client.html" title="Clients">Clients</a></li>
+					</ul>
+				</div>
+				[/#if]
+			</div>
+		</div>
+	</footer>
+				            
+	<div class="container subfooter">
+		<div class="row">
+			<div class="span12">
+				[#if attributeExists(docsxml.@copyright)]
+				<p class="copyright">${docsxml.@copyright}</p>
+				[/#if]
+			</div>
+		</div>
+	</div>   
+
+	[#include "script.html"/]
+		
+</body>
+</html>
+[/#macro]
+
+[@file name=indexPageName charset="utf-8"]
+  [@boilerplate title="Introduction" subnav=[{"title" : "Documentation", "href" : "#", "subnav" : [{"title" : "Introduction", "href" : indexPageName} ,  {"title" : "Data Model", "href" : "model.html"}, {"title" : "Resources", "href" : "rest.html"}]}]]
+		[#include "index.html"/]	
+  [/@boilerplate]
+[/@file]
+
+
+[#if downloadsxml??]
+  [@file name="client.html" charset="utf-8"]
+    [@boilerplate title="Clients" subnav=[{"title" : "Libraries", "href" : "#", "subnav" : [{"title" : "Clients", "href" : "client.html"} ,  {"title" : "Downloads", "href" : "download.html"}]}]]
+		[#include "client.fmt"/]	
+    [/@boilerplate]
+  [/@file]
+[/#if]
+
+[#if downloadsxml??]
+  [@file name="download.html" charset="utf-8"]
+    [@boilerplate title="Downloads" subnav=[{"title" : "Libraries", "href" : "#", "subnav" : [{"title" : "Clients", "href" : "client.html"} ,  {"title" : "Downloads", "href" : "download.html"}]}]]
+		[#include "download.fmt"/]     
+    [/@boilerplate]
+  [/@file]
+[/#if]
+
+[@file name="sample.html" charset="utf-8"]
+    [@boilerplate title="Examples" subnav=[{"title" : "Usage", "href" : "#", "subnav" : [{"title" : "Examples", "href" : "sample.html"} ,  {"title" : "Tutorial", "href" : "tutorial.html"},  {"title" : "Error Handling", "href" : "error.html"}]}]]
+		[#include "sample.html"/]	
+	[/@boilerplate]
+[/@file]
+
+[@file name="tutorial.html" charset="utf-8"]
+    [@boilerplate title="Tutorial" subnav=[{"title" : "Usage", "href" : "#", "subnav" : [{"title" : "Examples", "href" : "sample.html"} ,  {"title" : "Tutorial", "href" : "tutorial.html"},  {"title" : "Error Handling", "href" : "error.html"}]}]]
+		[#include "tutorial.html"/]
+  [/@boilerplate]
+[/@file]
+
+[@file name="error.html" charset="utf-8"]
+    [@boilerplate title="Error Handling" subnav=[{"title" : "Usage", "href" : "#", "subnav" : [{"title" : "Examples", "href" : "sample.html"} ,  {"title" : "Tutorial", "href" : "tutorial.html"},  {"title" : "Error Handling", "href" : "error.html"}]}]]
+		[#include "error.html"/]
+  [/@boilerplate]
+[/@file]
+
+[@file name="rest.html" charset="utf-8"]
+    [@boilerplate 	title="Resources" 
+    				subnav=[{
+    					"title" : "Documentation", 
+    					"href" : "#", 
+    					"subnav" : [{
+    						"title" : "Introduction", 
+    						"href" : indexPageName
+    					} ,  {
+    						"title" : "Data Model", 
+    						"href" : "model.html"
+    					}, {
+    						"title" : "Resources", 
+    						"href" : "rest.html", 
+    						"nav_resource_facets" : nav_resource_facets
+    					}]
+    				}]
+    ]
+  
+  
+  	<h2>Resources</h2>
+  
+  	<p>
+    	This API supports a <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">Representational State Transfer (REST)</a>
+		model for accessing a set of resources through a fixed set of operations. The following resources are accessible through the RESTful model:
+  	</p>
+  
+  	<ul>
+		[#if groupRestResources?? && facetApplicable(docsxml.rest, groupRestResources)]
+        	[#list docsxml.rest.facets.facet?sort_by("value") as facet]
+        		[#if facet.name = groupRestResources]
+	          		[@processResourceFacet facet=facet/]
+	        		<li><a href="${scrubFacetToFilename(facet.value)}">${facet.value}</a></li>
+	        	[/#if]
+	        [/#list]
+	    [/#if]
+  	</ul>
+
+	[#if attributeExists(docsxml.rest.@wadl)]
+	  <p>
+	    There is also a <a href="${docsxml.rest.@wadl}">WADL document</a> describing the REST API.
+	  </p>
+	[/#if]
+
+    [/@boilerplate]
+  [/@file]
+
+[#macro processResourceFacet facet]
+  [@file name=scrubFacetToFilename(facet.value) charset="utf-8"]
+    [@boilerplate title=facet.name subnav=[{
+    "title" : "Documentation", 
+    "href" : "#", 
+    "subnav" : [{
+    	"title" : "Introduction", 
+    	"href" : indexPageName
+    } ,  {
+    	"title" : "Data Model", 
+    	"href" : "model.html"
+    }, {
+    	"title" : "Resources", 
+    	"href" : "rest.html", 
+    	"nav_resource_facets" : nav_resource_facets
+    }]
+    }]]
+
+      <h2>Category <pre class="resource">${facet.value}</pre></h2>
+      
+      [#list facet.documentation as documentation]
+      <p>${documentation}</p>
+      [/#list]
+
+      [#assign facetResources=[] /]
+      [#list docsxml.rest.resources.resource as resource]
+        [#list resource.facets.facet as rg]
+          [#if ((rg.name = facet.name) && (rg.value == facet.value))]
+            [#assign facetResources=facetResources + resource /]
+            [#break/]
+          [/#if]
+        [/#list]
+      [/#list]
+      
+      
+      <h4>Endpoints</h4>
+      <ul>
+        [#list facetResources?sort_by("@name") as facetResource]
+        <li><a href="#${scrubFacetToId(facetResource.@name)}">${facetResource.@name}</a></li>
+        [/#list]
+      </ul>
+      
+      [#list facetResources as facetResource]
+        [@processRawResource facetResource=facetResource/]
+      [/#list]
+
+    [/@boilerplate]
+  [/@file]
+[/#macro]
+
+[#macro processRawResource facetResource]
+      <h3 id="${scrubFacetToId(facetResource.@name)}">Endpoint <pre class="resource">${facetResource.@name}</pre></h3>
+
+  [#if tocNeeded(facetResource.operation)]
+      <p>
+        The following operations are supported on this endpoint:
+      </p>
+      <ul>
+    [#list facetResource.operation as operation]
+        <li><a href="#${operation.@name}">${operation.@name}</a></li>
+      [#list operation.alias as alias]
+        <li><a href="#${operation.@name}">${alias}</a></li>
+      [/#list]
+    [/#list]
+      </ul>
+  [/#if]
+  
+  [#list facetResource.operation as operation]
+      <h4 id="${operation.@name}">${operation.@name}</h4>
+    [#list operation.alias as alias]
+      <p class="note">Alias: ${alias}</p>
+    [/#list]
+
+    [#list operation.documentation as documentation]
+      <p>${documentation}</p>
+    [/#list]
+    [#list operation.parameter as parameter]
+      [#if parameter_index = 0]
+      <h5>Parameters</h5>
+      
+      <table border="0" class="bodyTable table table-striped table-bordered table-hover">
+		  <thead> 
+		   <tr class="a"> 
+	          <th>Name</th>
+	          <th>Description</th>
+	          <th>Type</th>
+		   </tr> 
+		  </thead> 
+		  
+		  <tbody> 
+		      [/#if]
+		        <tr>
+		          <td>[#if attributeExists(parameter.@name)]${parameter.@name}[/#if]</td>
+		          <td>${parameter}</td>
+		          <td>[#if attributeExists(parameter.@type)]${parameter.@type}[/#if]</td>
+		        </tr>
+		      [#if !parameter_has_next]
+		  </tbody> 
+	 	</table>        
+      
+      [/#if]
+    [/#list]
+    
+    
+    [#list operation.inValue as inValue]
+      <h5>Request Body</h5>
+      
+      <table border="0" class="bodyTable table table-striped table-bordered table-hover">
+      [#assign custom=true]
+      [#list inValue.xmlElement as xmlElement]
+        [#if attributeExists(xmlElement.@elementName)]
+          [#assign custom=false/]
+        <tr>
+          <td align="right">Element:</td>
+          [#if attributeExists(xmlElement.@elementSchemaId)]
+          <td><a href="element_${xmlElement.@elementSchemaId}_${xmlElement.@elementName}.html">${xmlElement.@elementName}</a></td>
+          [#else]
+          <td>${xmlElement.@elementName}</td>
+          [/#if]
+        </tr>
+        [/#if]
+      [/#list]
+      [#if custom]
+        <tr>
+          <td align="right">Element:</td>
+          <td>(custom)</td>
+        </tr>
+      [/#if]
+      [#list inValue["contentType[consumable='true']"] as contentType]
+        <tr>
+          <td align="right">Consumable Media Type:</td>
+          <td>${contentType.@type}</td>
+        </tr>
+      [/#list]
+      </table>
+      
+      [#list inValue.documentation as documentation]
+      <p>${documentation}</p>
+      [/#list]
+      
+    [/#list]
+    
+    
+    [#list operation.outValue as outValue]
+      <h5>Response Body</h5>
+      <table border="0" class="bodyTable table table-striped table-bordered table-hover">
+      [#assign custom=true]
+      [#list outValue.xmlElement as xmlElement]
+        [#if attributeExists(xmlElement.@elementName)]
+          [#assign custom=false/]
+        <tr>
+          <td align="right">Element:</td>
+          [#if attributeExists(xmlElement.@elementSchemaId)]
+          <td><a href="element_${xmlElement.@elementSchemaId}_${xmlElement.@elementName}.html">${xmlElement.@elementName}</a></td>
+          [#else]
+          <td>${xmlElement.@elementName}</td>
+          [/#if]
+        </tr>
+        [/#if]
+      [/#list]
+
+      [#if custom]
+        <tr>
+          <td align="right">Element:</td>
+          <td>(custom)</td>
+        </tr>
+      [/#if]
+      [#list outValue["contentType[produceable='true']"] as contentType]
+        <tr>
+          <td align="right">Produceable Media Type:</td>
+          <td>${contentType.@type}</td>
+        </tr>
+      [/#list]
+      </table>
+      [#list outValue.documentation as documentation]
+      <p>${documentation}</p>
+      [/#list]
+    [/#list]
+	   [#list operation.statusCode as statusCode]
+	      [#if statusCode_index = 0]
+	      <h3>Status Codes</h3>
+	      
+	      <table border="0" class="bodyTable table table-striped table-bordered table-hover">
+
+	        <tr>
+	          <th width="130">HTTP Status Code</th>
+	          <th>Description</th>
+	          [#list operation.additionalHeaderLabels.label as label]
+	          <th>${label}</th>
+	          [/#list]
+	        </tr>
+	      [/#if]
+	        <tr>
+	          <td>${statusCode.@code}</td>
+	          <td>${statusCode.condition}</td>
+	          [#list statusCode.additionalHeaders.additionalHeader as header]
+	            <td>${header}</td>
+	          [/#list]
+	        </tr>
+	      [#if !statusCode_has_next]
+	      </table>
+	      [/#if]
+	    [/#list]
+  [/#list]
+[/#macro]
+
+[@file name="model.html" charset="utf-8"]
+    [@boilerplate title="Data Model" subnav=[{
+    "title" : "Documentation", 
+    "href" : "#", 
+    "subnav" : [{
+    	"title" : "Introduction", 
+    	"href" : indexPageName
+    } ,  {
+    	"title" : "Data Model", 
+    	"href" : "model.html",
+    	"subsubnav" : {
+    		"nav_schemas": nav_schemas
+    	}
+    }, {
+    	"title" : "Resources", 
+    	"href" : "rest.html"
+    }]
+    }]]
+
+    <h2>Data Model</h2>
+
+    <p>
+      All endpoints act on a common set of data. The CSB API use <a href="http://json.org">JSON.</a>.
+    </p>
+
+	
+	[#list docsxml.data.schema as schema]
+		[@processSchema schema=schema/]
+		<h3>Schema <pre class="resource">${schema.@namespaceId?string}</pre></h3>
+		[#if schema.elements.element?size > 0]
+			<h4>Data Elements</h4>
+    		<ul>
+		      [#list schema.elements.element?sort_by("@name") as element]
+		      	[@processElement element=element/]
+		      	<li><a href="element_${schema.@namespaceId}_${element.@name}.html">${element.@name?string?cap_first}</a></li>
+		      [/#list]
+    		</ul>
+      	[/#if]
+ 		[#if schema.types.type?size > 0]
+ 			<h4>Data Types</h4>
+	      	<ul>
+	        	[#list schema.types.type?sort_by("@name") as type]
+	        		[@processType type=type/]
+	        		<li><a href="type_${schema.@namespaceId}_${type.@name}.html">${type.@name?string?cap_first}</a></li>
+	        	[/#list]
+	      	</ul>
+     	[/#if]
+	[/#list]
+  [/@boilerplate]
+[/@file]
+
+[#macro processSchema schema]
+  [@file name=schema.@namespaceId + ".html" charset="utf-8"]
+    [@boilerplate title=schema.@namespaceId?string subnav=[{
+    "title" : "Documentation", 
+    "href" : "#", 
+    "subnav" : [{
+    	"title" : "Introduction", 
+    	"href" : indexPageName
+    } ,  {
+    	"title" : "Data Model", 
+    	"href" : "model.html",
+    	"subsubnav" : {
+    		"title" : schema.@namespaceId?string,
+    		"nav_schemas": nav_schemas,
+	    	"subsubsubnav" : [
+	    		{
+		    		"title" : "Data Elements" , 
+		    		"href" : schema.@namespaceId + ".html#Data_Elements",
+		    		"nav_elements_by_ns" : nav_elements_by_ns,
+		    		"namespace_id" : schema.@namespaceId?string
+	    		},
+	    		{
+		    		"title" : "Data Types"  , 
+		    		"href" : schema.@namespaceId + ".html#Data_Types"
+	    		}
+	    	]
+    	}
+    }, {
+    	"title" : "Resources", 
+    	"href" : "rest.html"
+    }]
+    }]]      
+      
+      <h2>Schema <pre class="resource">${schema.@namespaceId?string}</pre></h2>
+      
+      [#if schema.elements.element?size > 0]
+
+      <h3>Data Elements</h3>
+
+      <ul>
+        [#list schema.elements.element?sort_by("@name") as element]
+        	[@processElement element=element/]
+        	<li><a href="element_${schema.@namespaceId}_${element.@name}.html">${element.@name?string?cap_first}</a></li>
+        [/#list]
+      </ul>
+      [/#if]
+      
+      [#if schema.types.type?size > 0]
+
+      <h3>Data Types</h3>
+
+      <ul>
+        [#list schema.types.type?sort_by("@name") as type]
+        	[@processType type=type/]
+        	<li><a href="type_${schema.@namespaceId}_${type.@name}.html">${type.@name?string?cap_first}</a></li>
+        [/#list]
+      </ul>
+      [/#if]
+    [/@boilerplate]
+  [/@file]
+[/#macro]
+
+[#macro processElement element]
+  [#assign schema=element?parent?parent/]
+  [@file name="element_" + schema.@namespaceId + "_" + element.@name + ".html" charset="utf-8"]
+    [@boilerplate title=element.@name?string?cap_first subnav=[{
+    "title" : "Documentation", 
+    "href" : "#", 
+    "subnav" : [{
+    	"title" : "Introduction", 
+    	"href" : indexPageName
+    } ,  {
+    	"title" : "Data Model", 
+    	"href" : "model.html",
+    	"subsubnav" : {
+    		"title" : schema.@namespaceId?string,
+    		"nav_schemas": nav_schemas,
+	    	"subsubsubnav" : [
+	    		{
+		    		"title" : "Data Elements" , 
+		    		"href" : schema.@namespaceId + ".html#Data_Elements",
+		    		"nav_elements_by_ns" : nav_elements_by_ns,
+		    		"namespace_id" : schema.@namespaceId?string
+	    		},
+	    		{
+		    		"title" : "Data Types"  , 
+		    		"href" : schema.@namespaceId + ".html#Data_Types"
+	    		}
+	    	]
+    	}
+    }, {
+    	"title" : "Resources", 
+    	"href" : "rest.html"
+    }]
+    }]]    
+
+      <h2>${element.@name?string?cap_first} Element</h2>
+
+      <table border="0" class="bodyTable table table-striped table-bordered table-hover">
+      [#if attributeExists(element.@typeName) && attributeExists(element.@typeSchemaId)]
+        <tr>
+          <td align="right">Type:</td>
+          <td><a href="type_${element.@typeSchemaId}_${element.@typeName}.html">${element.@typeName?string?cap_first}</a></td>
+        </tr>
+      [/#if]
+      </table>
+      [#list element.documentation as documentation]
+      <p>${documentation}</p>
+      [/#list]
+      [#list element.examplejson as examplejson]
+      <h3>Example JSON</h3>
+ 
+		<code class="prettyprint">${examplejson?string?xhtml}</code>
+
+      [/#list]
+    [/@boilerplate]
+  [/@file]
+[/#macro]
+
+[#macro processType type]
+  [#assign schema=type?parent?parent/]
+  [@file name="type_" + schema.@namespaceId + "_" + type.@name + ".html" charset="utf-8"]
+    [@boilerplate title=type.@name?string?cap_first subnav=[{
+    "title" : "Documentation", 
+    "href" : "#", 
+    "subnav" : [{
+    	"title" : "Introduction", 
+    	"href" : indexPageName
+    } ,  {
+    	"title" : "Data Model", 
+    	"href" : "model.html",
+    	"subsubnav" : {
+    		"title" : schema.@namespaceId?string,
+    		"nav_schemas": nav_schemas,
+	    	"subsubsubnav" : [
+	    		{
+		    		"title" : "Data Elements" , 
+		    		"href" : schema.@namespaceId + ".html#Data_Elements"
+	    		},
+	    		{
+		    		"title" : "Data Types"  , 
+		    		"href" : schema.@namespaceId + ".html#Data_Types",
+		    		"nav_typedefs_by_ns" : nav_typedefs_by_ns,
+		    		"namespace_id" : schema.@namespaceId?string
+	    		}
+	    	]
+    	}
+    }, {
+    	"title" : "Resources", 
+    	"href" : "rest.html"
+    }]
+    }]]    
+      
+      <h2>${type.@name?string?cap_first} Type</h2>
+
+      [#list type.documentation as documentation]
+      <p>${documentation}</p>
+      [/#list]
+
+      [#if type.values.item?size > 0]
+        [#list type.values.item as value]
+          [#if value_index = 0]
+      <h3>Possible Values</h3>
+      <table border="0" class="bodyTable table table-striped table-bordered table-hover">
+      	<thead>
+        <tr>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+          [/#if]
+        <tr>
+          <td>${value.@value}</td>
+          <td>
+          [#list value.documentation as documentation]
+            ${documentation}
+          [/#list]
+         </td>
+        </tr>
+        <tbody>
+          [#if !value_has_next]
+      </table>
+          [/#if]
+        [/#list]
+      [#else]
+
+      <h3>Property Description</h3>
+      <table border="0" class="bodyTable table table-striped table-bordered table-hover">
+      	<thead>
+        <tr>
+          <th>Property</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Min Occurs</th>
+          <th>Max Occurs</th>
+        </tr>
+        </thead>
+        <tbody>
+        [#list type.attributes.attribute as attribute]
+        <tr>
+          <td>[#if attributeExists(attribute.@jsonName)]${attribute.@jsonName}[/#if]</td>
+          <td>${attribute}</td>
+          <td>[#if attributeExists(attribute.@typeSchemaId)][#if attributeExists(attribute.@typeName)][#assign typename=attribute.@typeName/][#else][#assign typename="(anonymous)"/][/#if]<a href="type_${attribute.@typeSchemaId}_${typename}.html">${typename}</a>[#elseif attributeExists(attribute.@typeName)]${attribute.@typeName}[/#if]</td>
+          <td>[#if attributeExists(attribute.@minOccurs)]${attribute.@minOccurs}[/#if]</td>
+          <td>[#if attributeExists(attribute.@maxOccurs)]${attribute.@maxOccurs}[/#if]</td>
+          
+        </tr>
+        [/#list]
+        
+        [#list type.elements.element as element]
+        <tr>
+          <td>[#if attributeExists(element.@jsonName)]${element.@jsonName}[/#if]</td>
+          <td>
+          [#list element.documentation as documentation]
+            ${documentation}
+          [/#list]
+         </td>
+          <td>
+          [#list element.choice as choice]
+            [#if element.@maxOccurs = "unbounded"]array of [/#if][#if choice_index > 0]<br/>or 
+            [/#if]
+            
+            [#if attributeExists(choice.@typeSchemaId)]
+            	[#if attributeExists(choice.@typeName)]
+            		[#assign typename=choice.@typeName/]
+            	[#else][#assign typename="(anonymous)"/]
+            	[/#if]
+            	<a href="type_${choice.@typeSchemaId}_${typename}.html">${typename}</a>
+            [#elseif attributeExists(choice.@typeName)] ${choice.@typeName}
+            [/#if]
+          [/#list]
+         </td>
+          <td>[#if attributeExists(element.@minOccurs)]${element.@minOccurs}[/#if]</td>
+          <td>[#if attributeExists(element.@maxOccurs)]${element.@maxOccurs}[/#if]</td>
+        </tr>
+        [/#list]
+        
+        [#list type.value as value]
+        <tr>
+          <td>[#if attributeExists(value.@jsonName)]${value.@jsonName}[/#if]</td>
+          <td>[#if attributeExists(value.@typeSchemaId)][#if attributeExists(value.@typeName)][#assign typename=value.@typeName/][#else][#assign typename="(anonymous)"/][/#if]<a href="type_${value.@typeSchemaId}_${typename}.html">${typename}</a>[#elseif attributeExists(value.@typeName)]${value.@typeName}[/#if]</td>
+          <td>${value}</td>
+        </tr>
+        [/#list]
+        </tbody>
+      </table>
+      [/#if]
+    [/@boilerplate]
+  [/@file]
+[/#macro]

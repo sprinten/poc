@@ -1,0 +1,33 @@
+<document xmlns="http://maven.apache.org/DOCUMENT/1.0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DOCUMENT/1.0.1 http://maven.apache.org/xsd/document-1.0.1.xsd" outputName="maven-pdf-plugin">
+
+	<meta>
+		<title>Maven PDF Plugin</title>
+		<author>The Apache Maven Project</author>
+	</meta>
+
+	<toc name="Table of Contents">
+
+		<item name="Introduction" ref="xml/intro.xml" />
+		<item name="Team Members" ref="team-list.html" />
+		<item name="Technical Concept" ref="twiki/concept.twiki" />
+		<item name="Project Info" ref="project-info.html" />
+		<item name="Project Summary" ref="project-summary.html" />
+		<item name="Source Repository" ref="source-repository.html" />
+		<item name="Issue Tracking" ref="issue-tracking.html" />
+		<item name="RESTFul API" ref="api/index.html" />
+		<item name="API with Maven Swagger" ref="strapdown/index.html" />
+		<item name="Java Doc" ref="javadoc/index.html" />
+		<item name="Java Cross Reference" ref="xref/index.html" />
+	</toc>
+
+	<cover>
+		<coverTitle>${project.name}</coverTitle>
+		<coverSubTitle>Generic Model Documentation</coverSubTitle>
+		<coverType>Data Model</coverType>
+		<projectName>${project.name}</projectName>
+		<projectLogo>images/logo.png</projectLogo>
+		<companyName>1&amp;amp;1 Internet Inc.</companyName>
+		<companyLogo>https://au3.uicdn.net/8f3/275ed798a1613b3bb20b9353eaf33/frontend-skin-loki/lg-1and1.png</companyLogo>
+	</cover>
+</document>
