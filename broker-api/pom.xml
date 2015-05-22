@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ymens.broker</groupId>
@@ -36,13 +37,16 @@
 
 	<build>
 		<plugins>
-			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId> <version>1.6</version> <executions> <execution> <id>xjc</id> <goals>
-				<goal>xjc</goal> </goals> </execution> </executions> <configuration> <outputDirectory>${project.basedir}/src/main/generated</outputDirectory> <schemaDirectory>${project.basedir}/src/main/resources/schema/xsd</schemaDirectory>
-				<packageName>com.ymens.broker.api.model.scim</packageName> </configuration> </plugin> <plugin> <groupId>org.jsonschema2pojo</groupId> <artifactId>jsonschema2pojo-maven-plugin</artifactId>
-				<version>0.4.2</version> <configuration> <sourceDirectory>${basedir}/src/main/resources/schema/json</sourceDirectory> <targetPackage>com.ymens.broker.model.json</targetPackage>
-				<outputDirectory>${project.basedir}/src/main/generated</outputDirectory> </configuration> <executions> <execution> <goals> <goal>generate</goal> </goals> </execution>
-				</executions> </plugin> -->
-
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId> 
+				<version>1.6</version> <executions> <execution> <id>xjc</id> <goals> <goal>xjc</goal> 
+				</goals> </execution> </executions> <configuration> <outputDirectory>${project.basedir}/src/main/generated</outputDirectory> 
+				<schemaDirectory>${project.basedir}/src/main/resources/schema/xsd</schemaDirectory> 
+				<packageName>com.ymens.broker.api.model.scim</packageName> </configuration> 
+				</plugin> <plugin> <groupId>org.jsonschema2pojo</groupId> <artifactId>jsonschema2pojo-maven-plugin</artifactId> 
+				<version>0.4.2</version> <configuration> <sourceDirectory>${basedir}/src/main/resources/schema/json</sourceDirectory> 
+				<targetPackage>com.ymens.broker.model.json</targetPackage> <outputDirectory>${project.basedir}/src/main/generated</outputDirectory> 
+				</configuration> <executions> <execution> <goals> <goal>generate</goal> </goals> 
+				</execution> </executions> </plugin> -->
 			<plugin>
 				<groupId>org.codehaus.enunciate</groupId>
 				<artifactId>maven-enunciate-plugin</artifactId>
@@ -83,6 +87,50 @@
 			</plugin>
 
 			<plugin>
+				<groupId>com.github.kongchen</groupId>
+				<artifactId>swagger-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<apiSources>
+						<apiSource>
+							<springmvc>false</springmvc>
+							<locations>com.ymens.broker</locations>
+							<schemes>http,https</schemes>
+							<host>api.ymens.com</host>
+							<basePath>/api</basePath>
+							<info>
+								<title>API Documentation</title>
+								<version>v0.0.1</version>
+								<description>
+									Documentation of the yBorker API
+								</description>
+								<contact>
+									<email>vlad.mihnea@ymens.com</email>
+									<name>Vlad Mihnea</name>
+									<url>http://www.ymens.com</url>
+								</contact>
+								<license>
+									<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+									<name>Apache 2.0</name>
+								</license>
+							</info>
+							<templatePath>${basedir}/src/site/swaggerdoc/mustache/strapdown.html.hbs</templatePath>
+							<outputPath>${basedir}/target/site/swaggerdoc/index.html</outputPath>
+							<swaggerDirectory>${basedir}/target/site/swaggerui</swaggerDirectory>
+						</apiSource>
+					</apiSources>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>site</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
@@ -94,8 +142,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.2</version>
+				<version>3.3</version>
 				<configuration>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
 					<reportPlugins>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
@@ -114,7 +164,19 @@
 						</plugin>
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-jxr-plugin</artifactId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<version>2.10.3</version>
+							<configuration>
+								<stylesheetfile>stylesheet.css</stylesheetfile>
+								<javadocDirectory>${basedir}/src/main/site/javadoc</javadocDirectory>
+
+								<doclet>ydoc.doclets.YStandard</doclet>
+								<docletPath>${basedir}/src/main/site/javadoc/ydoc/lib/ydoc.jar:${basedir}/src/main/site/javadoc/ydoc/lib/styleed.jar:${basedir}/src/main/site/javadoc/ydoc/resources</docletPath>
+								<additionalparam>-umlautogen</additionalparam>
+								<show>public</show>
+								<nohelp>true</nohelp>
+								<useStandardDocletOptions>false</useStandardDocletOptions>
+							</configuration>
 						</plugin>
 					</reportPlugins>
 				</configuration>
@@ -139,8 +201,43 @@
 						<artifactId>velocity</artifactId>
 						<version>1.7</version>
 					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.doxia</groupId>
+						<artifactId>doxia-module-markdown</artifactId>
+						<version>1.5</version>
+					</dependency>
 				</dependencies>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<!-- here the phase you need -->
+						<phase>site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/site/apidocs</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>src/main/site/javadoc</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>*.css</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -436,36 +533,7 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.1</version>
 		</dependency>
-		<dependency>
-			<groupId>com.orientechnologies</groupId>
-			<artifactId>orientdb-enterprise</artifactId>
-			<version>1.6.6</version>
-		</dependency>
-		<dependency>
-			<groupId>com.orientechnologies</groupId>
-			<artifactId>orientdb-server</artifactId>
-			<version>1.6.6</version>
-		</dependency>
-		<dependency>
-			<groupId>com.orientechnologies</groupId>
-			<artifactId>orientdb-client</artifactId>
-			<version>1.6.6</version>
-		</dependency>
-		<dependency>
-			<groupId>com.orientechnologies</groupId>
-			<artifactId>orientdb-object</artifactId>
-			<version>1.6.6</version>
-		</dependency>
-		<dependency>
-			<groupId>com.orientechnologies</groupId>
-			<artifactId>orient-commons</artifactId>
-			<version>1.6.6</version>
-		</dependency>
-		<dependency>
-			<groupId>com.orientechnologies</groupId>
-			<artifactId>orientdb-core</artifactId>
-			<version>1.6.6</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>

@@ -26,8 +26,7 @@
 		<coverSubTitle>Generic Model Documentation</coverSubTitle>
 		<coverType>Data Model</coverType>
 		<projectName>${project.name}</projectName>
-		<projectLogo>images/logo.png</projectLogo>
-		<companyName>1&amp;amp;1 Internet Inc.</companyName>
-		<companyLogo>https://au3.uicdn.net/8f3/275ed798a1613b3bb20b9353eaf33/frontend-skin-loki/lg-1and1.png</companyLogo>
+		<companyName>Ymens</companyName>
+		<companyLogo>images/logo.png</companyLogo>
 	</cover>
 </document>

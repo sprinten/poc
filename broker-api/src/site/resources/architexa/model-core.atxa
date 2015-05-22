@@ -1,0 +1,926 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-ann: <http://www.architexa.com/rdf/ann#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#src_slsite_slresources_slarchitexa_slmodel-core.atxa> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "1" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node19lt6bn2ox1 .
+
+_:node19lt6bn2ox1 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core> ;
+	atxa-core:posX "78" ;
+	atxa-core:posY "441" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Role> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Entitlement> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation> .
+
+_:node19lt6bn2ox1 atxa-core:contains _:node19lt6bn2ox4 .
+
+_:node19lt6bn2ox4 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group> ;
+	atxa-core:posX "281" ;
+	atxa-core:posY "467" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group.displayName> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group.members> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group.parent> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group$Type> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group.groupType> .
+
+_:node19lt6bn2ox29 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lt6bn2ox4 ;
+	rdf:object _:node19lt6bn2ox30 ;
+	atxa-core:bendpoint _:node19lr38gjvx50018 .
+
+_:node19lr38gjvx50018 atxa-core:bpLocation "374,182" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lt6bn2ox29 atxa-core:bendpoint _:node19lr38gjvx50019 .
+
+_:node19lr38gjvx50019 atxa-core:bpLocation "519,182" ;
+	atxa-core:bpIndex "1" .
+
+_:node19lt6bn2ox4 atxa-core:contains _:node19lt6bn2ox33 .
+
+_:node19lt6bn2ox33 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group.displayName> ;
+	atxa-core:posX "282" ;
+	atxa-core:posY "487" .
+
+_:node19lt6bn2ox4 atxa-core:contains _:node19lt6bn2ox34 .
+
+_:node19lt6bn2ox34 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group.members> ;
+	atxa-core:posX "282" ;
+	atxa-core:posY "504" .
+
+_:node19lt6bn2ox35 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node19lt6bn2ox34 ;
+	rdf:object _:node19lt6bn2ox30 ;
+	atxa-core:width "2" ;
+	atxa-core:commentTxt "hasMany" .
+
+_:node19lt6bn2ox4 atxa-core:contains _:node19lt6bn2ox36 .
+
+_:node19lt6bn2ox36 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group.parent> ;
+	atxa-core:posX "282" ;
+	atxa-core:posY "521" .
+
+_:node19lt6bn2ox4 atxa-core:contains _:node19lt6bn2ox37 .
+
+_:node19lt6bn2ox37 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group$Type> ;
+	atxa-core:posX "282" ;
+	atxa-core:posY "555" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group$Type> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group$Type.Organization> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group$Type.Role> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group$Type.Service> .
+
+_:node19lt6bn2ox37 atxa-core:contains _:node19lt6bn2ox38 .
+
+_:node19lt6bn2ox38 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group$Type.Organization> ;
+	atxa-core:posX "283" ;
+	atxa-core:posY "575" .
+
+_:node19lt6bn2ox37 atxa-core:contains _:node19lt6bn2ox39 .
+
+_:node19lt6bn2ox39 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group$Type.Role> ;
+	atxa-core:posX "283" ;
+	atxa-core:posY "592" .
+
+_:node19lt6bn2ox37 atxa-core:contains _:node19lt6bn2ox40 .
+
+_:node19lt6bn2ox40 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group$Type.Service> ;
+	atxa-core:posX "283" ;
+	atxa-core:posY "609" .
+
+_:node19lt6bn2ox4 atxa-core:contains _:node19lt6bn2ox41 .
+
+_:node19lt6bn2ox41 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Group.groupType> ;
+	atxa-core:posX "282" ;
+	atxa-core:posY "538" .
+
+_:node19lt6bn2ox1 atxa-core:contains _:node19lt6bn2ox63 .
+
+_:node19lt6bn2ox63 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User> ;
+	atxa-core:posX "1036" ;
+	atxa-core:posY "662" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.userName> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.entitlements> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.roles> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.manager> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.userType> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.organization> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type> .
+
+_:node19lt6bn2ox64 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lt6bn2ox63 ;
+	rdf:object _:node19lt6bn2ox65 ;
+	atxa-core:bendpoint _:node19lr38gjvx50020 .
+
+_:node19lr38gjvx50020 atxa-core:bpLocation "1120,401" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lt6bn2ox64 atxa-core:bendpoint _:node19lr38gjvx50021 .
+
+_:node19lr38gjvx50021 atxa-core:bpLocation "1002,401" ;
+	atxa-core:bpIndex "1" .
+
+_:node19lt6bn2ox63 atxa-core:contains _:node19lt6bn2ox68 .
+
+_:node19lt6bn2ox68 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.userName> ;
+	atxa-core:posX "1037" ;
+	atxa-core:posY "682" .
+
+_:node19lt6bn2ox63 atxa-core:contains _:node19lt6bn2ox69 .
+
+_:node19lt6bn2ox69 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.entitlements> ;
+	atxa-core:posX "1037" ;
+	atxa-core:posY "699" .
+
+_:node19lt6bn2ox70 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node19lt6bn2ox69 ;
+	rdf:object _:node19lt6bn2ox46 ;
+	atxa-core:width "2" ;
+	atxa-core:commentTxt "hasMany" .
+
+_:node19lt6bn2ox63 atxa-core:contains _:node19lt6bn2ox71 .
+
+_:node19lt6bn2ox71 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.roles> ;
+	atxa-core:posX "1037" ;
+	atxa-core:posY "716" .
+
+_:node19lt6bn2ox63 atxa-core:contains _:node19lt6bn2ox72 .
+
+_:node19lt6bn2ox72 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.manager> ;
+	atxa-core:posX "1037" ;
+	atxa-core:posY "733" .
+
+_:node19lt6bn2ox63 atxa-core:contains _:node19lt6bn2ox75 .
+
+_:node19lt6bn2ox75 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.userType> ;
+	atxa-core:posX "1037" ;
+	atxa-core:posY "750" .
+
+_:node19lt6bn2ox63 atxa-core:contains _:node19lt6bn2ox76 .
+
+_:node19lt6bn2ox76 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User.organization> ;
+	atxa-core:posX "1037" ;
+	atxa-core:posY "767" .
+
+_:node19lt6bn2ox63 atxa-core:contains _:node19lt6bn2ox79 .
+
+_:node19lt6bn2ox79 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type> ;
+	atxa-core:posX "1037" ;
+	atxa-core:posY "784" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type.Customer> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type.Internal> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type.Provider> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type.Reseller> .
+
+_:node19lt6bn2ox79 atxa-core:contains _:node19lt6bn2ox80 .
+
+_:node19lt6bn2ox80 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type.Customer> ;
+	atxa-core:posX "1038" ;
+	atxa-core:posY "804" .
+
+_:node19lt6bn2ox79 atxa-core:contains _:node19lt6bn2ox81 .
+
+_:node19lt6bn2ox81 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type.Internal> ;
+	atxa-core:posX "1038" ;
+	atxa-core:posY "821" .
+
+_:node19lt6bn2ox79 atxa-core:contains _:node19lt6bn2ox82 .
+
+_:node19lt6bn2ox82 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type.Provider> ;
+	atxa-core:posX "1038" ;
+	atxa-core:posY "838" .
+
+_:node19lt6bn2ox79 atxa-core:contains _:node19lt6bn2ox83 .
+
+_:node19lt6bn2ox83 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$User$Type.Reseller> ;
+	atxa-core:posX "1038" ;
+	atxa-core:posY "855" .
+
+_:node19lt6bn2ox1 atxa-core:contains _:node19lt6bn2ox2 .
+
+_:node19lt6bn2ox2 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service> ;
+	atxa-core:posX "84" ;
+	atxa-core:posY "744" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service.displayName> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service.url> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service$Type> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service.serviceType> .
+
+_:node19lt6bn2ox3 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lt6bn2ox2 ;
+	rdf:object _:node19lt6bn2ox4 ;
+	atxa-core:bendpoint _:node19lr38gjvx50022 .
+
+_:node19lr38gjvx50022 atxa-core:bpLocation "170,653" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lt6bn2ox3 atxa-core:bendpoint _:node19lr38gjvx50023 .
+
+_:node19lr38gjvx50023 atxa-core:bpLocation "374,653" ;
+	atxa-core:bpIndex "1" .
+
+_:node19lt6bn2ox2 atxa-core:contains _:node19lt6bn2ox7 .
+
+_:node19lt6bn2ox7 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service.displayName> ;
+	atxa-core:posX "85" ;
+	atxa-core:posY "764" .
+
+_:node19lt6bn2ox2 atxa-core:contains _:node19lt6bn2ox8 .
+
+_:node19lt6bn2ox8 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service.url> ;
+	atxa-core:posX "85" ;
+	atxa-core:posY "781" .
+
+_:node19lt6bn2ox2 atxa-core:contains _:node19lt6bn2ox9 .
+
+_:node19lt6bn2ox9 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service$Type> ;
+	atxa-core:posX "85" ;
+	atxa-core:posY "815" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service$Type> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service$Type.Application> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service$Type.Module> .
+
+_:node19lt6bn2ox9 atxa-core:contains _:node19lt6bn2ox10 .
+
+_:node19lt6bn2ox10 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service$Type.Application> ;
+	atxa-core:posX "86" ;
+	atxa-core:posY "835" .
+
+_:node19lt6bn2ox9 atxa-core:contains _:node19lt6bn2ox11 .
+
+_:node19lt6bn2ox11 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service$Type.Module> ;
+	atxa-core:posX "86" ;
+	atxa-core:posY "852" .
+
+_:node19lt6bn2ox2 atxa-core:contains _:node19lt6bn2ox12 .
+
+_:node19lt6bn2ox12 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Service.serviceType> ;
+	atxa-core:posX "85" ;
+	atxa-core:posY "798" .
+
+_:node19lt6bn2ox1 atxa-core:contains _:node19lt6bn2ox24 .
+
+_:node19lt6bn2ox24 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module> ;
+	atxa-core:posX "84" ;
+	atxa-core:posY "1049" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module.moduleType> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type> .
+
+_:node19lt6bn2ox25 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lt6bn2ox24 ;
+	rdf:object _:node19lt6bn2ox2 ;
+	atxa-core:bendpoint _:node19lr38gjvx50024 .
+
+_:node19lr38gjvx50024 atxa-core:bpLocation "170,896" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lt6bn2ox24 atxa-core:contains _:node19lt6bn2ox27 .
+
+_:node19lt6bn2ox27 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module.moduleType> ;
+	atxa-core:posX "85" ;
+	atxa-core:posY "1069" .
+
+_:node19lt6bn2ox24 atxa-core:contains _:node19lt6bn2ox28 .
+
+_:node19lt6bn2ox28 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type> ;
+	atxa-core:posX "85" ;
+	atxa-core:posY "1086" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type.Customer> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type.Internal> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type.Provider> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type.Reseller> .
+
+_:node19lt6bn2ox28 atxa-core:contains _:node19lr38gjvx50025 .
+
+_:node19lr38gjvx50025 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type.Customer> ;
+	atxa-core:posX "86" ;
+	atxa-core:posY "1106" .
+
+_:node19lt6bn2ox28 atxa-core:contains _:node19lr38gjvx50026 .
+
+_:node19lr38gjvx50026 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type.Internal> ;
+	atxa-core:posX "86" ;
+	atxa-core:posY "1123" .
+
+_:node19lt6bn2ox28 atxa-core:contains _:node19lr38gjvx50027 .
+
+_:node19lr38gjvx50027 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type.Provider> ;
+	atxa-core:posX "86" ;
+	atxa-core:posY "1140" .
+
+_:node19lt6bn2ox28 atxa-core:contains _:node19lr38gjvx50028 .
+
+_:node19lr38gjvx50028 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Module$Type.Reseller> ;
+	atxa-core:posX "86" ;
+	atxa-core:posY "1157" .
+
+_:node19lt6bn2ox1 atxa-core:contains _:node19lr38gjvx50029 .
+
+_:node19lr38gjvx50029 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "912" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit.unitType> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit.address> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit.contact> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType> .
+
+_:node19lr38gjvx41438 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lr38gjvx50029 ;
+	rdf:object _:node19lt6bn2ox4 ;
+	atxa-core:bendpoint _:node19lr38gjvx50030 .
+
+_:node19lr38gjvx50030 atxa-core:bpLocation "516,653" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lr38gjvx41438 atxa-core:bendpoint _:node19lr38gjvx50031 .
+
+_:node19lr38gjvx50031 atxa-core:bpLocation "374,653" ;
+	atxa-core:bpIndex "1" .
+
+_:node19lr38gjvx50029 atxa-core:contains _:node19lr38gjvx50032 .
+
+_:node19lr38gjvx50032 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit.unitType> ;
+	atxa-core:posX "401" ;
+	atxa-core:posY "932" .
+
+_:node19lr38gjvx50029 atxa-core:contains _:node19lr38gjvx50033 .
+
+_:node19lr38gjvx50033 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit.address> ;
+	atxa-core:posX "401" ;
+	atxa-core:posY "949" .
+
+_:node19lr38gjvx50029 atxa-core:contains _:node19lr38gjvx50034 .
+
+_:node19lr38gjvx50034 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit.contact> ;
+	atxa-core:posX "401" ;
+	atxa-core:posY "966" .
+
+_:node19lr38gjvx50029 atxa-core:contains _:node19lr38gjvx50035 .
+
+_:node19lr38gjvx50035 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType> ;
+	atxa-core:posX "401" ;
+	atxa-core:posY "983" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType.ORGANIZATION> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType.DIVISION> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType.DEPARTMENT> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType.TEAM> .
+
+_:node19lr38gjvx50035 atxa-core:contains _:node19lr38gjvx50036 .
+
+_:node19lr38gjvx50036 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType.ORGANIZATION> ;
+	atxa-core:posX "402" ;
+	atxa-core:posY "1003" .
+
+_:node19lr38gjvx50035 atxa-core:contains _:node19lr38gjvx50037 .
+
+_:node19lr38gjvx50037 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType.DIVISION> ;
+	atxa-core:posX "402" ;
+	atxa-core:posY "1020" .
+
+_:node19lr38gjvx50035 atxa-core:contains _:node19lr38gjvx50038 .
+
+_:node19lr38gjvx50038 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType.DEPARTMENT> ;
+	atxa-core:posX "402" ;
+	atxa-core:posY "1037" .
+
+_:node19lr38gjvx50035 atxa-core:contains _:node19lr38gjvx50039 .
+
+_:node19lr38gjvx50039 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Unit$UnitType.TEAM> ;
+	atxa-core:posX "402" ;
+	atxa-core:posY "1054" .
+
+_:node19lt6bn2ox1 atxa-core:contains _:node19lt6bn2ox13 .
+
+_:node19lt6bn2ox13 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application> ;
+	atxa-core:posX "270" ;
+	atxa-core:posY "1097" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application.provider> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application.applicationType> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type> .
+
+_:node19lt6bn2ox14 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lt6bn2ox13 ;
+	rdf:object _:node19lt6bn2ox2 ;
+	atxa-core:bendpoint _:node19lr38gjvx50040 .
+
+_:node19lr38gjvx50040 atxa-core:bpLocation "367,896" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lt6bn2ox14 atxa-core:bendpoint _:node19lr38gjvx50041 .
+
+_:node19lr38gjvx50041 atxa-core:bpLocation "170,896" ;
+	atxa-core:bpIndex "1" .
+
+_:node19lt6bn2ox13 atxa-core:contains _:node19lt6bn2ox17 .
+
+_:node19lt6bn2ox17 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application.provider> ;
+	atxa-core:posX "271" ;
+	atxa-core:posY "1117" .
+
+_:node19lt6bn2ox13 atxa-core:contains _:node19lt6bn2ox18 .
+
+_:node19lt6bn2ox18 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application.applicationType> ;
+	atxa-core:posX "271" ;
+	atxa-core:posY "1134" .
+
+_:node19lt6bn2ox13 atxa-core:contains _:node19lt6bn2ox19 .
+
+_:node19lt6bn2ox19 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type> ;
+	atxa-core:posX "271" ;
+	atxa-core:posY "1151" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type.Hosted> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type.IaaS> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type.PaaS> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type.SaaS> .
+
+_:node19lt6bn2ox19 atxa-core:contains _:node19lt6bn2ox20 .
+
+_:node19lt6bn2ox20 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type.Hosted> ;
+	atxa-core:posX "272" ;
+	atxa-core:posY "1171" .
+
+_:node19lt6bn2ox19 atxa-core:contains _:node19lt6bn2ox21 .
+
+_:node19lt6bn2ox21 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type.IaaS> ;
+	atxa-core:posX "272" ;
+	atxa-core:posY "1188" .
+
+_:node19lt6bn2ox19 atxa-core:contains _:node19lt6bn2ox22 .
+
+_:node19lt6bn2ox22 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type.PaaS> ;
+	atxa-core:posX "272" ;
+	atxa-core:posY "1205" .
+
+_:node19lt6bn2ox19 atxa-core:contains _:node19lt6bn2ox23 .
+
+_:node19lt6bn2ox23 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Application$Type.SaaS> ;
+	atxa-core:posX "272" ;
+	atxa-core:posY "1222" .
+
+_:node19lt6bn2ox1 atxa-core:contains _:node19lt6bn2ox42 .
+
+_:node19lt6bn2ox42 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Role> ;
+	atxa-core:posX "589" ;
+	atxa-core:posY "692" .
+
+_:node19lt6bn2ox43 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lt6bn2ox42 ;
+	rdf:object _:node19lt6bn2ox4 ;
+	atxa-core:bendpoint _:node19lr38gjvx50042 .
+
+_:node19lr38gjvx50042 atxa-core:bpLocation "627,653" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lt6bn2ox43 atxa-core:bendpoint _:node19lr38gjvx50043 .
+
+_:node19lr38gjvx50043 atxa-core:bpLocation "374,653" ;
+	atxa-core:bpIndex "1" .
+
+_:node19lt6bn2ox1 atxa-core:contains _:node19lt6bn2ox46 .
+
+_:node19lt6bn2ox46 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Entitlement> ;
+	atxa-core:posX "749" ;
+	atxa-core:posY "668" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Entitlement> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Entitlement.displayName> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Entitlement.role> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Entitlement.operation> .
+
+_:node19lt6bn2ox47 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lt6bn2ox46 ;
+	rdf:object _:node19lt6bn2ox30 ;
+	atxa-core:bendpoint _:node19lr38gjvx50044 .
+
+_:node19lr38gjvx50044 atxa-core:bpLocation "843,182" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lt6bn2ox47 atxa-core:bendpoint _:node19lr38gjvx50045 .
+
+_:node19lr38gjvx50045 atxa-core:bpLocation "519,182" ;
+	atxa-core:bpIndex "1" .
+
+_:node19lt6bn2ox46 atxa-core:contains _:node19lt6bn2ox50 .
+
+_:node19lt6bn2ox50 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Entitlement.displayName> ;
+	atxa-core:posX "750" ;
+	atxa-core:posY "688" .
+
+_:node19lt6bn2ox46 atxa-core:contains _:node19lt6bn2ox51 .
+
+_:node19lt6bn2ox51 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Entitlement.role> ;
+	atxa-core:posX "750" ;
+	atxa-core:posY "705" .
+
+_:node19lt6bn2ox52 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node19lt6bn2ox51 ;
+	rdf:object _:node19lt6bn2ox42 ;
+	atxa-core:width "2" ;
+	atxa-core:commentTxt "hasOne" .
+
+_:node19lt6bn2ox46 atxa-core:contains _:node19lt6bn2ox53 .
+
+_:node19lt6bn2ox53 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Entitlement.operation> ;
+	atxa-core:posX "750" ;
+	atxa-core:posY "722" .
+
+_:node19lt6bn2ox54 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node19lt6bn2ox53 ;
+	rdf:object _:node19lt6bn2ox55 ;
+	atxa-core:width "2" ;
+	atxa-core:commentTxt "hasOne" .
+
+_:node19lt6bn2ox1 atxa-core:contains _:node19lt6bn2ox55 .
+
+_:node19lt6bn2ox55 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation> ;
+	atxa-core:posX "746" ;
+	atxa-core:posY "798" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.GET> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.POST> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.PUT> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.PATCH> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.DELETE> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.HEAD> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.OPTIONS> .
+
+_:node19lt6bn2ox55 atxa-core:contains _:node19lt6bn2ox56 .
+
+_:node19lt6bn2ox56 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.GET> ;
+	atxa-core:posX "747" ;
+	atxa-core:posY "818" .
+
+_:node19lt6bn2ox55 atxa-core:contains _:node19lt6bn2ox57 .
+
+_:node19lt6bn2ox57 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.POST> ;
+	atxa-core:posX "747" ;
+	atxa-core:posY "835" .
+
+_:node19lt6bn2ox55 atxa-core:contains _:node19lt6bn2ox58 .
+
+_:node19lt6bn2ox58 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.PUT> ;
+	atxa-core:posX "747" ;
+	atxa-core:posY "852" .
+
+_:node19lt6bn2ox55 atxa-core:contains _:node19lt6bn2ox59 .
+
+_:node19lt6bn2ox59 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.PATCH> ;
+	atxa-core:posX "747" ;
+	atxa-core:posY "869" .
+
+_:node19lt6bn2ox55 atxa-core:contains _:node19lt6bn2ox60 .
+
+_:node19lt6bn2ox60 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.DELETE> ;
+	atxa-core:posX "747" ;
+	atxa-core:posY "886" .
+
+_:node19lt6bn2ox55 atxa-core:contains _:node19lt6bn2ox61 .
+
+_:node19lt6bn2ox61 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.HEAD> ;
+	atxa-core:posX "747" ;
+	atxa-core:posY "903" .
+
+_:node19lt6bn2ox55 atxa-core:contains _:node19lt6bn2ox62 .
+
+_:node19lt6bn2ox62 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core$Operation.OPTIONS> ;
+	atxa-core:posX "747" ;
+	atxa-core:posY "920" .
+
+atxa-core:docRoot atxa-core:contains _:node19lt6bn2ox88 .
+
+_:node19lt6bn2ox88 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base> ;
+	atxa-core:posX "430" ;
+	atxa-core:posY "47" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource> .
+
+_:node19lt6bn2ox88 atxa-core:contains _:node19lt6bn2ox30 .
+
+_:node19lt6bn2ox30 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource> ;
+	atxa-core:posX "436" ;
+	atxa-core:posY "73" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource.externalId> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource.id> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource.meta> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource.schemas> .
+
+_:node19lt6bn2ox30 atxa-core:contains _:node19lt6bn2ox89 .
+
+_:node19lt6bn2ox89 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource.externalId> ;
+	atxa-core:posX "437" ;
+	atxa-core:posY "93" .
+
+_:node19lt6bn2ox30 atxa-core:contains _:node19lt6bn2ox90 .
+
+_:node19lt6bn2ox90 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource.id> ;
+	atxa-core:posX "437" ;
+	atxa-core:posY "110" .
+
+_:node19lt6bn2ox30 atxa-core:contains _:node19lt6bn2ox91 .
+
+_:node19lt6bn2ox91 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource.meta> ;
+	atxa-core:posX "437" ;
+	atxa-core:posY "127" .
+
+_:node19lt6bn2ox30 atxa-core:contains _:node19lt6bn2ox92 .
+
+_:node19lt6bn2ox92 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.base$Resource.schemas> ;
+	atxa-core:posX "437" ;
+	atxa-core:posY "144" .
+
+atxa-core:docRoot atxa-core:contains _:node19lt6bn2ox93 .
+
+_:node19lt6bn2ox93 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact> ;
+	atxa-core:posX "903" ;
+	atxa-core:posY "214" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Name> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Address> .
+
+_:node19lt6bn2ox93 atxa-core:contains _:node19lt6bn2ox65 .
+
+_:node19lt6bn2ox65 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact> ;
+	atxa-core:posX "909" ;
+	atxa-core:posY "241" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.name> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.displayName> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.groups> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.organization> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.addresses> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.emails> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.title> .
+
+_:node19lt6bn2ox94 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lt6bn2ox65 ;
+	rdf:object _:node19lt6bn2ox30 ;
+	atxa-core:bendpoint _:node19lr38gjvx50046 .
+
+_:node19lr38gjvx50046 atxa-core:bpLocation "1002,182" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lt6bn2ox94 atxa-core:bendpoint _:node19lr38gjvx50047 .
+
+_:node19lr38gjvx50047 atxa-core:bpLocation "519,182" ;
+	atxa-core:bpIndex "1" .
+
+_:node19lt6bn2ox65 atxa-core:contains _:node19lt6bn2ox97 .
+
+_:node19lt6bn2ox97 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.name> ;
+	atxa-core:posX "910" ;
+	atxa-core:posY "261" .
+
+_:node19lt6bn2ox98 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node19lt6bn2ox97 ;
+	rdf:object _:node19lt6bn2ox99 ;
+	atxa-core:width "2" ;
+	atxa-core:commentTxt "hasOne" .
+
+_:node19lt6bn2ox65 atxa-core:contains _:node19lt6bn2ox100 .
+
+_:node19lt6bn2ox100 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.displayName> ;
+	atxa-core:posX "910" ;
+	atxa-core:posY "278" .
+
+_:node19lt6bn2ox65 atxa-core:contains _:node19lt6bn2ox101 .
+
+_:node19lt6bn2ox101 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.groups> ;
+	atxa-core:posX "910" ;
+	atxa-core:posY "295" .
+
+_:node19lt6bn2ox65 atxa-core:contains _:node19lt6bn2ox102 .
+
+_:node19lt6bn2ox102 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.organization> ;
+	atxa-core:posX "910" ;
+	atxa-core:posY "312" .
+
+_:node19lt6bn2ox65 atxa-core:contains _:node19lt6bn2ox103 .
+
+_:node19lt6bn2ox103 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.addresses> ;
+	atxa-core:posX "910" ;
+	atxa-core:posY "329" .
+
+_:node19lt6bn2ox104 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node19lt6bn2ox103 ;
+	rdf:object _:node19lt6bn2ox105 ;
+	atxa-core:width "2" ;
+	atxa-core:commentTxt "hasMany" .
+
+_:node19lt6bn2ox65 atxa-core:contains _:node19lr38gjvx50048 .
+
+_:node19lr38gjvx50048 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.emails> ;
+	atxa-core:posX "910" ;
+	atxa-core:posY "346" .
+
+_:node19lt6bn2ox65 atxa-core:contains _:node19lr38gjvx50049 .
+
+_:node19lr38gjvx50049 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Contact.title> ;
+	atxa-core:posX "910" ;
+	atxa-core:posY "363" .
+
+_:node19lt6bn2ox93 atxa-core:contains _:node19lt6bn2ox99 .
+
+_:node19lt6bn2ox99 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Name> ;
+	atxa-core:posX "1224" ;
+	atxa-core:posY "240" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Name> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Name.givenName> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Name.familyName> .
+
+_:node19lt6bn2ox99 atxa-core:contains _:node19lt6bn2ox108 .
+
+_:node19lt6bn2ox108 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Name.givenName> ;
+	atxa-core:posX "1225" ;
+	atxa-core:posY "260" .
+
+_:node19lt6bn2ox99 atxa-core:contains _:node19lt6bn2ox109 .
+
+_:node19lt6bn2ox109 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Name.familyName> ;
+	atxa-core:posX "1225" ;
+	atxa-core:posY "277" .
+
+_:node19lt6bn2ox93 atxa-core:contains _:node19lt6bn2ox105 .
+
+_:node19lt6bn2ox105 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Address> ;
+	atxa-core:posX "1213" ;
+	atxa-core:posY "311" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Address> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Address.country> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Address.streetAddress> .
+
+_:node19lt6bn2ox105 atxa-core:contains _:node19lt6bn2ox106 .
+
+_:node19lt6bn2ox106 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Address.country> ;
+	atxa-core:posX "1214" ;
+	atxa-core:posY "331" .
+
+_:node19lt6bn2ox105 atxa-core:contains _:node19lt6bn2ox107 .
+
+_:node19lt6bn2ox107 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.contact$Address.streetAddress> ;
+	atxa-core:posX "1214" ;
+	atxa-core:posY "348" .
+
+atxa-core:docRoot atxa-core:contains _:node19lt6bn2ox110 .
+
+_:node19lt6bn2ox110 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise> ;
+	atxa-core:posX "1218" ;
+	atxa-core:posY "926" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$EnterpriseUser> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$Manager> .
+
+_:node19lt6bn2ox110 atxa-core:contains _:node19lr38gjvx50050 .
+
+_:node19lr38gjvx50050 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$EnterpriseUser> ;
+	atxa-core:posX "1224" ;
+	atxa-core:posY "952" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$EnterpriseUser> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$EnterpriseUser.employeeNumber> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$EnterpriseUser.organization> , <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$EnterpriseUser.manager> .
+
+_:node19lr38gjvx38523 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lr38gjvx50050 ;
+	rdf:object _:node19lt6bn2ox63 ;
+	atxa-core:bendpoint _:node19lr38gjvx50051 .
+
+_:node19lr38gjvx50051 atxa-core:bpLocation "1332,899" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lr38gjvx38523 atxa-core:bendpoint _:node19lr38gjvx50052 .
+
+_:node19lr38gjvx50052 atxa-core:bpLocation "1120,899" ;
+	atxa-core:bpIndex "1" .
+
+_:node19lr38gjvx50050 atxa-core:contains _:node19lr38gjvx50053 .
+
+_:node19lr38gjvx50053 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$EnterpriseUser.employeeNumber> ;
+	atxa-core:posX "1225" ;
+	atxa-core:posY "972" .
+
+_:node19lr38gjvx50050 atxa-core:contains _:node19lr38gjvx50054 .
+
+_:node19lr38gjvx50054 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$EnterpriseUser.organization> ;
+	atxa-core:posX "1225" ;
+	atxa-core:posY "989" .
+
+_:node19lr38gjvx43407 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node19lr38gjvx50054 ;
+	rdf:object _:node19lr38gjvx50029 ;
+	atxa-core:width "2" ;
+	atxa-core:commentTxt "hasOne" .
+
+_:node19lr38gjvx50050 atxa-core:contains _:node19lr38gjvx50055 .
+
+_:node19lr38gjvx50055 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$EnterpriseUser.manager> ;
+	atxa-core:posX "1225" ;
+	atxa-core:posY "1006" .
+
+_:node19lr38gjvx49797 a atxa-core:link ;
+	atxa-core:model atxa-ann:namedRel ;
+	rdf:subject _:node19lr38gjvx50055 ;
+	rdf:object _:node19lt6bn2ox74 ;
+	atxa-core:width "2" ;
+	atxa-core:commentTxt "hasOne" .
+
+_:node19lt6bn2ox110 atxa-core:contains _:node19lt6bn2ox74 .
+
+_:node19lt6bn2ox74 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#com.ybroker.model.core.enterprise$Manager> ;
+	atxa-core:posX "1394" ;
+	atxa-core:posY "1085" .
+
+_:node19lr38gjvx46788 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node19lt6bn2ox74 ;
+	rdf:object _:node19lt6bn2ox65 ;
+	atxa-core:bendpoint _:node19lr38gjvx50056 .
+
+_:node19lr38gjvx50056 atxa-core:bpLocation "1449,401" ;
+	atxa-core:bpIndex "0" .
+
+_:node19lr38gjvx46788 atxa-core:bendpoint _:node19lr38gjvx50057 .
+
+_:node19lr38gjvx50057 atxa-core:bpLocation "1002,401" ;
+	atxa-core:bpIndex "1" .
+
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-ann: <http://www.architexa.com/rdf/ann#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#src_slsite_slresources_slarchitexa_slmodel-core.atxa> a atxa-core:reloFile ;
+	atxa-core:contains _:node19lt6bn2ox33 , _:node19lt6bn2ox34 , _:node19lt6bn2ox36 , _:node19lt6bn2ox38 , _:node19lt6bn2ox39 , _:node19lt6bn2ox40 , _:node19lt6bn2ox37 , _:node19lt6bn2ox41 , _:node19lt6bn2ox4 , _:node19lt6bn2ox68 , _:node19lt6bn2ox69 , _:node19lt6bn2ox71 , _:node19lt6bn2ox72 , _:node19lt6bn2ox75 , _:node19lt6bn2ox76 , _:node19lt6bn2ox80 , _:node19lt6bn2ox81 , _:node19lt6bn2ox82 , _:node19lt6bn2ox83 , _:node19lt6bn2ox79 , _:node19lt6bn2ox63 , _:node19lt6bn2ox7 , _:node19lt6bn2ox8 , _:node19lt6bn2ox10 , _:node19lt6bn2ox11 , _:node19lt6bn2ox9 , _:node19lt6bn2ox12 , _:node19lt6bn2ox2 , _:node19lt6bn2ox27 , _:node19lr38gjvx50025 , _:node19lr38gjvx50026 , _:node19lr38gjvx50027 , _:node19lr38gjvx50028 , _:node19lt6bn2ox28 , _:node19lt6bn2ox24 , _:node19lr38gjvx50032 , _:node19lr38gjvx50033 , _:node19lr38gjvx50034 , _:node19lr38gjvx50036 , _:node19lr38gjvx50037 , _:node19lr38gjvx50038 , _:node19lr38gjvx50039 , _:node19lr38gjvx50035 , _:node19lr38gjvx50029 , _:node19lt6bn2ox17 , _:node19lt6bn2ox18 , _:node19lt6bn2ox20 , _:node19lt6bn2ox21 , _:node19lt6bn2ox22 , _:node19lt6bn2ox23 , _:node19lt6bn2ox19 , _:node19lt6bn2ox13 , _:node19lt6bn2ox42 , _:node19lt6bn2ox50 , _:node19lt6bn2ox51 , _:node19lt6bn2ox53 , _:node19lt6bn2ox46 , _:node19lt6bn2ox56 , _:node19lt6bn2ox57 , _:node19lt6bn2ox58 , _:node19lt6bn2ox59 , _:node19lt6bn2ox60 , _:node19lt6bn2ox61 , _:node19lt6bn2ox62 , _:node19lt6bn2ox55 , _:node19lt6bn2ox1 , _:node19lt6bn2ox89 , _:node19lt6bn2ox90 , _:node19lt6bn2ox91 , _:node19lt6bn2ox92 , _:node19lt6bn2ox30 , _:node19lt6bn2ox88 , _:node19lt6bn2ox97 , _:node19lt6bn2ox100 , _:node19lt6bn2ox101 , _:node19lt6bn2ox102 , _:node19lt6bn2ox103 , _:node19lr38gjvx50048 , _:node19lr38gjvx50049 , _:node19lt6bn2ox65 , _:node19lt6bn2ox108 , _:node19lt6bn2ox109 , _:node19lt6bn2ox99 , _:node19lt6bn2ox106 , _:node19lt6bn2ox107 , _:node19lt6bn2ox105 , _:node19lt6bn2ox93 , _:node19lr38gjvx50053 , _:node19lr38gjvx50054 , _:node19lr38gjvx50055 , _:node19lr38gjvx50050 , _:node19lt6bn2ox74 , _:node19lt6bn2ox110 , atxa-core:docRoot , _:node19lt6bn2ox33 , _:node19lt6bn2ox34 , _:node19lt6bn2ox36 , _:node19lt6bn2ox38 , _:node19lt6bn2ox39 , _:node19lt6bn2ox40 , _:node19lt6bn2ox37 , _:node19lt6bn2ox41 , _:node19lt6bn2ox4 , _:node19lt6bn2ox68 , _:node19lt6bn2ox69 , _:node19lt6bn2ox71 , _:node19lt6bn2ox72 , _:node19lt6bn2ox75 , _:node19lt6bn2ox76 , _:node19lt6bn2ox80 , _:node19lt6bn2ox81 , _:node19lt6bn2ox82 , _:node19lt6bn2ox83 , _:node19lt6bn2ox79 , _:node19lt6bn2ox63 , _:node19lt6bn2ox7 , _:node19lt6bn2ox8 , _:node19lt6bn2ox10 , _:node19lt6bn2ox11 , _:node19lt6bn2ox9 , _:node19lt6bn2ox12 , _:node19lt6bn2ox2 , _:node19lt6bn2ox27 , _:node19lr38gjvx50025 , _:node19lr38gjvx50026 , _:node19lr38gjvx50027 , _:node19lr38gjvx50028 , _:node19lt6bn2ox28 , _:node19lt6bn2ox24 , _:node19lr38gjvx50032 , _:node19lr38gjvx50033 , _:node19lr38gjvx50034 , _:node19lr38gjvx50036 , _:node19lr38gjvx50037 , _:node19lr38gjvx50038 , _:node19lr38gjvx50039 , _:node19lr38gjvx50035 , _:node19lr38gjvx50029 , _:node19lt6bn2ox17 , _:node19lt6bn2ox18 , _:node19lt6bn2ox20 , _:node19lt6bn2ox21 , _:node19lt6bn2ox22 , _:node19lt6bn2ox23 , _:node19lt6bn2ox19 , _:node19lt6bn2ox13 , _:node19lt6bn2ox42 , _:node19lt6bn2ox50 , _:node19lt6bn2ox51 , _:node19lt6bn2ox53 , _:node19lt6bn2ox46 , _:node19lt6bn2ox56 , _:node19lt6bn2ox57 , _:node19lt6bn2ox58 , _:node19lt6bn2ox59 , _:node19lt6bn2ox60 , _:node19lt6bn2ox61 , _:node19lt6bn2ox62 , _:node19lt6bn2ox55 , _:node19lt6bn2ox1 , _:node19lt6bn2ox89 , _:node19lt6bn2ox90 , _:node19lt6bn2ox91 , _:node19lt6bn2ox92 , _:node19lt6bn2ox30 , _:node19lt6bn2ox88 , _:node19lt6bn2ox97 , _:node19lt6bn2ox100 , _:node19lt6bn2ox101 , _:node19lt6bn2ox102 , _:node19lt6bn2ox103 , _:node19lr38gjvx50048 , _:node19lr38gjvx50049 , _:node19lt6bn2ox65 , _:node19lt6bn2ox108 , _:node19lt6bn2ox109 , _:node19lt6bn2ox99 , _:node19lt6bn2ox106 , _:node19lt6bn2ox107 , _:node19lt6bn2ox105 , _:node19lt6bn2ox93 , _:node19lr38gjvx50053 , _:node19lr38gjvx50054 , _:node19lr38gjvx50055 , _:node19lr38gjvx50050 , _:node19lt6bn2ox74 , _:node19lt6bn2ox110 , atxa-core:docRoot , _:node19lt6bn2ox29 , _:node19lt6bn2ox35 , _:node19lt6bn2ox64 , _:node19lt6bn2ox70 , _:node19lt6bn2ox3 , _:node19lt6bn2ox25 , _:node19lr38gjvx41438 , _:node19lt6bn2ox14 , _:node19lt6bn2ox43 , _:node19lt6bn2ox47 , _:node19lt6bn2ox52 , _:node19lt6bn2ox54 , _:node19lt6bn2ox94 , _:node19lt6bn2ox98 , _:node19lt6bn2ox104 , _:node19lr38gjvx38523 , _:node19lr38gjvx43407 , _:node19lr38gjvx49797 , _:node19lr38gjvx46788 , _:node19lt6bn2ox29 , _:node19lt6bn2ox35 , _:node19lt6bn2ox64 , _:node19lt6bn2ox70 , _:node19lt6bn2ox3 , _:node19lt6bn2ox25 , _:node19lr38gjvx41438 , _:node19lt6bn2ox14 , _:node19lt6bn2ox43 , _:node19lt6bn2ox47 , _:node19lt6bn2ox52 , _:node19lt6bn2ox54 , _:node19lt6bn2ox94 , _:node19lt6bn2ox98 , _:node19lt6bn2ox104 , _:node19lr38gjvx38523 , _:node19lr38gjvx43407 , _:node19lr38gjvx49797 , _:node19lr38gjvx46788 .
+

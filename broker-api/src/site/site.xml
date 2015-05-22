@@ -41,6 +41,7 @@
     <body>
         <menu name="Overview">
         	<item name="Introduction" href="index.html"/>
+        	<item name="Concept" href="concept.html"/>
 			<item name="Team Members" href="team-list.html" />
       		<item name="Project Info" href="project-info.html" />
 		</menu>
@@ -53,7 +54,7 @@
         	<item name="RESTFul API" href="api/index.html"/>
         	<item name="API with Maven Swagger" href="strapdown/index.html"/>
         	<item name="Swagger Doc" href="swaggerdoc/index.html"/>
-            <item name="Java Doc" href="javadoc/index.html"/>
+            <item name="Java Doc" href="apidocs/index.html"/>
       		<item name="Java Cross Reference" href="xref/index.html"/>
 		</menu>
     </body>
