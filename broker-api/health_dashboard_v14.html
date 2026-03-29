@@ -1103,7 +1103,7 @@ function initSleep(){
 
   // Seasonal
   const ss=D.sleep_seasonal||[];
-  mc('cSlSeason',{type:'bar',data:{labels:ss.map(s=>s.month),datasets:[{data:ss.map(s=>s.avg),backgroundColor:ss.map(s=>s.avg>=7?cfill(cv('--emerald'),0.55):s.avg>=6.5?cfill(cv('--cyan'),0.45):cfill(cv('--rose'),0.55)),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:5}}}});
+  mc('cSlSeason',{type:'bar',data:{labels:ss.map(s=>s.month),datasets:[{data:ss.map(s=>s.avg),backgroundColor:ss.map(s=>s.avg>=7?cfill(cv('--emerald'),0.55):s.avg>=6.5?cfill(cv('--amber'),0.55):cfill(cv('--rose'),0.55)),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:5}}}});
 
   // Bedtime/Waketime
   const bd=D.sleep_bedtime_dist||[];
@@ -1302,7 +1302,7 @@ function initNut(){
 
   // DOW calories & protein
   const dc=D.nutrition_dow_cal||[],dp=D.nutrition_dow_prot||[];
-  mc('cCalDow',{type:'bar',data:{labels:dc.map(d=>d.day),datasets:[{data:dc.map(d=>d.avg),backgroundColor:dc.map(d=>d.avg>T.calories*1.15?cfill(cv('--rose'),0.6):cfill(cv('--cyan'),0.5)),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'kcal'}}}}});
+  mc('cCalDow',{type:'bar',data:{labels:dc.map(d=>d.day),datasets:[{data:dc.map(d=>d.avg),backgroundColor:dc.map(d=>d.avg>T.calories*1.15?cfill(cv('--rose'),0.55):cfill(cv('--cyan'),0.45)),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'kcal'}}}}});
   mc('cProtDow',{type:'bar',data:{labels:dp.map(d=>d.day),datasets:[{data:dp.map(d=>d.avg),backgroundColor:dp.map(d=>d.avg>=T.protein*0.85?cfill(cv('--emerald'),0.5):cfill(cv('--rose'),0.5)),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'g'}}}}});
 
   // Eating window scatter
@@ -1315,14 +1315,14 @@ function initNut(){
 
   // Calorie distribution histogram
   const ch=D.nutrition_cal_hist||[];
-  mc('cCalHist',{type:'bar',data:{labels:ch.map(c=>c.label),datasets:[{data:ch.map(c=>c.count),backgroundColor:ch.map(c=>c.label.includes('2,000')||c.label.includes('2,300')?cfill(cv('--emerald'),0.5):cfill(cv('--cyan'),0.4)),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'Days'}}}}});
+  mc('cCalHist',{type:'bar',data:{labels:ch.map(c=>c.label),datasets:[{data:ch.map(c=>c.count),backgroundColor:ch.map(c=>c.label.includes('2,000')||c.label.includes('2,300')?cfill(cv('--emerald'),0.55):cfill(cv('--cyan'),0.45)),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'Days'}}}}});
 
   // Monthly macro trend
   const mt=D.nutrition_monthly_macro||[];
   mc('cMacroTrend',{type:'bar',data:{labels:mt.map(m=>m.month),datasets:[{label:'Protein',data:mt.map(m=>m.protein),backgroundColor:cfill(cv('--cyan'),0.6),borderRadius:3},{label:'Carbs',data:mt.map(m=>m.carbs),backgroundColor:cfill(cv('--emerald'),0.5),borderRadius:3},{label:'Fat',data:mt.map(m=>m.fat),backgroundColor:cfill(cv('--amber'),0.5),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxRotation:45}},y:{title:{display:true,text:'g'}}}}});
 
   // Daily calories
-  mc('cCalDaily',{type:'bar',data:{labels:nd.map(d=>d.date),datasets:[{data:nd.map(d=>d['Energy (kcal)']),backgroundColor:nd.map(d=>d['Energy (kcal)']>T.calories*1.2?cfill(cv('--rose'),0.5):d['Energy (kcal)']<T.calories*0.7?cfill(cv('--amber'),0.5):cfill(cv('--cyan'),0.4)),borderRadius:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{type:'time',time:{unit:'month'}},y:{title:{display:true,text:'kcal'}}}}});
+  mc('cCalDaily',{type:'bar',data:{labels:nd.map(d=>d.date),datasets:[{data:nd.map(d=>d['Energy (kcal)']),backgroundColor:nd.map(d=>d['Energy (kcal)']>T.calories*1.2?cfill(cv('--rose'),0.55):d['Energy (kcal)']<T.calories*0.7?cfill(cv('--amber'),0.55):cfill(cv('--cyan'),0.45)),borderRadius:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{type:'time',time:{unit:'month'}},y:{title:{display:true,text:'kcal'}}}}});
   mc('cProtTrend',{type:'line',data:{labels:nd.map(d=>d.date),datasets:[{label:'Protein',data:nd.map(d=>d['Protein (g)']),borderColor:cv('--cyan'),backgroundColor:cfill(cv('--cyan'),0.08),fill:true}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{type:'time',time:{unit:'month'}},y:{title:{display:true,text:'g'}}}}});
 
   // Balance
