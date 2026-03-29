@@ -1069,11 +1069,11 @@ function initSleep(){
   const sl=D.sleep_stages;
   // Distribution histogram
   const hst=D.sleep_hist||[];
-  mc('cSleepDist',{type:'bar',data:{labels:hst.map(h=>h.mid),datasets:[{data:hst.map(h=>h.count),backgroundColor:hst.map(h=>h.mid<6?cfill(cv('--rose'),0.6):h.mid<7?cfill(cv('--amber'),0.5):cfill(cv('--cyan'),0.5)),borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{title:{display:true,text:'Hours'}},y:{title:{display:true,text:'Nights'}}}}});
+  mc('cSleepDist',{type:'bar',data:{labels:hst.map(h=>h.mid),datasets:[{data:hst.map(h=>h.count),backgroundColor:hst.map(h=>h.mid<6?cfill(cv('--rose'),0.55):h.mid<7?cfill(cv('--amber'),0.55):cfill(cv('--emerald'),0.55)),borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{title:{display:true,text:'Hours'}},y:{title:{display:true,text:'Nights'}}}}});
 
   // Monthly
   const sm=D.sleep_monthly||[];
-  mc('cSleepMonthly',{type:'bar',data:{labels:sm.map(m=>m.month),datasets:[{data:sm.map(m=>m.avg),backgroundColor:sm.map(m=>m.avg>=7?cfill(cv('--emerald'),0.5):cfill(cv('--cyan'),0.4)),borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{maxRotation:45}},y:{min:4,max:9,title:{display:true,text:'Hours'}}}}});
+  mc('cSleepMonthly',{type:'bar',data:{labels:sm.map(m=>m.month),datasets:[{data:sm.map(m=>m.avg),backgroundColor:sm.map(m=>m.avg>=7?cfill(cv('--emerald'),0.55):cfill(cv('--cyan'),0.45)),borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{maxRotation:45}},y:{min:4,max:9,title:{display:true,text:'Hours'}}}}});
 
   // Stage pie
   const aD=sl.reduce((a,d)=>a+(d.deep_pct||0),0)/sl.length,aR=sl.reduce((a,d)=>a+(d.rem_pct||0),0)/sl.length,aL=sl.reduce((a,d)=>a+(d.light_pct||0),0)/sl.length;
@@ -1084,14 +1084,14 @@ function initSleep(){
 
   // Yearly
   const sy=D.sleep_yearly||[];
-  mc('cSleepYearly',{type:'bar',data:{labels:sy.map(y=>y.year),datasets:[{label:'Avg',data:sy.map(y=>y.avg),backgroundColor:sy.map(y=>y.avg>=7?cfill(cv('--emerald'),0.6):cfill(cv('--cyan'),0.5)),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:5,max:8}}}});
+  mc('cSleepYearly',{type:'bar',data:{labels:sy.map(y=>y.year),datasets:[{label:'Avg',data:sy.map(y=>y.avg),backgroundColor:sy.map(y=>y.avg>=7?cfill(cv('--emerald'),0.65):cfill(cv('--cyan'),0.55)),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:5,max:8}}}});
 
   // Rolling 30
   const r30=D.sleep_rolling30||[];
   mc('cRolling30',{type:'line',data:{labels:r30.map(d=>d.date),datasets:[{label:'30-night avg',data:r30.map(d=>d.avg),borderColor:cv('--cyan'),backgroundColor:cfill(cv('--cyan'),0.06),fill:true}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{type:'time',time:{unit:'quarter'}},y:{min:4,max:9}}}});
 
   // Timeline (monthly bars colored)
-  mc('cSleepTimeline',{type:'bar',data:{labels:sm.map(m=>m.month),datasets:[{data:sm.map(m=>m.avg),backgroundColor:sm.map(m=>m.avg>=7?cfill(cv('--emerald'),0.5):cfill(cv('--cyan'),0.4)),borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{maxRotation:45}},y:{min:4,max:9}}}});
+  mc('cSleepTimeline',{type:'bar',data:{labels:sm.map(m=>m.month),datasets:[{data:sm.map(m=>m.avg),backgroundColor:sm.map(m=>m.avg>=7?cfill(cv('--emerald'),0.55):cfill(cv('--cyan'),0.45)),borderRadius:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{maxRotation:45}},y:{min:4,max:9}}}});
 
   // Sleep HR
   const hr=sl.filter(d=>d.sleep_hr_avg);
@@ -1099,11 +1099,11 @@ function initSleep(){
 
   // DOW
   const sd=D.sleep_dow||[];
-  mc('cSlDow',{type:'bar',data:{labels:sd.map(d=>d.day),datasets:[{data:sd.map(d=>d.avg),backgroundColor:sd.map(d=>d.avg<6.5?cv('--rose'):d.avg<7?cv('--amber'):cv('--cyan')),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:5}}}});
+  mc('cSlDow',{type:'bar',data:{labels:sd.map(d=>d.day),datasets:[{data:sd.map(d=>d.avg),backgroundColor:sd.map(d=>d.avg<6.5?cfill(cv('--rose'),0.65):d.avg<7?cfill(cv('--amber'),0.65):cfill(cv('--emerald'),0.65)),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:5}}}});
 
   // Seasonal
   const ss=D.sleep_seasonal||[];
-  mc('cSlSeason',{type:'bar',data:{labels:ss.map(s=>s.month),datasets:[{data:ss.map(s=>s.avg),backgroundColor:ss.map(s=>s.avg>=7?cfill(cv('--emerald'),0.5):s.avg>=6.5?cfill(cv('--cyan'),0.4):cfill(cv('--rose'),0.5)),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:5}}}});
+  mc('cSlSeason',{type:'bar',data:{labels:ss.map(s=>s.month),datasets:[{data:ss.map(s=>s.avg),backgroundColor:ss.map(s=>s.avg>=7?cfill(cv('--emerald'),0.55):s.avg>=6.5?cfill(cv('--amber'),0.55):cfill(cv('--rose'),0.55)),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{min:5}}}});
 
   // Bedtime/Waketime
   const bd=D.sleep_bedtime_dist||[];
@@ -1124,7 +1124,7 @@ function initSleep(){
 
 function initAct(){
   const r=tsR.filter(d=>d.steps);
-  mc('cActSteps',{type:'bar',data:{labels:r.map(d=>d.date),datasets:[{data:r.map(d=>d.steps),backgroundColor:r.map(d=>(d.steps||0)>=8000?cfill(cv('--emerald'),0.5):cfill(cv('--cyan'),0.4)),borderRadius:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{type:'time',time:{unit:'month'}},y:{title:{display:true,text:'Steps'}}}}});
+  mc('cActSteps',{type:'bar',data:{labels:r.map(d=>d.date),datasets:[{data:r.map(d=>d.steps),backgroundColor:r.map(d=>(d.steps||0)>=8000?cfill(cv('--emerald'),0.55):cfill(cv('--cyan'),0.45)),borderRadius:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{type:'time',time:{unit:'month'}},y:{title:{display:true,text:'Steps'}}}}});
   const sh=D.activity_step_hist||[];
   mc('cStepHist',{type:'bar',data:{labels:sh.map(s=>s.label),datasets:[{data:sh.map(s=>s.count),backgroundColor:CC,borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'Days'}}}}});
   mc('cActDist',{type:'line',data:{labels:r.map(d=>d.date),datasets:[{label:'Distance (km)',data:r.map(d=>d.distance_m?d.distance_m/1000:null),borderColor:cv('--cyan'),yAxisID:'y'},{label:'Move Min',data:r.map(d=>d.move_minutes),borderColor:cv('--amber'),yAxisID:'y1'}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{type:'time',time:{unit:'month'}},y:{position:'left',title:{display:true,text:'km'}},y1:{position:'right',title:{display:true,text:'min'},grid:{drawOnChartArea:false}}}}});
@@ -1302,7 +1302,7 @@ function initNut(){
 
   // DOW calories & protein
   const dc=D.nutrition_dow_cal||[],dp=D.nutrition_dow_prot||[];
-  mc('cCalDow',{type:'bar',data:{labels:dc.map(d=>d.day),datasets:[{data:dc.map(d=>d.avg),backgroundColor:dc.map(d=>d.avg>T.calories*1.15?cfill(cv('--rose'),0.6):cfill(cv('--cyan'),0.5)),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'kcal'}}}}});
+  mc('cCalDow',{type:'bar',data:{labels:dc.map(d=>d.day),datasets:[{data:dc.map(d=>d.avg),backgroundColor:dc.map(d=>d.avg>T.calories*1.15?cfill(cv('--rose'),0.55):cfill(cv('--cyan'),0.45)),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'kcal'}}}}});
   mc('cProtDow',{type:'bar',data:{labels:dp.map(d=>d.day),datasets:[{data:dp.map(d=>d.avg),backgroundColor:dp.map(d=>d.avg>=T.protein*0.85?cfill(cv('--emerald'),0.5):cfill(cv('--rose'),0.5)),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'g'}}}}});
 
   // Eating window scatter
@@ -1315,14 +1315,14 @@ function initNut(){
 
   // Calorie distribution histogram
   const ch=D.nutrition_cal_hist||[];
-  mc('cCalHist',{type:'bar',data:{labels:ch.map(c=>c.label),datasets:[{data:ch.map(c=>c.count),backgroundColor:ch.map(c=>c.label.includes('2,000')||c.label.includes('2,300')?cfill(cv('--emerald'),0.5):cfill(cv('--cyan'),0.4)),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'Days'}}}}});
+  mc('cCalHist',{type:'bar',data:{labels:ch.map(c=>c.label),datasets:[{data:ch.map(c=>c.count),backgroundColor:ch.map(c=>c.label.includes('2,000')||c.label.includes('2,300')?cfill(cv('--emerald'),0.55):cfill(cv('--cyan'),0.45)),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'Days'}}}}});
 
   // Monthly macro trend
   const mt=D.nutrition_monthly_macro||[];
   mc('cMacroTrend',{type:'bar',data:{labels:mt.map(m=>m.month),datasets:[{label:'Protein',data:mt.map(m=>m.protein),backgroundColor:cfill(cv('--cyan'),0.6),borderRadius:3},{label:'Carbs',data:mt.map(m=>m.carbs),backgroundColor:cfill(cv('--emerald'),0.5),borderRadius:3},{label:'Fat',data:mt.map(m=>m.fat),backgroundColor:cfill(cv('--amber'),0.5),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{ticks:{maxRotation:45}},y:{title:{display:true,text:'g'}}}}});
 
   // Daily calories
-  mc('cCalDaily',{type:'bar',data:{labels:nd.map(d=>d.date),datasets:[{data:nd.map(d=>d['Energy (kcal)']),backgroundColor:nd.map(d=>d['Energy (kcal)']>T.calories*1.2?cfill(cv('--rose'),0.5):d['Energy (kcal)']<T.calories*0.7?cfill(cv('--amber'),0.5):cfill(cv('--cyan'),0.4)),borderRadius:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{type:'time',time:{unit:'month'}},y:{title:{display:true,text:'kcal'}}}}});
+  mc('cCalDaily',{type:'bar',data:{labels:nd.map(d=>d.date),datasets:[{data:nd.map(d=>d['Energy (kcal)']),backgroundColor:nd.map(d=>d['Energy (kcal)']>T.calories*1.2?cfill(cv('--rose'),0.55):d['Energy (kcal)']<T.calories*0.7?cfill(cv('--amber'),0.55):cfill(cv('--cyan'),0.45)),borderRadius:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{type:'time',time:{unit:'month'}},y:{title:{display:true,text:'kcal'}}}}});
   mc('cProtTrend',{type:'line',data:{labels:nd.map(d=>d.date),datasets:[{label:'Protein',data:nd.map(d=>d['Protein (g)']),borderColor:cv('--cyan'),backgroundColor:cfill(cv('--cyan'),0.08),fill:true}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{type:'time',time:{unit:'month'}},y:{title:{display:true,text:'g'}}}}});
 
   // Balance
@@ -1946,14 +1946,14 @@ function initInsights(panel){
       data:{labels:['Sleep','Activity','Nutrition','Training','Vitals','Biomarkers'],
         datasets:[{
           data:[sc.sleep,sc.activity,sc.nutrition,sc.training,sc.vitals,sc.biomarkers],
-          backgroundColor:cfill(cv('--cyan'),0.1),borderColor:cv('--cyan'),borderWidth:2,
-          pointBackgroundColor:[cv('--rose'),cv('--amber'),cv('--cyan'),cv('--violet'),cv('--emerald'),cv('--sky')],
+          backgroundColor:cfill(cv('--cyan'),0.15),borderColor:cfill(cv('--cyan'),0.7),borderWidth:2,
+          pointBackgroundColor:[cv('--rose'),cv('--amber'),cv('--cyan'),cv('--violet'),cv('--emerald'),cv('--sky')],pointBorderColor:[cv('--rose'),cv('--amber'),cv('--cyan'),cv('--violet'),cv('--emerald'),cv('--sky')],pointBorderWidth:2,
           pointRadius:5,pointHoverRadius:7,fill:true
         }]},
       options:{responsive:true,maintainAspectRatio:false,
         plugins:{legend:{display:false},tooltip:{backgroundColor:cv('--tooltip-bg'),borderColor:cv('--tooltip-border'),borderWidth:1,titleColor:cv('--text'),bodyColor:cv('--text2'),padding:10}},
         scales:{r:{min:0,max:100,grid:{color:cv('--chart-grid')},ticks:{display:false,stepSize:25},
-          pointLabels:{color:cv('--text2'),font:{size:11,weight:'600'}},angleLines:{color:cv('--chart-grid')}}}}});}
+          pointLabels:{color:[cv('--rose'),cv('--amber'),cv('--cyan'),cv('--violet'),cv('--emerald'),cv('--sky')],font:{size:12,weight:'600'}},angleLines:{color:cv('--chart-grid')}}}}});}
 
   // Domain cards
   const dg=document.getElementById('inDomainGrid');
