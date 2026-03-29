@@ -469,7 +469,7 @@ function tEl(v,lowerIsBetter,unit='',label=''){
 function tElRaw(text,cls='nt'){return`<span class="stat-trend ${cls}">${text}</span>`;}
 const CS=getComputedStyle(document.documentElement);
 const cv=v=>CS.getPropertyValue(v).trim();
-const cfill=(c,a=0.12)=>{if(c.startsWith('#')){const h=c.slice(1);const n=h.length===3?[h[0]+h[0],h[1]+h[1],h[2]+h[2]]:[h.slice(0,2),h.slice(2,4),h.slice(4,6)];return `rgba(${parseInt(n[0],16)},${parseInt(n[1],16)},${parseInt(n[2],16)},${a})`;}const m=c.match(/\d+/g);return m?`rgba(${m[0]},${m[1]},${m[2]},${a})`:c;};
+const cfill=(c,a=0.12)=>{if(c.startsWith('#')){const h=c.slice(1);const n=h.length===3?[h[0]+h[0],h[1]+h[1],h[2]+h[2]]:[h.slice(0,2),h.slice(2,4),h.slice(4,6)];return `rgba(${parseInt(n[0],16)},${parseInt(n[1],16)},${parseInt(n[2],16)},${a})`;}if(c.startsWith('hsla'))return c.replace(/,\s*[\d.]+\)$/,`,${a})`);if(c.startsWith('hsl'))return c.replace('hsl(','hsla(').replace(')',`,${a})`);const m=c.match(/\d+/g);return m?`rgba(${m[0]},${m[1]},${m[2]},${a})`:c;};
 const CC=[cv('--cyan'),cv('--rose'),cv('--violet'),cv('--emerald'),cv('--amber'),cv('--sky')];
 Chart.defaults.color=cv('--text3');Chart.defaults.borderColor=cv('--chart-grid');
 Chart.defaults.font.family=cv('--font');Chart.defaults.font.size=11;
@@ -2492,7 +2492,7 @@ function bwDrawCatChart(catKey){
     const{dMin,dMax}=m,range=dMax-dMin;
     const data=sortedDates.map(d=>{const pt=m.vals.find(v=>v.d===d&&v.v!==null);return pt?+((pt.v-dMin)/range*100).toFixed(1):null;});
     const lp=bwLatest(m),z=bwZoneFor(lp?.v,m.zones),col=bwZoneColor(z);
-    return{label:m.name,data,borderColor:col,backgroundColor:col+'18',borderWidth:2,pointRadius:3.5,pointHoverRadius:5.5,tension:0.35,fill:false,spanGaps:true};
+    return{label:m.name,data,borderColor:col,backgroundColor:cfill(col,0.09),borderWidth:2,pointRadius:3.5,pointHoverRadius:5.5,tension:0.35,fill:false,spanGaps:true};
   });
   _bwCatCharts[catKey]=new Chart(ctx,{type:'line',data:{labels:sortedDates,datasets},
     options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
