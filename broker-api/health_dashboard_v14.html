@@ -12,19 +12,18 @@
 <style>
 :root{
 /* semantic palette — source of truth */
---success:#00C48C;--info:#5ca8e8;--warning:#f5a623;--critical:#ff8a8a;--highlight:#b580f0;--aux:#38bdf8;
+--success:#00C48C;--info:#5ca8e8;--warning:#f5a623;--critical:#ff8a8a;--highlight:#b580f0;
 /* accent aliases */
---accent1:var(--info);--accent2:var(--critical);--accent3:var(--warning);--accent4:var(--highlight);--accent5:var(--success);--accent6:var(--aux);
---accent1-dim:rgba(92,168,232,0.1);--accent2-dim:rgba(255,138,138,0.1);--accent3-dim:rgba(245,166,35,0.1);--accent4-dim:rgba(181,128,240,0.1);--accent5-dim:rgba(0,196,140,0.1);--accent6-dim:rgba(56,189,248,0.1);
+--accent1:var(--info);--accent2:var(--critical);--accent3:var(--warning);--accent4:var(--highlight);--accent5:var(--success);
+--accent1-dim:rgba(92,168,232,0.1);--accent2-dim:rgba(255,138,138,0.1);--accent3-dim:rgba(245,166,35,0.1);--accent4-dim:rgba(181,128,240,0.1);--accent5-dim:rgba(0,196,140,0.1);
 --accent1-border:rgba(94,165,237,0.25);--accent2-border:rgba(236,120,120,0.25);--accent3-border:rgba(249,146,56,0.25);--accent4-border:rgba(182,140,242,0.25);--accent5-border:rgba(0,204,129,0.25);
---accent1-light:#7ec8e3;--accent5-bright:#5BEDB3;
 /* surfaces */
---bg:#111a27;--surface:#17202e;--card:#1e2733;--card2:#181f29;
+--bg:#111a27;--surface:#17202e;--card:#1e2733;
 --border:#2d3a4c;--border-hover:#4c617f;--border-soft:rgba(45,58,76,0.4);
 /* text */
 --text:#e8eef6;--text2:#a3b4c8;--text3:#6b7f99;
 /* ui tokens */
---primary:#3074e2;--secondary:#ef8e8e;--accent:#b68cf2;--white:#fff;--neutral:#9aabbf;
+--white:#fff;--neutral:#9aabbf;
 --radius:8px;--track:rgba(57,73,95,0.5);--row-hover:rgba(94,165,237,0.03);--zone-empty:rgba(255,255,255,0.03);
 /* chart tokens */
 --chart-grid:rgba(36,44,55,0.6);--chart-tick:rgba(148,163,184,0.75);--tooltip-bg:rgba(15,23,42,0.9);--tooltip-border:rgba(71,85,105,0.6);
@@ -43,7 +42,7 @@ body{font-family:var(--font);font-weight:500;background:var(--bg);color:var(--te
 .sidebar-nav{padding:12px;flex:1;display:flex;flex-direction:column;gap:2px}
 .sidebar-btn{display:flex;align-items:center;gap:10px;padding:10px 14px;border:none;background:none;color:var(--text3);font-family:var(--font);font-size:0.82rem;font-weight:600;cursor:pointer;border-radius:8px;transition:all .15s;text-align:left;width:100%}
 .sidebar-btn:hover{color:var(--text);background:var(--surface)}
-.sidebar-btn.active{color:var(--white);background:var(--primary)}
+.sidebar-btn.active{color:var(--white);background:var(--info)}
 .sidebar-btn .sb-icon{width:20px;text-align:center;font-size:14px}
 .sidebar-footer{padding:16px;border-top:1px solid var(--border);font-size:9px;color:var(--text3);line-height:1.5}
 .main-wrap{margin-left:220px;flex:1;position:relative;z-index:1}
@@ -63,7 +62,7 @@ body{font-family:var(--font);font-weight:500;background:var(--bg);color:var(--te
 .insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px}
 .insight{background:var(--surface);padding:16px 22px;display:flex;gap:14px;align-items:flex-start}
 .insight-ico{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.ico-cyan{background:var(--accent1-dim)}.ico-rose{background:var(--accent2-dim)}.ico-amber{background:var(--accent3-dim)}.ico-emerald{background:var(--accent5-dim)}.ico-violet{background:var(--accent4-dim)}.ico-sky{background:var(--accent6-dim)}
+.ico-cyan{background:var(--accent1-dim)}.ico-rose{background:var(--accent2-dim)}.ico-amber{background:var(--accent3-dim)}.ico-emerald{background:var(--accent5-dim)}.ico-violet{background:var(--accent4-dim)}.ico-sky{background:var(--accent1-dim)}
 .insight-lbl{font-size:10px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;color:var(--text3);margin-bottom:3px}
 .insight-txt{font-size:12px;color:var(--text2);line-height:1.6}
 .insight-txt b{color:var(--text);font-weight:600}
@@ -273,7 +272,7 @@ body{font-family:var(--font);font-weight:500;background:var(--bg);color:var(--te
 /* Biomarkers page header */
 .bw-page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
 .bw-page-title{font-size:20px;font-weight:800;color:var(--text)}
-.bw-page-title span{color:var(--secondary)}
+.bw-page-title span{color:var(--accent2)}
 .bw-header-meta{font-family:var(--mono);font-size:11px;color:var(--text3);text-align:right;line-height:1.8}
 .bw-header-meta strong{color:var(--text2);font-weight:600}
 /* Category grid (Overview) */
@@ -483,7 +482,7 @@ function tElRaw(text,cls='nt'){return`<span class="stat-trend ${cls}">${text}</s
 const CS=getComputedStyle(document.documentElement);
 const cv=v=>CS.getPropertyValue(v).trim();
 const cfill=(c,a=0.12)=>{if(c.startsWith('#')){const h=c.slice(1);const n=h.length===3?[h[0]+h[0],h[1]+h[1],h[2]+h[2]]:[h.slice(0,2),h.slice(2,4),h.slice(4,6)];return `rgba(${parseInt(n[0],16)},${parseInt(n[1],16)},${parseInt(n[2],16)},${a})`;}if(c.startsWith('hsla'))return c.replace(/,\s*[\d.]+\)$/,`,${a})`);if(c.startsWith('hsl'))return c.replace('hsl(','hsla(').replace(')',`,${a})`);const m=c.match(/\d+/g);return m?`rgba(${m[0]},${m[1]},${m[2]},${a})`:c;};
-const CC=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent6')];
+const CC=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent1')];
 Chart.defaults.color=cv('--text3');Chart.defaults.borderColor=cv('--chart-grid');
 Chart.defaults.font.family=cv('--font');Chart.defaults.font.size=11;
 Chart.defaults.plugins.legend.labels.usePointStyle=true;Chart.defaults.plugins.legend.labels.pointStyleWidth=8;
@@ -606,7 +605,7 @@ function rHome(){
     <div class="stat-cell"><div class="stat-lbl">Muscle Mass</div><div class="stat-val">${fmt(C.muscle_mass,1)}<span class="u">kg</span></div><span class="stat-trend info">→ preserved</span><div class="stat-sub"><span class="hi-emerald">● preserved</span></div><div class="stat-bar" style="background:var(--accent5)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Daily Steps</div><div class="stat-val">${fmtC(C.steps)}</div>${stDelta!=null?trendBadge(stDelta,true,'',0):''}  <div class="stat-sub">${C.steps>=T.steps?'<span class="hi-emerald">✓ target met</span>':'<span class="hi-amber">'+pct(C.steps,T.steps)+'% of '+fmtK(T.steps)+'</span>'}</div><div class="stat-bar" style="background:var(--accent3)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Avg Sleep</div><div class="stat-val">${fmt(GS.avg,1)}<span class="u">h</span></div>${slDelta!=null?trendBadge(slDelta,true,' h'):''}  <div class="stat-sub"><span class="hi-rose">${GS.total_nights} nights tracked</span></div><div class="stat-bar" style="background:var(--accent2)"></div></div>
-    <div class="stat-cell"><div class="stat-lbl">PWV</div><div class="stat-val">${fmt(C.pwv,1)}<span class="u">m/s</span></div>${pwvDelta!=null?trendBadge(pwvDelta,false,' m/s',2):''}  <div class="stat-sub"><span class="hi-emerald">Normal &lt;7.6</span></div><div class="stat-bar" style="background:var(--accent6)"></div></div>
+    <div class="stat-cell"><div class="stat-lbl">PWV</div><div class="stat-val">${fmt(C.pwv,1)}<span class="u">m/s</span></div>${pwvDelta!=null?trendBadge(pwvDelta,false,' m/s',2):''}  <div class="stat-sub"><span class="hi-emerald">Normal &lt;7.6</span></div><div class="stat-bar" style="background:var(--accent1)"></div></div>
   </div>`;
   h+=insG([
     {emoji:'⚠️',title:'Sleep deficit',severity:'critical',text:`Average sleep of <b>${fmt(GS.avg,1)}h</b> across ${GS.total_nights} nights is below the 7h minimum. Only <span class="hi-rose">${GS.pct_gte7}%</span> of nights reach 7+ hours. Best year was ${GS.best_year} at ${GS.best_year_avg}h.`},
@@ -689,7 +688,7 @@ function rSleep(){
 
   h+=`<div class="stat-strip">
     <div class="stat-cell"><div class="stat-lbl">Avg Sleep</div><div class="stat-val">${fmt(SG.avg,2)}<span class="u">h</span></div>${slTrendBadge(slTrend)}<div class="stat-sub">${SG.total_nights} nights · 2022–2026</div><div class="stat-bar" style="background:var(--accent1)"></div></div>
-    <div class="stat-cell"><div class="stat-lbl">Median</div><div class="stat-val">${fmt(SG.median,2)}<span class="u">h</span></div><span class="stat-trend info">→ 50th pct</span><div class="stat-sub">50th percentile</div><div class="stat-bar" style="background:var(--accent6)"></div></div>
+    <div class="stat-cell"><div class="stat-lbl">Median</div><div class="stat-val">${fmt(SG.median,2)}<span class="u">h</span></div><span class="stat-trend info">→ 50th pct</span><div class="stat-sub">50th percentile</div><div class="stat-bar" style="background:var(--accent1)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Best Year</div><div class="stat-val">${fmt(SG.best_year_avg,2)}<span class="u">h</span></div><span class="stat-trend up">▲ peak avg</span><div class="stat-sub">${SG.best_year} · ${SG.best_year_n} nights</div><div class="stat-bar" style="background:var(--accent5)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Nights ≥ 7h</div><div class="stat-val">${SG.pct_gte7}<span class="u">%</span></div><span class="stat-trend ${SG.pct_gte7>=50?'up':'nt'}">${SG.pct_gte7>=50?'▲':'→'} target 60%</span><div class="stat-sub">${SG.nights_gte7} of ${SG.total_nights}</div><div class="stat-bar" style="background:var(--accent3)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Nights &lt; 6h</div><div class="stat-val">${SG.pct_lt6}<span class="u">%</span></div><span class="stat-trend ${SG.pct_lt6<15?'up':'dn'}">${SG.pct_lt6<15?'↓ improving':'▲ deficit'}</span><div class="stat-sub"><span class="hi-rose">${SG.nights_lt6} deficit nights</span></div><div class="stat-bar" style="background:var(--accent2)"></div></div>
@@ -708,7 +707,7 @@ function rSleep(){
     <div class="card span6"><div class="card-hd"><div class="card-title">Sleep duration distribution</div><div class="card-sub">${SG.total_nights} nights · 2022–2026</div></div><div class="chart-wrap h240"><canvas id="cSleepDist"></canvas></div></div>
     <div class="card span6"><div class="card-hd"><div class="card-title">Sleep quality breakdown</div><div class="card-sub">% of nights by duration band</div></div>
       <div style="margin-top:8px">
-        ${QB.map(b=>{const col=b.label==='≥8h'?'var(--accent5)':b.label==='7-8h'?'var(--accent6)':b.label==='6-7h'?'var(--accent3)':b.label==='5-6h'?cv('--accent3'):'var(--accent2)';const cls=b.label.includes('7')||b.label.includes('8')?'up':'dn';return `<div class="quality-row"><span class="quality-label">${b.label}</span><div class="quality-bar-bg"><div class="quality-bar" style="width:${b.pct}%;background:${col}"></div></div><span class="quality-pct ${cls}">${b.pct}%</span><span class="quality-n">${b.count} nights</span></div>`;}).join('')}
+        ${QB.map(b=>{const col=b.label==='≥8h'?'var(--accent5)':b.label==='7-8h'?'var(--accent1)':b.label==='6-7h'?'var(--accent3)':b.label==='5-6h'?cv('--accent3'):'var(--accent2)';const cls=b.label.includes('7')||b.label.includes('8')?'up':'dn';return `<div class="quality-row"><span class="quality-label">${b.label}</span><div class="quality-bar-bg"><div class="quality-bar" style="width:${b.pct}%;background:${col}"></div></div><span class="quality-pct ${cls}">${b.pct}%</span><span class="quality-n">${b.count} nights</span></div>`;}).join('')}
         <div style="font-size:11px;color:var(--text3);border-top:1px solid var(--border);padding-top:10px;margin-top:10px">
           <span style="color:var(--accent5)">■</span> Optimal (7h+): <b style="color:var(--text)">${QB.filter(b=>b.label.includes('7')||b.label.includes('8')).reduce((a,b)=>a+b.pct,0).toFixed(0)}%</b> &nbsp;
           <span style="color:var(--accent3)">■</span> Marginal (6–7h): <b style="color:var(--text)">${QB.find(b=>b.label==='6-7h')?.pct||0}%</b> &nbsp;
@@ -813,7 +812,7 @@ function rAct(){
     <div class="stat-cell"><div class="stat-lbl">Avg Distance</div><div class="stat-val">${fmt(aD/1000,1)}<span class="u">km</span></div>${tElRaw('→ daily avg','nt')}<div class="stat-sub">Daily</div><div class="stat-bar" style="background:var(--accent4)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Move Minutes</div><div class="stat-val">${fmt(aM,0)}<span class="u">min</span></div>${aM>=30?tElRaw('▲ above 30 min target','up'):tElRaw('▼ below 30 min target','dn')}<div class="stat-sub">Daily avg</div><div class="stat-bar" style="background:var(--accent5)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Calories Burned</div><div class="stat-val">${fmtC(Math.round(aC))}<span class="u">kcal</span></div>${tElRaw('→ daily avg','nt')}<div class="stat-sub">Daily</div><div class="stat-bar" style="background:var(--accent3)"></div></div>
-    <div class="stat-cell"><div class="stat-lbl">Activity Types</div><div class="stat-val">${det.length}</div>${tElRaw('→ unique tracked','info')}<div class="stat-sub">Unique</div><div class="stat-bar" style="background:var(--accent6)"></div></div>
+    <div class="stat-cell"><div class="stat-lbl">Activity Types</div><div class="stat-val">${det.length}</div>${tElRaw('→ unique tracked','info')}<div class="stat-sub">Unique</div><div class="stat-bar" style="background:var(--accent1)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Top Activity</div><div class="stat-val" style="font-size:16px">${topName}</div>${tElRaw('→ most time','nt')}<div class="stat-sub">${fmtC(det[0]?.total_minutes||0)} min</div><div class="stat-bar" style="background:var(--accent2)"></div></div>
   </div>`;
 
@@ -896,7 +895,7 @@ function rTrain(){
     <div class="stat-cell"><div class="stat-lbl">Total Volume</div><div class="stat-val">${fmtK(totalVol)}<span class="u">kg</span></div>${volTr!==null?tEl(volTr,false,' kg/mo','3mo trend'):tElRaw('→ all-time','nt')}<div class="stat-sub">normal sets</div><div class="stat-bar" style="background:var(--accent4)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Avg Session</div><div class="stat-val">${fmt(avgDur,0)}<span class="u">min</span></div>${tElRaw('→ per workout','nt')}<div class="stat-sub">Per workout</div><div class="stat-bar" style="background:var(--accent5)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Frequency</div><div class="stat-val">${fmt(freq,1)}<span class="u">×/wk</span></div>${tEl(freqTr,false,'×/wk','90d vs prior')}<div class="stat-sub">${freq>=2.5?'<span class="hi-emerald">Good</span>':'<span class="hi-amber">Aim for 3×</span>'}</div><div class="stat-bar" style="background:var(--accent3)"></div></div>
-    <div class="stat-cell"><div class="stat-lbl">Working Sets</div><div class="stat-val">${stypes.normal||0}</div>${tElRaw(`▲ ${stypes.failure||0} to failure`,'up')}<div class="stat-sub">+ ${stypes.warmup||0} warmup · ${stypes.failure||0} failure</div><div class="stat-bar" style="background:var(--accent6)"></div></div>
+    <div class="stat-cell"><div class="stat-lbl">Working Sets</div><div class="stat-val">${stypes.normal||0}</div>${tElRaw(`▲ ${stypes.failure||0} to failure`,'up')}<div class="stat-sub">+ ${stypes.warmup||0} warmup · ${stypes.failure||0} failure</div><div class="stat-bar" style="background:var(--accent1)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Exercises</div><div class="stat-val">${D.training_all_exercises?.length||0}</div>${tElRaw('→ unique movements','info')}<div class="stat-sub">Unique movements</div><div class="stat-bar" style="background:var(--accent2)"></div></div>
   </div>`;
 
@@ -1001,7 +1000,7 @@ function rNut(){
     <div class="stat-cell"><div class="stat-lbl">Avg Carbs</div><div class="stat-val">${fmt(A.carbs,0)}<span class="u">g</span></div>${tElRaw(`→ ${cP}% of calories`,'nt')}<div class="stat-sub">${cP}% of cal</div><div class="stat-bar" style="background:var(--accent5)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Avg Fat</div><div class="stat-val">${fmt(A.fat,0)}<span class="u">g</span></div>${tElRaw(`→ ${fP}% of calories`,'nt')}<div class="stat-sub">${fP}% of cal</div><div class="stat-bar" style="background:var(--accent3)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Avg Fiber</div><div class="stat-val">${fmt(A.fiber,0)}<span class="u">g</span></div>${A.fiber>=25?tElRaw('▲ above 25g','up'):tElRaw('▼ below 30g target','dn')}<div class="stat-sub">${A.fiber>=25?'<span class="hi-emerald">Good</span>':'<span class="hi-amber">Below 30g</span>'}</div><div class="stat-bar" style="background:var(--accent4)"></div></div>
-    <div class="stat-cell"><div class="stat-lbl">Variability</div><div class="stat-val">±${fmt(A.cal_variability,0)}<span class="u">kcal</span></div>${A.cal_variability>700?tElRaw('▲ high variance','dn'):tElRaw('▼ stable','up')}<div class="stat-sub">${A.cal_variability>700?'<span class="hi-rose">High</span>':'<span class="hi-emerald">Stable</span>'}</div><div class="stat-bar" style="background:var(--accent6)"></div></div>
+    <div class="stat-cell"><div class="stat-lbl">Variability</div><div class="stat-val">±${fmt(A.cal_variability,0)}<span class="u">kcal</span></div>${A.cal_variability>700?tElRaw('▲ high variance','dn'):tElRaw('▼ stable','up')}<div class="stat-sub">${A.cal_variability>700?'<span class="hi-rose">High</span>':'<span class="hi-emerald">Stable</span>'}</div><div class="stat-bar" style="background:var(--accent1)"></div></div>
   </div>`;
 
   // OVERVIEW
@@ -1131,7 +1130,7 @@ function initSleep(){
     {max:6,label:'5–6h',bg:cfill(cv('--accent3'),0.4),border:cfill(cv('--accent3'),0.6)},
     {max:7,label:'6–7h',bg:cfill(cv('--accent1'),0.4),border:cfill(cv('--accent1'),0.6)},
     {max:8,label:'7–8h',bg:cfill(cv('--accent5'),0.5),border:cfill(cv('--accent5'),0.7)},
-    {max:99,label:'≥ 8h',bg:'var(--accent5)',border:cv('--accent5-bright')}
+    {max:99,label:'≥ 8h',bg:'var(--accent5)',border:cv('--accent5-border')}
   ]);
 }
 
@@ -1142,7 +1141,7 @@ function initAct(){
   mc('cStepHist',{type:'bar',data:{labels:sh.map(s=>s.label),datasets:[{data:sh.map(s=>s.count),backgroundColor:CC,borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'Days'}}}}});
   mc('cActDist',{type:'line',data:{labels:r.map(d=>d.date),datasets:[{label:'Distance (km)',data:r.map(d=>d.distance_m?d.distance_m/1000:null),borderColor:cv('--accent1'),yAxisID:'y'},{label:'Move Min',data:r.map(d=>d.move_minutes),borderColor:cv('--accent3'),yAxisID:'y1'}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{type:'time',time:{unit:'month'}},y:{position:'left',title:{display:true,text:'km'}},y1:{position:'right',title:{display:true,text:'min'},grid:{drawOnChartArea:false}}}}});
   const types=(D.activity_detailed||[]).filter(a=>a.total_minutes>10);
-  mc('cActPie',{type:'doughnut',data:{labels:types.map(a=>a.clean_name||a.activity),datasets:[{data:types.map(a=>a.total_minutes),backgroundColor:CC.concat([cv('--accent1-light'),cv('--text3'),cv('--accent2')]),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{font:{size:10}}}}}});
+  mc('cActPie',{type:'doughnut',data:{labels:types.map(a=>a.clean_name||a.activity),datasets:[{data:types.map(a=>a.total_minutes),backgroundColor:CC.concat([cv('--accent1'),cv('--text3'),cv('--accent2')]),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{font:{size:10}}}}}});
   // Long trend
   const aS=[...D.old_timeseries.filter(d=>d.steps).map(d=>({date:d.date,v:d.steps})),...ts.filter(d=>d.steps).map(d=>({date:d.date,v:d.steps}))];
   const mb={};aS.forEach(d=>{const m=d.date.substring(0,7);if(!mb[m])mb[m]=[];mb[m].push(d.v);});
@@ -1166,7 +1165,7 @@ function initAct(){
     {max:5000,label:'2–5K',bg:cfill(cv('--accent3'),0.4),border:cfill(cv('--accent3'),0.6)},
     {max:8000,label:'5–8K',bg:cfill(cv('--accent1'),0.4),border:cfill(cv('--accent1'),0.6)},
     {max:12000,label:'8–12K',bg:cfill(cv('--accent5'),0.5),border:cfill(cv('--accent5'),0.7)},
-    {max:999999,label:'≥ 12K',bg:'var(--accent5)',border:cv('--accent5-bright')}
+    {max:999999,label:'≥ 12K',bg:'var(--accent5)',border:cv('--accent5-border')}
   ]);
 }
 
@@ -1189,9 +1188,9 @@ function initTrain(){
   const mv=D.muscle_volume;
   const grps=[...new Set(mv.map(m=>m.muscle_group))].filter(g=>g!=='Other'&&g!=='Forearms');
   const tots=grps.map(g=>mv.filter(m=>m.muscle_group===g).reduce((a,m)=>a+(m.volume||0),0));
-  mc('cMusclePie',{type:'doughnut',data:{labels:grps,datasets:[{data:tots,backgroundColor:CC.concat([cv('--accent1-light'),cv('--accent5')]),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{font:{size:10}}}}}});
+  mc('cMusclePie',{type:'doughnut',data:{labels:grps,datasets:[{data:tots,backgroundColor:CC.concat([cv('--accent1'),cv('--accent5')]),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{font:{size:10}}}}}});
   const sets=grps.map(g=>mv.filter(m=>m.muscle_group===g).reduce((a,m)=>a+(m.sets||0),0));
-  mc('cMuscleSets',{type:'bar',data:{labels:grps,datasets:[{data:sets,backgroundColor:CC.concat([cv('--accent1-light')]),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}}}});
+  mc('cMuscleSets',{type:'bar',data:{labels:grps,datasets:[{data:sets,backgroundColor:CC.concat([cv('--accent1')]),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}}}});
 
   // Monthly stacked
   const mm=D.training_muscle_monthly||[];
@@ -1211,7 +1210,7 @@ function initTrain(){
     const defaultEx=['Iso-Lateral Chest Press (Machine)','Lat Pulldown (Cable)','Butterfly (Pec Deck)','Bicep Curl (Cable)','Triceps Pressdown'];
     let activeEx=new Set(defaultEx.slice(0,3));
     function renderOverload(){
-      const datasets=[];const colors=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent6')];
+      const datasets=[];const colors=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent1')];
       let idx=0;
       activeEx.forEach(ex=>{
         const eD=D.strength.filter(s=>s.exercise_title===ex).sort((a,b)=>a.date.localeCompare(b.date));
@@ -1289,7 +1288,7 @@ function initTrain(){
         }
         const s=w.sessions;
         const bg=s===0?cv('--zone-empty'):s===1?cfill(cv('--accent1'),0.35):s<=3?cfill(cv('--accent5'),0.5):'var(--accent5)';
-        const border=s===0?'var(--border)':s===1?cfill(cv('--accent1'),0.5):s<=3?cfill(cv('--accent5'),0.7):cv('--accent5-bright');
+        const border=s===0?'var(--border)':s===1?cfill(cv('--accent1'),0.5):s<=3?cfill(cv('--accent5'),0.7):cv('--accent5-border');
         hh+=`<div title="W${w.week} ${year}: ${s} session${s!==1?'s':''}" style="width:16px;height:16px;border-radius:3px;background:${bg};border:1px solid ${border}"></div>`;
       });
       hh+='</div></div>';
@@ -1412,7 +1411,7 @@ function rVitals(){
 
   h += `<div class="stat-strip">
     <div class="stat-cell"><div class="stat-lbl">Avg PWV</div><div class="stat-val">${fmt(avgPwv,2)}<span class="u">m/s</span></div>${pwvDelta>0.1?tElRaw('▲ creeping up — monitor','dn'):tElRaw('▼ stable trend','up')}<div class="stat-sub">${pwv.length} readings · &lt;7.6 = healthy</div><div class="stat-bar" style="background:${avgPwv>=7.0?'var(--accent3)':'var(--accent5)'}"></div></div>
-    <div class="stat-cell"><div class="stat-lbl">Blood Pressure</div><div class="stat-val">${avgSys?Math.round(avgSys):'—'}<span class="u">/${avgDia?Math.round(avgDia):'—'}</span></div>${avgSys&&avgSys>=130?tElRaw('▲ elevated systolic','dn'):tElRaw('▼ normal range','up')}<div class="stat-sub">avg · ${bp.length} readings</div><div class="stat-bar" style="background:${avgSys&&avgSys>=130?'var(--accent2)':'var(--accent6)'}"></div></div>
+    <div class="stat-cell"><div class="stat-lbl">Blood Pressure</div><div class="stat-val">${avgSys?Math.round(avgSys):'—'}<span class="u">/${avgDia?Math.round(avgDia):'—'}</span></div>${avgSys&&avgSys>=130?tElRaw('▲ elevated systolic','dn'):tElRaw('▼ normal range','up')}<div class="stat-sub">avg · ${bp.length} readings</div><div class="stat-bar" style="background:${avgSys&&avgSys>=130?'var(--accent2)':'var(--accent1)'}"></div></div>
     <div class="stat-cell"><div class="stat-lbl">Sleep HR Avg</div><div class="stat-val">${fmt(avgSleepHR,0)}<span class="u">bpm</span></div>${avgSleepHR<55?tElRaw('▼ strong fitness signal','up'):tElRaw('▲ check sleep quality','nt')}<div class="stat-sub">Withings · ${sl.filter(d=>d.sleep_hr_avg>0).length} nights</div><div class="stat-bar" style="background:var(--accent2)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">HRV</div><div class="stat-val" style="font-size:20px">—</div>${tElRaw('→ not tracked yet','nt')}<div class="stat-sub">not tracked yet</div><div class="stat-bar" style="background:var(--text3)"></div></div>
     <div class="stat-cell"><div class="stat-lbl">SpO₂</div><div class="stat-val" style="font-size:20px">—</div>${tElRaw('→ sleep data available','info')}<div class="stat-sub">sleep data via Health Connect</div><div class="stat-bar" style="background:var(--accent1)"></div></div>
@@ -1448,7 +1447,7 @@ function rVitals(){
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <div style="flex:1;min-width:110px;padding:12px;background:var(--surface);border-radius:8px;border-left:3px solid var(--accent5)"><div style="font-size:10px;color:var(--text3);margin-bottom:4px">Healthy range</div><div style="font-size:20px;font-weight:700;color:var(--accent5)">95–100%</div></div>
           <div style="flex:1;min-width:110px;padding:12px;background:var(--surface);border-radius:8px;border-left:3px solid var(--accent3)"><div style="font-size:10px;color:var(--text3);margin-bottom:4px">Alert threshold</div><div style="font-size:20px;font-weight:700;color:var(--accent3)">&lt;90%</div><div style="font-size:10px;color:var(--text3)">seek medical advice</div></div>
-          <div style="flex:1;min-width:110px;padding:12px;background:var(--surface);border-radius:8px;border-left:3px solid var(--accent6)"><div style="font-size:10px;color:var(--text3);margin-bottom:4px">Data source</div><div style="font-size:15px;font-weight:600;color:var(--text2)">Google Fit</div><div style="font-size:10px;color:var(--text3)">Health Connect nightly</div></div>
+          <div style="flex:1;min-width:110px;padding:12px;background:var(--surface);border-radius:8px;border-left:3px solid var(--accent1)"><div style="font-size:10px;color:var(--text3);margin-bottom:4px">Data source</div><div style="font-size:15px;font-weight:600;color:var(--text2)">Google Fit</div><div style="font-size:10px;color:var(--text3)">Health Connect nightly</div></div>
         </div>
       </div>
     </div>
@@ -1602,7 +1601,7 @@ function initVitals(panel) {
   const cc = (id) => { const el=document.getElementById(id); if(!el)return null; const ex=Chart.getChart(el); if(ex)ex.destroy(); return el.getContext('2d'); };
   const G=cv('--chart-grid'), TK=cv('--chart-tick'), TF={size:10};
   const C = {
-    sky:    {line:cv('--accent6'),     fill:cfill(cv('--accent6'))},
+    sky:    {line:cv('--accent1'),     fill:cfill(cv('--accent1'))},
     teal:   {line:cv('--accent5'), fill:cfill(cv('--accent5'))},
     rose:   {line:cv('--accent2'),    fill:cfill(cv('--accent2'))},
     amber:  {line:cv('--accent3'),   fill:cfill(cv('--accent3'))},
@@ -1659,7 +1658,7 @@ function initMeasurements(panel) {
     teal:   {line:cv('--accent5'), fill:cfill(cv('--accent5'))},
     orange: {line:cv('--accent3'), fill:cfill(cv('--accent3'))},
     purple: {line:cv('--accent4'), fill:cfill(cv('--accent4'))},
-    pink:   {line:cv('--secondary'), fill:cfill(cv('--accent2'))},
+    pink:   {line:cv('--accent2'), fill:cfill(cv('--accent2'))},
     lime:   {line:cv('--accent5'), fill:cfill(cv('--accent5'))},
     rose:   {line:cv('--accent2'), fill:cfill(cv('--accent2'))},
     emerald:{line:cv('--accent5'), fill:cfill(cv('--accent5'))},
@@ -1731,7 +1730,7 @@ function glGoals(){
     {dom:'Body Composition',name:'Visceral Fat',  current:12,             start:21,                 target:10,            unit:'',       lb:true,  color:'var(--accent3)'},
     {dom:'Activity',        name:'Daily Steps',   current:C.steps,        start:2000,               target:T.steps,       unit:'',       lb:false, color:'var(--accent3)', ffn:fmtC},
     {dom:'Sleep',           name:'Avg Sleep',     current:GS.avg,         start:5.8,                target:7,             unit:'h',      lb:false, color:'var(--accent2)'},
-    {dom:'Sleep',           name:'Nights ≥7h',    current:GS.pct_gte7,    start:20,                 target:60,            unit:'%',      lb:false, color:'var(--accent6)'},
+    {dom:'Sleep',           name:'Nights ≥7h',    current:GS.pct_gte7,    start:20,                 target:60,            unit:'%',      lb:false, color:'var(--accent1)'},
     {dom:'Nutrition',       name:'Daily Protein', current:A.protein,      start:80,                 target:T.protein,     unit:'g',      lb:false, color:'var(--accent2)'},
     {dom:'Nutrition',       name:'Daily Calories',current:A.calories,     start:A.calories*1.15,    target:T.calories,    unit:' kcal',  lb:null,  color:'var(--accent1)', ffn:v=>fmtC(Math.round(v))},
     {dom:'Training',        name:'Sessions/week', current:wkRate,         start:0,                  target:3,             unit:'/wk',    lb:false, color:'var(--accent4)'},
@@ -1937,7 +1936,7 @@ function rInsights(){
 
 function initInsights(panel){
   const sc=insScores();
-  const domColor={sleep:'var(--accent2)',activity:'var(--accent3)',nutrition:'var(--accent1)',training:'var(--accent4)',vitals:'var(--accent5)',biomarkers:'var(--accent6)'};
+  const domColor={sleep:'var(--accent2)',activity:'var(--accent3)',nutrition:'var(--accent1)',training:'var(--accent4)',vitals:'var(--accent5)',biomarkers:'var(--accent1)'};
   const domIcon={sleep:'😴',activity:'🚶',nutrition:'🥗',training:'💪',vitals:'🫀',biomarkers:'🧬'};
 
   // Composite card
@@ -1960,13 +1959,13 @@ function initInsights(panel){
         datasets:[{
           data:[sc.sleep,sc.activity,sc.nutrition,sc.training,sc.vitals,sc.biomarkers],
           backgroundColor:cfill(cv('--accent1'),0.15),borderColor:cfill(cv('--accent1'),0.7),borderWidth:2,
-          pointBackgroundColor:[cv('--accent2'),cv('--accent3'),cv('--accent1'),cv('--accent4'),cv('--accent5'),cv('--accent6')],pointBorderColor:[cv('--accent2'),cv('--accent3'),cv('--accent1'),cv('--accent4'),cv('--accent5'),cv('--accent6')],pointBorderWidth:2,
+          pointBackgroundColor:[cv('--accent2'),cv('--accent3'),cv('--accent1'),cv('--accent4'),cv('--accent5'),cv('--accent1')],pointBorderColor:[cv('--accent2'),cv('--accent3'),cv('--accent1'),cv('--accent4'),cv('--accent5'),cv('--accent1')],pointBorderWidth:2,
           pointRadius:5,pointHoverRadius:7,fill:true
         }]},
       options:{responsive:true,maintainAspectRatio:false,
         plugins:{legend:{display:false},tooltip:{backgroundColor:cv('--tooltip-bg'),borderColor:cv('--tooltip-border'),borderWidth:1,titleColor:cv('--text'),bodyColor:cv('--text2'),padding:10}},
         scales:{r:{min:0,max:100,grid:{color:cv('--chart-grid')},ticks:{display:false,stepSize:25},
-          pointLabels:{color:[cv('--accent2'),cv('--accent3'),cv('--accent1'),cv('--accent4'),cv('--accent5'),cv('--accent6')],font:{size:12,weight:'600'}},angleLines:{color:cv('--chart-grid')}}}}});}
+          pointLabels:{color:[cv('--accent2'),cv('--accent3'),cv('--accent1'),cv('--accent4'),cv('--accent5'),cv('--accent1')],font:{size:12,weight:'600'}},angleLines:{color:cv('--chart-grid')}}}}});}
 
   // Domain cards
   const dg=document.getElementById('inDomainGrid');
@@ -1977,7 +1976,7 @@ function initInsights(panel){
       inDomainCard('🥗','Nutrition',sc.nutrition,'declining',`Calories well-calibrated at ${fmtC(Math.round(A.calories))} kcal/day`,`Protein ${fmt(A.protein,0)}g vs ${T.protein}g target — declining`,'var(--accent1)'),
       inDomainCard('💪','Training',sc.training,'stable',`Chest press 10→50 kg in 4 months (+400%)`,`Frequency below 3×/week · zero overhead pressing`,'var(--accent4)'),
       inDomainCard('🫀','Vitals',sc.vitals,'improving',`−${fmt(D.eufy_peak.weight-C.weight,1)} kg from peak · PWV ${fmt(C.pwv,1)} m/s (healthy)`,`Body fat ${fmt(C.body_fat,1)}% — 6 pts above 18% target`,'var(--accent5)'),
-      inDomainCard('🧬','Biomarkers',sc.biomarkers,'mixed',`Insulin, testosterone, thyroid all in optimal range`,`hsCRP 4.2 mg/L (inflammation) · Estradiol critically low`,'var(--accent6)'),
+      inDomainCard('🧬','Biomarkers',sc.biomarkers,'mixed',`Insulin, testosterone, thyroid all in optimal range`,`hsCRP 4.2 mg/L (inflammation) · Estradiol critically low`,'var(--accent1)'),
     ];
     dg.innerHTML=cards.join('');}
 
@@ -2553,7 +2552,7 @@ function rBiomarkers(){
       <div class="stat-cell"><div class="stat-lbl">Good</div><div class="stat-val" style="color:var(--accent1)">${_tot.good}</div>${tElRaw('▲ in good zone','up')}<div class="stat-sub">markers in good zone</div><div class="stat-bar" style="background:var(--accent1)"></div></div>
       <div class="stat-cell"><div class="stat-lbl">Borderline</div><div class="stat-val" style="color:var(--accent3)">${_tot.fair}</div>${_tot.fair>0?tElRaw('▲ need improvement','nt'):tElRaw('▼ none borderline','up')}<div class="stat-sub">markers to improve</div><div class="stat-bar" style="background:var(--accent3)"></div></div>
       <div class="stat-cell"><div class="stat-lbl">Out of Range</div><div class="stat-val" style="color:var(--accent2)">${_tot.out}</div>${_tot.out>0?tElRaw('⚠ need attention','dn'):tElRaw('▼ none critical','up')}<div class="stat-sub">markers need attention</div><div class="stat-bar" style="background:var(--accent2)"></div></div>
-      <div class="stat-cell"><div class="stat-lbl">Latest Draw</div><div class="stat-val" style="font-size:16px">Oct '25</div>${tElRaw('→ Oct 7, 2025','info')}<div class="stat-sub">Oct 7, 2025 · ${CATS.length} categories</div><div class="stat-bar" style="background:var(--accent6)"></div></div>
+      <div class="stat-cell"><div class="stat-lbl">Latest Draw</div><div class="stat-val" style="font-size:16px">Oct '25</div>${tElRaw('→ Oct 7, 2025','info')}<div class="stat-sub">Oct 7, 2025 · ${CATS.length} categories</div><div class="stat-bar" style="background:var(--accent1)"></div></div>
     </div>
     <!-- Overview -->
     <div id="bw-overview" class="page active">
