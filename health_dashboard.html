@@ -2699,6 +2699,21 @@ var MONO_FONTS = [
 
 var DEFAULT_RADIUS = 8;
 
+// ── Theme presets ──
+// Each preset: { name, colors: { info, critical, warning, highlight, success } }
+var PRESETS = [
+  { name:'Ocean Breeze',    colors:{ '--info':'#22b8cf','--critical':'#f87171','--warning':'#fbbf24','--highlight':'#38bdf8','--success':'#2dd4a8' }},
+  { name:'Forest Vitality', colors:{ '--info':'#6ab04c','--critical':'#eb4d4b','--warning':'#f0932b','--highlight':'#a8e6cf','--success':'#34d399' }},
+  { name:'Sunrise Energy',  colors:{ '--info':'#f97316','--critical':'#ef4444','--warning':'#eab308','--highlight':'#fb923c','--success':'#10b981' }},
+  { name:'Clinical Pro',    colors:{ '--info':'#2563eb','--critical':'#dc2626','--warning':'#ca8a04','--highlight':'#7c3aed','--success':'#16a34a' }},
+  { name:'Midnight Zen',    colors:{ '--info':'#93c5fd','--critical':'#fca5a5','--warning':'#fcd34d','--highlight':'#c4b5fd','--success':'#6ee7b7' }},
+  { name:'Neon Pulse',      colors:{ '--info':'#ec4899','--critical':'#f97316','--warning':'#06b6d4','--highlight':'#a3e635','--success':'#facc15' }},
+  { name:'Terracotta',      colors:{ '--info':'#c97158','--critical':'#804a99','--warning':'#ba87a3','--highlight':'#e6c359','--success':'#d9a441' }},
+  { name:'Arctic Aurora',   colors:{ '--info':'#a3e635','--critical':'#c026d3','--warning':'#7dd3fc','--highlight':'#2dd4bf','--success':'#f472b6' }},
+  { name:'Coral Reef',      colors:{ '--info':'#d9b45a','--critical':'#8b5cf6','--warning':'#14b8a6','--highlight':'#fb7185','--success':'#fb923c' }},
+  { name:'Retrowave',       colors:{ '--info':'#ffe812','--critical':'#ff5f1f','--warning':'#00ffff','--highlight':'#bf40bf','--success':'#ff10f0' }}
+];
+
 // ── Inject CSS ──
 var style = document.createElement('style');
 style.id = 'tm-styles';
@@ -2743,7 +2758,15 @@ style.textContent = [
   '.tm-reset-btn:hover{color:var(--text);border-color:var(--border-hover)}',
   '.tm-panel::-webkit-scrollbar{width:6px}',
   '.tm-panel::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}',
-  '@media(max-width:600px){.tm-font-row{flex-direction:column}.tm-accents{justify-content:center}}'
+  // presets
+  '.tm-presets{display:grid;grid-template-columns:1fr 1fr;gap:8px}',
+  '.tm-preset{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);cursor:pointer;transition:border-color .15s,background .15s}',
+  '.tm-preset:hover{border-color:var(--border-hover);background:var(--card)}',
+  '.tm-preset.tm-preset-active{border-color:var(--info);box-shadow:0 0 0 1px var(--info)}',
+  '.tm-preset-dots{display:flex;gap:3px;flex-shrink:0}',
+  '.tm-preset-dot{width:10px;height:10px;border-radius:50%}',
+  '.tm-preset-name{font-size:11px;font-weight:600;color:var(--text2);font-family:var(--font);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
+  '@media(max-width:600px){.tm-font-row{flex-direction:column}.tm-accents{justify-content:center}.tm-presets{grid-template-columns:1fr}}'
 ].join('\n');
 document.head.appendChild(style);
 
@@ -2755,6 +2778,22 @@ function buildAccentHTML() {
         '<input type="color" tabindex="-1">' +
       '</div>' +
       '<span class="tm-accent-label">'+a.label+'</span>' +
+    '</div>';
+  }).join('');
+}
+
+function buildPresetsHTML() {
+  return PRESETS.map(function(p, i) {
+    var c = p.colors;
+    return '<div class="tm-preset" data-preset="'+i+'">' +
+      '<div class="tm-preset-dots">' +
+        '<span class="tm-preset-dot" style="background:'+c['--success']+'"></span>' +
+        '<span class="tm-preset-dot" style="background:'+c['--info']+'"></span>' +
+        '<span class="tm-preset-dot" style="background:'+c['--warning']+'"></span>' +
+        '<span class="tm-preset-dot" style="background:'+c['--critical']+'"></span>' +
+        '<span class="tm-preset-dot" style="background:'+c['--highlight']+'"></span>' +
+      '</div>' +
+      '<span class="tm-preset-name">'+p.name+'</span>' +
     '</div>';
   }).join('');
 }
@@ -2796,6 +2835,10 @@ overlay.innerHTML =
           '<span class="tm-theme-card-label">Light Mode</span>' +
         '</div>' +
       '</div>' +
+    '</div>' +
+    '<div class="tm-section">' +
+      '<div class="tm-section-title">Color Presets</div>' +
+      '<div class="tm-presets">' + buildPresetsHTML() + '</div>' +
     '</div>' +
     '<div class="tm-section">' +
       '<div class="tm-section-title">Accent Colors</div>' +
@@ -2906,6 +2949,40 @@ function syncThemeCards() {
   });
 }
 
+// ── Presets ──
+var presetEls = overlay.querySelectorAll('.tm-preset');
+presetEls.forEach(function(el) {
+  el.addEventListener('click', function() {
+    var idx = parseInt(el.dataset.preset);
+    var preset = PRESETS[idx];
+    // Apply each accent color from the preset
+    ACCENTS.forEach(function(a, i) {
+      var hex = preset.colors[a.semantic];
+      if (hex) setAccentColor(i, hex);
+    });
+    saveAccents();
+    window.SprintenTheme.rerender();
+    syncAccentUI();
+    syncPresetHighlight();
+  });
+});
+
+function syncPresetHighlight() {
+  // Check which preset (if any) matches current accent colors
+  var currentColors = {};
+  ACCENTS.forEach(function(a) {
+    currentColors[a.semantic] = rgbToHex(tmcv(a.semantic)).toLowerCase();
+  });
+  presetEls.forEach(function(el) {
+    var idx = parseInt(el.dataset.preset);
+    var preset = PRESETS[idx];
+    var match = ACCENTS.every(function(a) {
+      return currentColors[a.semantic] === preset.colors[a.semantic].toLowerCase();
+    });
+    el.classList.toggle('tm-preset-active', match);
+  });
+}
+
 // ── Accent colors ──
 function setAccentColor(index, hex) {
   var a = ACCENTS[index];
@@ -2929,6 +3006,7 @@ accentEls.forEach(function(el) {
     el.style.background = hex;
     setAccentColor(idx, hex);
     saveAccents();
+    syncPresetHighlight();
     window.SprintenTheme.rerender();
   });
 });
@@ -3061,6 +3139,7 @@ resetBtn.addEventListener('click', function() {
 function syncUI() {
   syncThemeCards();
   syncAccentUI();
+  syncPresetHighlight();
   updateToggleBtn();
   var currentFont = tmcv('--font');
   var currentMono = tmcv('--mono');
