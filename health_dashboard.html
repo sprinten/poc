@@ -2625,35 +2625,28 @@ function initBiomarkers(){
   // Recommendations
   document.getElementById('bwRecs').innerHTML=bwRecs();
 }
-// ═══ THEME TOGGLE ═══
-(function(){
-  const toggle=document.getElementById('themeToggle');
-  const icon=toggle.querySelector('.toggle-icon');
-  const label=toggle.querySelector('.toggle-label');
-  const saved=localStorage.getItem('sprinten-theme');
-  if(saved==='light') applyTheme('light',true);
-
-  toggle.addEventListener('click',()=>{
-    const next=document.documentElement.dataset.theme==='light'?'dark':'light';
-    applyTheme(next,true);
-  });
-
-  function applyTheme(theme,rerender){
-    if(theme==='light'){
-      document.documentElement.dataset.theme='light';
-      icon.textContent='☀️';label.textContent='Light';
-    }else{
-      delete document.documentElement.dataset.theme;
-      icon.textContent='🌙';label.textContent='Dark';
-    }
+// ═══ THEME API (consumed by theme-modal.js) ═══
+window.SprintenTheme={
+  applyTheme:function(theme){
+    if(theme==='light'){document.documentElement.dataset.theme='light';}
+    else{delete document.documentElement.dataset.theme;}
     localStorage.setItem('sprinten-theme',theme);
-    if(rerender){
-      // Re-read CSS variables for charts
-      CC=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent1')];
-      Chart.defaults.color=cv('--text3');
-      Chart.defaults.borderColor=cv('--chart-grid');
-      render();
-    }
+    CC=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent1')];
+    Chart.defaults.color=cv('--text3');
+    Chart.defaults.borderColor=cv('--chart-grid');
+    render();
+  },
+  rerender:function(){
+    CC=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent1')];
+    Chart.defaults.color=cv('--text3');
+    Chart.defaults.borderColor=cv('--chart-grid');
+    render();
+  },
+  getTheme:function(){
+    return document.documentElement.dataset.theme==='light'?'light':'dark';
   }
-})();
-</script></body></html>
+};
+if(localStorage.getItem('sprinten-theme')==='light'){document.documentElement.dataset.theme='light';}
+</script>
+<script src="theme-modal.js"></script>
+</body></html>
