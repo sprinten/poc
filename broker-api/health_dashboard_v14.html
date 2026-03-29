@@ -171,11 +171,45 @@ body{font-family:var(--font);font-weight:500;background:var(--bg);color:var(--te
 .rec-card:nth-child(1){animation-delay:.04s}.rec-card:nth-child(2){animation-delay:.08s}.rec-card:nth-child(3){animation-delay:.12s}.rec-card:nth-child(4){animation-delay:.16s}
 /* ── responsive ── */
 @media(max-width:900px){
-  .sidebar{width:60px}.sidebar-btn span{display:none}.sidebar-logo span{display:none}.main-wrap{margin-left:60px}
+  .sidebar{width:60px}.sidebar-btn span{display:none}.sidebar-logo span{display:none}.main-wrap{margin-left:60px}.theme-toggle .toggle-label{display:none}.theme-toggle{padding:8px;justify-content:center}
   .stat-strip{grid-template-columns:repeat(3,1fr)}.insight-grid,.rec-grid{grid-template-columns:1fr}
   .grid2{grid-template-columns:1fr}.card{grid-column:span 1!important}.main{padding:12px}.stat-val{font-size:22px}
 }
 ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ── light theme ── */
+[data-theme="light"]{
+/* semantic palette — same hues, darker for legibility on white */
+--success:#00a676;--info:#3b82d6;--warning:#d48b0a;--critical:#e05555;--highlight:#9455e0;
+/* accent aliases */
+--accent1:var(--info);--accent2:var(--critical);--accent3:var(--warning);--accent4:var(--highlight);--accent5:var(--success);
+--accent1-dim:rgba(59,130,214,0.08);--accent2-dim:rgba(224,85,85,0.08);--accent3-dim:rgba(212,139,10,0.08);--accent4-dim:rgba(148,85,224,0.08);--accent5-dim:rgba(0,166,118,0.08);
+--accent1-border:rgba(59,130,214,0.2);--accent2-border:rgba(224,85,85,0.2);--accent3-border:rgba(212,139,10,0.2);--accent4-border:rgba(148,85,224,0.2);--accent5-border:rgba(0,166,118,0.2);
+/* surfaces */
+--bg:#f4f6f9;--surface:#ebeef3;--card:#ffffff;
+--border:#d5dbe4;--border-hover:#a8b5c4;--border-soft:rgba(0,0,0,0.06);
+/* text */
+--text:#1a2332;--text2:#4a5568;--text3:#7a8a9e;
+/* ui tokens */
+--white:#fff;--neutral:#6b7f99;
+--radius:8px;--track:rgba(0,0,0,0.08);--row-hover:rgba(59,130,214,0.04);--zone-empty:rgba(0,0,0,0.03);
+/* chart tokens */
+--chart-grid:rgba(0,0,0,0.06);--chart-tick:rgba(55,65,81,0.7);--tooltip-bg:rgba(255,255,255,0.95);--tooltip-border:rgba(0,0,0,0.12);
+/* typography — same fonts */
+--font:'Noto Sans',sans-serif;--mono:'Noto Sans Mono',monospace;
+}
+/* light theme scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-thumb{background:var(--border)}
+/* light theme sidebar active button */
+[data-theme="light"] .sidebar-btn.active{background:var(--info);color:#fff}
+/* light theme bg rings — softer */
+[data-theme="light"] .bg-ring{border-color:rgba(59,130,214,0.06)}
+[data-theme="light"] .ring2{border-color:rgba(148,85,224,0.06)}
+[data-theme="light"] .ring3{border-color:rgba(212,139,10,0.06)}
+/* theme toggle button */
+.theme-toggle{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 14px;margin:8px 12px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-family:var(--font);font-size:11px;font-weight:600;cursor:pointer;border-radius:var(--radius);transition:all .15s}
+.theme-toggle:hover{color:var(--text);border-color:var(--border-hover)}
+.theme-toggle .toggle-icon{font-size:14px;line-height:1}
 
 /* ══════════════════════════════════════════════════════════
    BIOMARKERS PAGE — bloodwork dashboard styles
@@ -457,6 +491,7 @@ body{font-family:var(--font);font-weight:500;background:var(--bg);color:var(--te
 <span>Sprinten</span>
 </div>
 <nav class="sidebar-nav" id="sideNav"></nav>
+<button class="theme-toggle" id="themeToggle" title="Switch theme"><span class="toggle-icon">🌙</span><span class="toggle-label">Dark</span></button>
 <div class="sidebar-footer"></div>
 </aside>
 <div class="main-wrap"><main class="main" id="content"></main></div>
@@ -482,7 +517,7 @@ function tElRaw(text,cls='nt'){return`<span class="stat-trend ${cls}">${text}</s
 const CS=getComputedStyle(document.documentElement);
 const cv=v=>CS.getPropertyValue(v).trim();
 const cfill=(c,a=0.12)=>{if(c.startsWith('#')){const h=c.slice(1);const n=h.length===3?[h[0]+h[0],h[1]+h[1],h[2]+h[2]]:[h.slice(0,2),h.slice(2,4),h.slice(4,6)];return `rgba(${parseInt(n[0],16)},${parseInt(n[1],16)},${parseInt(n[2],16)},${a})`;}if(c.startsWith('hsla'))return c.replace(/,\s*[\d.]+\)$/,`,${a})`);if(c.startsWith('hsl'))return c.replace('hsl(','hsla(').replace(')',`,${a})`);const m=c.match(/\d+/g);return m?`rgba(${m[0]},${m[1]},${m[2]},${a})`:c;};
-const CC=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent1')];
+let CC=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent1')];
 Chart.defaults.color=cv('--text3');Chart.defaults.borderColor=cv('--chart-grid');
 Chart.defaults.font.family=cv('--font');Chart.defaults.font.size=11;
 Chart.defaults.plugins.legend.labels.usePointStyle=true;Chart.defaults.plugins.legend.labels.pointStyleWidth=8;
@@ -2590,4 +2625,35 @@ function initBiomarkers(){
   // Recommendations
   document.getElementById('bwRecs').innerHTML=bwRecs();
 }
+// ═══ THEME TOGGLE ═══
+(function(){
+  const toggle=document.getElementById('themeToggle');
+  const icon=toggle.querySelector('.toggle-icon');
+  const label=toggle.querySelector('.toggle-label');
+  const saved=localStorage.getItem('sprinten-theme');
+  if(saved==='light') applyTheme('light',true);
+
+  toggle.addEventListener('click',()=>{
+    const next=document.documentElement.dataset.theme==='light'?'dark':'light';
+    applyTheme(next,true);
+  });
+
+  function applyTheme(theme,rerender){
+    if(theme==='light'){
+      document.documentElement.dataset.theme='light';
+      icon.textContent='☀️';label.textContent='Light';
+    }else{
+      delete document.documentElement.dataset.theme;
+      icon.textContent='🌙';label.textContent='Dark';
+    }
+    localStorage.setItem('sprinten-theme',theme);
+    if(rerender){
+      // Re-read CSS variables for charts
+      CC=[cv('--accent1'),cv('--accent2'),cv('--accent4'),cv('--accent5'),cv('--accent3'),cv('--accent1')];
+      Chart.defaults.color=cv('--text3');
+      Chart.defaults.borderColor=cv('--chart-grid');
+      render();
+    }
+  }
+})();
 </script></body></html>
